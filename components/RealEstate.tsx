@@ -4,9 +4,14 @@ import React, { useEffect } from 'react';
 import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineArrowRightAlt, MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Card } from './ui/card';
+import useSWR from 'swr';
+import Image from 'next/image';
+
 
 const RealEstate = () => {
-
+    const fetcher = (...args) => fetch(...args).then(res => res.json());
+    const { data, error, isLoading } = useSWR(`https://645746a11a4c152cf97e74ca.mockapi.io/products`, fetcher)
+    if (isLoading) return <div>Loading...</div>
     return (
         <Card className='border-none'>
             <div className='flex justify-between items-center my-8'>
@@ -14,49 +19,36 @@ const RealEstate = () => {
                 <a href="" className='hover:text-gray-500 text-sm'>Tin nhà đất bán mới nhất </a>
             </div>
             <Link href={''} className='grid grid-cols-4 gap-7 max-w-screen-2xl mx-auto'>
-                <div className='  shadow-2xl rounded-md'>
-                    <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
-                    <div className='p-4 text-title'>
-                        <div>
-                            <p className='text-title text-base font-semibold '>Bán gấp nhà giảm 3 tỷ, nhà 1 trệt 2 lầu, 6 phòng ngủ, sân 7 chỗ ôtô né nhau, full nội thất cao cấp</p>
+                {data?.map((item: any) => {
+                    return (
+                        <div className='shadow rounded-md' key={item.id}>
+                            <Image
+                                alt=''
+                                src={item.project_image}
+                                className='w-full'
+                                width={300}
+                                height={300}
+                                objectFit='contain'
+                                loading="lazy"
+                                layout="responsive"
+                                quality={100}
+
+                            />
+                            <div className='p-4 text-title'>
+                                <div>
+                                    <p className='text-title text-base font-semibold '>{item.project_name}</p>
+                                </div>
+                                <p className=' text-red-500 text-xl my-2'>6,7 tỷ - 135m2</p>
+                                <p className='flex items-center gap-1 font-sans text-sm'>
+                                    <i><CiLocationOn /></i>
+                                    <span>Trung Hòa - Cầu Giấy</span>
+                                </p>
+                                <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
+                            </div>
                         </div>
-                        <p className=' text-red-500 text-xl my-2'>6,7 tỷ - 135m2</p>
-                        <p className='flex items-center gap-1 font-sans text-sm'>
-                            <i><CiLocationOn /></i>
-                            <span>Trung Hòa - Cầu Giấy</span>
-                        </p>
-                        <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
-                    </div>
-                </div>
-                <div className='  shadow-2xl rounded-md'>
-                    <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
-                    <div className='p-3 text-title'>
-                        <div>
-                            <p className='text-title text-base font-semibold '>Bán gấp nhà giảm 3 tỷ, nhà 1 trệt 2 lầu, 6 phòng ngủ, sân 7 chỗ ôtô né nhau, full nội thất cao cấp</p>
-                        </div>
-                        <p className=' text-red-500 text-xl my-2'>6,7 tỷ - 135m2</p>
-                        <p className='flex items-center gap-1 font-sans text-sm'>
-                            <i><CiLocationOn /></i>
-                            <span>Trung Hòa - Cầu Giấy</span>
-                        </p>
-                        <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
-                    </div>
-                </div>
-                <div className='  shadow-2xl rounded-md'>
-                    <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
-                    <div className='p-3 text-title'>
-                        <div>
-                            <p className='text-title text-base font-semibold '>Bán gấp nhà giảm 3 tỷ, nhà 1 trệt 2 lầu, 6 phòng ngủ, sân 7 chỗ ôtô né nhau, full nội thất cao cấp</p>
-                        </div>
-                        <p className=' text-red-500 text-xl my-2'>6,7 tỷ - 135m2</p>
-                        <p className='flex items-center gap-1 font-sans text-sm'>
-                            <i><CiLocationOn /></i>
-                            <span>Trung Hòa - Cầu Giấy</span>
-                        </p>
-                        <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
-                    </div>
-                </div>
-                <div className='  shadow-2xl rounded-md'>
+                    )
+                })}
+                {/* <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 text-title'>
                         <div>
@@ -70,7 +62,7 @@ const RealEstate = () => {
                         <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
                     </div>
                 </div>
-                <div className='  shadow-2xl rounded-md'>
+                <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 text-title'>
                         <div>
@@ -84,7 +76,7 @@ const RealEstate = () => {
                         <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
                     </div>
                 </div>
-                <div className='  shadow-2xl rounded-md'>
+                <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 text-title'>
                         <div>
@@ -98,7 +90,7 @@ const RealEstate = () => {
                         <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
                     </div>
                 </div>
-                <div className='  shadow-2xl rounded-md'>
+                <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 text-title'>
                         <div>
@@ -112,7 +104,7 @@ const RealEstate = () => {
                         <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
                     </div>
                 </div>
-                <div className='  shadow-2xl rounded-md'>
+                <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 text-title'>
                         <div>
@@ -126,6 +118,34 @@ const RealEstate = () => {
                         <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
                     </div>
                 </div>
+                <div className='  shadow rounded-md'>
+                    <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
+                    <div className='p-3 text-title'>
+                        <div>
+                            <p className='text-title text-base font-semibold '>Bán gấp nhà giảm 3 tỷ, nhà 1 trệt 2 lầu, 6 phòng ngủ, sân 7 chỗ ôtô né nhau, full nội thất cao cấp</p>
+                        </div>
+                        <p className=' text-red-500 text-xl my-2'>6,7 tỷ - 135m2</p>
+                        <p className='flex items-center gap-1 font-sans text-sm'>
+                            <i><CiLocationOn /></i>
+                            <span>Trung Hòa - Cầu Giấy</span>
+                        </p>
+                        <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
+                    </div>
+                </div>
+                <div className='  shadow rounded-md'>
+                    <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
+                    <div className='p-3 text-title'>
+                        <div>
+                            <p className='text-title text-base font-semibold '>Bán gấp nhà giảm 3 tỷ, nhà 1 trệt 2 lầu, 6 phòng ngủ, sân 7 chỗ ôtô né nhau, full nội thất cao cấp</p>
+                        </div>
+                        <p className=' text-red-500 text-xl my-2'>6,7 tỷ - 135m2</p>
+                        <p className='flex items-center gap-1 font-sans text-sm'>
+                            <i><CiLocationOn /></i>
+                            <span>Trung Hòa - Cầu Giấy</span>
+                        </p>
+                        <p className='text-xs text-gray-500 my-5'>Đăng hôm nay</p>
+                    </div>
+                </div> */}
             </Link>
             <button className='mx-auto flex items-center gap-2 border my-10 px-10 rounded-lg border-gray-500 border-solid py-3'>
                 <span>
@@ -143,7 +163,7 @@ const RealEstate = () => {
                 </a>
             </div>
             <Link href={''} className='grid grid-cols-4 gap-5'>
-                <div className='  shadow-2xl rounded-md'>
+                <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 '>
                         <p className='truncate  text-green-600 text-xs bg-green-100 px-1 py-1 rounded'><span className='font-semibold' >Đang mở bán</span>- 10/2023: Mở bán phân khu mới</p>
@@ -154,7 +174,7 @@ const RealEstate = () => {
                         <span>Trung Hòa - Cầu Giấy</span>
                     </div>
                 </div>
-                <div className='  shadow-2xl rounded-md'>
+                <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 '>
                         <p className='truncate  text-green-600 text-xs bg-green-100 px-1 py-1 rounded'><span className='font-semibold' >Đang mở bán</span>- 10/2023: Mở bán phân khu mới</p>
@@ -165,7 +185,7 @@ const RealEstate = () => {
                         <span>Trung Hòa - Cầu Giấy</span>
                     </div>
                 </div>
-                <div className='  shadow-2xl rounded-md'>
+                <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 '>
                         <span className='font-semibold truncate rounded  text-green-600 text-xs bg-green-100 px-1 py-1' >Đang mở bán</span>
