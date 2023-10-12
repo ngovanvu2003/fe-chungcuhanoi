@@ -12,7 +12,7 @@ const RealEstate = () => {
                 <h3 className='font-semibold text-2xl'>Bất động sản dành cho bạn</h3>
                 <a href="" className='hover:text-gray-500 text-sm'>Tin nhà đất bán mới nhất </a>
             </div>
-            <Link href={''} className='grid grid-cols-4 gap-5'>
+            <Link href={''} className='grid grid-cols-4 gap-5 max-w-screen-2xl mx-auto'>
                 <div className='  shadow-2xl rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-4 text-title'>
