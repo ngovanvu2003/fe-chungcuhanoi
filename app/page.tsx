@@ -1,7 +1,10 @@
 import UIHome1 from "./components/Home";
-
+import Search from "./components/Search"
 export default function Home() {
   return (
-    <UIHome1/>
+    <div>
+      <Search/>
+      <UIHome1 />
+    </div>
   )
 }
