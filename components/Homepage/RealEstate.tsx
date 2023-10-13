@@ -33,7 +33,7 @@ const RealEstate = () => {
             <Link href={''} className='md:grid md:grid-cols-4 gap-7 md:max-w-screen-2xl mx-auto'>
                 {productToShow?.map((item: any) => {
                     return (
-                        <div className=' md:grid gap-2 max-md:p-2 md:flex-none my-1  shadow rounded-md relative'>
+                        <div key={item.id} className=' md:grid gap-2 max-md:p-2 md:flex-none my-1  shadow rounded-md relative'>
                             <p className='text-title mb-2  text-base font-semibold md:hidden '>{item.project_name}</p>
                             <div className='grid grid-cols-[40%,60%] md:grid-cols-none' key={item.id}>
                                 <Image
