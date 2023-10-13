@@ -3,10 +3,10 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineArrowRightAlt, MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { Card } from './ui/card';
+import { Card } from '../ui/card';
 import useSWR from 'swr';
 import Image from 'next/image';
-import { Skeleton } from './ui/skeleton';
+import { Skeleton } from '../ui/skeleton';
 
 
 const RealEstate = () => {
