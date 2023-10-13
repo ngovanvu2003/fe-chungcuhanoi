@@ -1,14 +1,14 @@
 "use client"
 import { BiTimeFive } from "react-icons/bi"
 import { AiOutlineArrowRight } from "react-icons/ai"
+import { useEffect } from "react";
 
 
 const News = () => {
-    function openPage(pageName: string, elmnt: HTMLElement) {
-        let i: number, tabcontent: HTMLCollectionOf<Element>;
-        tabcontent = document.getElementsByClassName("tabcontent") as HTMLCollectionOf<Element>;
+    function openPage(pageName: string) {
+        const tabcontent = document.getElementsByClassName("tabcontent") as HTMLCollectionOf<Element>;
 
-        for (i = 0; i < tabcontent.length; i++) {
+        for (let i = 0; i < tabcontent.length; i++) {
             (tabcontent[i] as HTMLElement).style.display = "none";
         }
         const pageElement = document.getElementById(pageName);
@@ -17,7 +17,10 @@ const News = () => {
             pageElement.style.display = "block";
         }
     }
-    (document.getElementById("defaultOpen") as HTMLElement | null)?.click();
+
+    useEffect(() => {
+        openPage("tinnoibat");
+    }, []);
 
     return (
         <div className="max-w-full  ">
