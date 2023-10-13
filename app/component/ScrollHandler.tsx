@@ -1,8 +1,8 @@
-import React from 'react';
+// import React, { useEffect } from 'react';
 
+function ScrollHandler() {
 
-function ScrollHandler ()  {
-  if (typeof window !== 'undefined') {
+ if (typeof window !== 'undefined') {
     // Đảm bảo mã này chỉ chạy trên phía máy khách (client-side)
     const handleScroll = () => {
       const navbar = document.getElementById("navbar");
@@ -25,7 +25,6 @@ function ScrollHandler ()  {
       window.removeEventListener("scroll", handleScroll);
     };
   }
-
   return null;
 }
 
