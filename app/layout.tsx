@@ -1,4 +1,5 @@
 import HomePage from "@/components/HomePage";
+import Header from "./component/header";
 import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer/Footer";
@@ -16,11 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header />
         <main>
           {children}
           <HomePage />
         </main>
         <Footer />
+        <main>{children}</main>
       </body>
     </html>
   );
