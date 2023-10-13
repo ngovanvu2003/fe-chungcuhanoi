@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@radix-ui/react-tabs": "^1.0.4",
+    "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-hover-card": "^1.0.7",
+    "@radix-ui/react-select": "^2.0.0",
+    "@react-icons/all-files": "^4.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.285.0",
@@ -21,6 +25,8 @@
     "slick-carousel": "^1.8.1",
     "swiper": "^10.3.1",
     "swr": "^2.2.4",
+    "react-modal": "^3.16.1",
+    "react-slideshow-image": "^4.2.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7"
   },
