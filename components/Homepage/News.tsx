@@ -29,10 +29,10 @@ const News = () => {
                     <div >
                         <div className="flex justify-between">
                             <div className="flex gap-5 text-2xl font-semibold ">
-                                <button className="tablink hover:underline" id="defaultOpen" onClick={() => openPage('tinnoibat', this as any)}>Tin nổi bật</button>
-                                <button className="tablink hover:underline" onClick={() => openPage('tintuc', this as any)} >Tin tức</button>
-                                <button className="tablink hover:underline" onClick={() => openPage('bdsMyDinh', this as any)} >BĐS TPHCM</button>
-                                <button className="tablink hover:underline" onClick={() => openPage('bdsHaNoi', this as any)}>BĐS Hà Nội</button>
+                                <button className="tablink hover:underline" id="defaultOpen" onClick={() => openPage('tinnoibat')}>Tin nổi bật</button>
+                                <button className="tablink hover:underline" onClick={() => openPage('tintuc')} >Tin tức</button>
+                                <button className="tablink hover:underline" onClick={() => openPage('bdsMyDinh')} >BĐS TPHCM</button>
+                                <button className="tablink hover:underline" onClick={() => openPage('bdsHaNoi')}>BĐS Hà Nội</button>
                             </div>
                             <div className="flex justify-items-end text-[#E23C31]">
                                 <p className="mt-[10px]">Xem Thêm</p>
