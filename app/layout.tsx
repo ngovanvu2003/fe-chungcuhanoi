@@ -18,12 +18,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <main>
-          {children}
-          <HomePage />
-        </main>
+        <main className="mt-10">{children}</main>
         <Footer />
-        <main>{children}</main>
       </body>
     </html>
   );
