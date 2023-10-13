@@ -8,7 +8,7 @@ const RealEstateByLocation = () => {
     return (
         <Card className='my-5 mt-14 border-none shadow-none'>
             <CardTitle className='font-semibold text-2xl mb-7'>Bất động sản theo địa điểm</CardTitle>
-            <div className='grid grid-cols-2 gap-5 items-center'>
+            <div className='grid grid-cols-1 md:grid-cols-2 px-1 gap-5 items-center'>
                 <Link href='' className='relative  outline-none'>
                     <img src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg" alt="" className='rounded' />
                     <div className='absolute top-0 mt-5 mx-5  text-white group'>
@@ -82,7 +82,7 @@ const RealEstateByLocation = () => {
                     </Link>
                 </div>
             </div>
-            <div className='my-5 flex gap-5  whitespace-nowrap overflow-x-hidden'>
+            <div className='my-5 flex gap-5  whitespace-nowrap overflow-x-auto md:overflow-x-hidden '>
                 <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>
                 <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>
                 <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>

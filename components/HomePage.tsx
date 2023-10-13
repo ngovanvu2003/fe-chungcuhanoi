@@ -5,12 +5,14 @@ import RealEstate from './RealEstate'
 import RealEstateByLocation from './RealEstateByLocation'
 import RealEstateNews from './RealEstateNews'
 import Introduce from './Introduce'
+import OutstandingRealEstate from './OutstandingRealEstate'
 
 const HomePage = () => {
     return (
-        <div className='mx-10'>
+        <div className='md:mx-10'>
             <Search />
             <RealEstate />
+            <OutstandingRealEstate />
             <RealEstateByLocation />
             <RealEstateNews />
             <Introduce />

@@ -2,10 +2,52 @@
 import React from 'react'
 import { Card } from './ui/card'
 import Link from 'next/link'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 const Introduce = () => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    infinite: true,
+
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1,
+                    arrows: false
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false
+                }
+            }
+        ]
+    }
     return (
-        <Card className='border-none grid grid-cols-4 gap-10 text-center my-10'>
+        <Slider className='border-none grid grid-cols-4 gap-10 text-center my-10' {...settings}>
             <div>
                 <Link href={''}>
                     <img className='mx-auto' src="https://staticfile.batdongsan.com.vn/images/box-link-footer/ForSale.svg" alt="" />
@@ -50,7 +92,7 @@ const Introduce = () => {
                     <Link href={''} className='text-red-500'> phong thủy </Link>
                     , thiết kế nhà, mọi thông tin cần thiết để dẫn lối người tìm nhà tìm thấy căn nhà mơ ước..</p>
             </div>
-        </Card>
+        </Slider>
     )
 }
 
