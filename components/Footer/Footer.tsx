@@ -24,7 +24,7 @@ const Footer = () => {
             </div>
             <div className="flex mt-[12px]  gap-2">
               <div className="pt-1">
-              <CiLocationOn size={20} />
+                <CiLocationOn size={20} />
               </div>
               <span className="font-medium text-sm">
                 Tầng 31, Keangnam Hanoi Landmark, Phạm Hùng, Nam Từ Liêm, Hà Nội
@@ -53,11 +53,11 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-2 md:mt-[40px] ml-[16px] ">
+          <div className="col-span-2 md:mt-[40px]  ">
             <div className="grid sm:grid grid-rows gap-3 mt-4 md:grid-cols-[20%,40%,40%]  lg:grid-cols-3  mb-[40px] ">
               <div className="flex gap-1 text-sm">
                 <div className="pt-1">
-                <PiPhoneCallLight size={30} />
+                  <PiPhoneCallLight size={30} />
                 </div>
                 <div className="grid grid-rows-2">
                   <span>Hotline</span>
@@ -114,7 +114,7 @@ const Footer = () => {
                   >
                     Search
                   </label>
-                  <div className="relative w-[357.99px]">
+                  <div className="relative md:w-[357.99px]">
                     <input
                       type="email"
                       id="search"
@@ -178,87 +178,87 @@ const Footer = () => {
 
                 <ul className="grid grid-cols-1 md:grid-cols-3 mt-2 mx-auto space-y-1 gap-4">
                   <li>
-                   
-                      <div>
-                        <div >Chi nhánh TP.Hồ Chí Minh</div>
+
+                    <div>
+                      <div >Chi nhánh TP.Hồ Chí Minh</div>
                       <div className="font-[12px]">
                         Tầng 3, Tháp B tòa nhà Viettel Complex, 285 Cách Mạng
                         Tháng Tám, Phường 12, Quận 10, TP. Hồ Chí Minh
                         <br />
                         Điện thoại: 0904 893 279 - 0904 946 163
                       </div>
-                      </div>
+                    </div>
+                    <div>
+                      Chi nhánh Đà Nẵng
                       <div>
-                        Chi nhánh Đà Nẵng
-                        <div>
                         Tầng 9, tòa nhà Vĩnh Trung Plaza, số 255 – 257 Hùng Vương, phường Vĩnh Trung, quận Thanh Khê, TP. Đà Nẵng
                         <br />
                         Điện thoại: (0236) 3 666 968 - Mobile: 0904 907 279
-                        </div>
                       </div>
+                    </div>
 
+                    <div>
+                      Chi nhánh Nha Trang
                       <div>
-                        Chi nhánh Nha Trang
-                        <div>
                         Tầng 6, Tòa nhà CTCP Điện Lực Khánh Hòa, 11 Lý Thánh Tôn, Phường Vạn Thạnh, TP Nha Trang, Khánh Hòa
                         <br />
                         Điện thoại: (0258) 3 818 886 - Mobile: 0902 169 295
-                        </div>
                       </div>
-                   
+                    </div>
+
                   </li>
 
                   <li>
-                   
-                      <div>
+
+                    <div>
                       Chi nhánh Hải Phòng
                       <div>
-                      Phòng 502, TD Business Center, lô 20A Lê Hồng Phong, quận Ngô Quyền, TP. Hải Phòng
-                      <br />
-                      Điện thoại: (0225) 3 246 848 - Mobile: 0903 456 322
+                        Phòng 502, TD Business Center, lô 20A Lê Hồng Phong, quận Ngô Quyền, TP. Hải Phòng
+                        <br />
+                        Điện thoại: (0225) 3 246 848 - Mobile: 0903 456 322
                       </div>
-                      </div>
+                    </div>
 
-                      <div>
+                    <div>
                       Chi nhánh Cần Thơ
                       <div>
-                      Lầu 8, số 8 đường Phan Văn Trị, phường An Phú, quận Ninh Kiều, TP. Cần Thơ
-                      <br />
-                      Điện thoại: (0292) 3 837 838 - Mobile: 0902 229 697
+                        Lầu 8, số 8 đường Phan Văn Trị, phường An Phú, quận Ninh Kiều, TP. Cần Thơ
+                        <br />
+                        Điện thoại: (0292) 3 837 838 - Mobile: 0902 229 697
                       </div>
-                      </div>
+                    </div>
 
-                      <div>
+                    <div>
                       Chi nhánh Vũng Tàu
                       <div>
-                      Tầng 4, tòa nhà ACB, số 12 Hoàng Hoa Thám, phường 2, TP. Vũng Tàu, tỉnh Bà Rịa - Vũng Tàu
-                      <br />
-                      Điện thoại: (0254) 3 511 339 - Mobile: 0904 509 293
+                        Tầng 4, tòa nhà ACB, số 12 Hoàng Hoa Thám, phường 2, TP. Vũng Tàu, tỉnh Bà Rịa - Vũng Tàu
+                        <br />
+                        Điện thoại: (0254) 3 511 339 - Mobile: 0904 509 293
                       </div>
-                      </div>
-                    
+                    </div>
+
                   </li>
 
                   <li>
-                   
-                        <div>
-                        Chi nhánh Bình Dương
-                        <div>
+
+                    <div>
+                      Chi nhánh Bình Dương
+                      <div>
                         Phòng 10, tầng 16, Becamex Tower, số 230 Đại lộ Bình Dương, P.Phú Hòa, TP.Thủ Dầu Một, tỉnh Bình Dương
                         <br />
                         Điện thoại: (0274) 22 21 201, Mobile: 0919 255 580
-                        </div>
-                        </div>
+                      </div>
+                    </div>
 
-                        <div>
-                        Chi nhánh Đồng Nai
-                        <div>
+                    <div>
+                      Chi nhánh Đồng Nai
+                      <div>
                         Lầu 18, tòa Pegasus, số 53-55 đường Võ Thị Sáu, phường Quyết Thắng, TP. Biên Hoà, tỉnh Đồng Nai
                         <br />
                         Điện thoại: 0906 282 428
-                        </div>
-                        </div>
-                    
+                      </div>
+                    </div>
+
                   </li>
                 </ul>
               </details>
@@ -280,7 +280,7 @@ const Footer = () => {
             </span>
           </div>
           <div className="md:mt-9 md:pl-[32px] ">
-            
+
             Chịu trách nhiệm nội dung GP ICP: Bà Đặng Thị Hường
             <br />
             Chịu trách nhiệm sàn GDTMĐT: Ông Bạch Dương
@@ -300,26 +300,26 @@ const Footer = () => {
               </a>
             </div>
             <div className="">
-            <div className="flex gap-2 mr-10 mt-1">
-              <a href="">
-                <i>
-                <img width="48" height="48" src="https://img.icons8.com/color/48/facebook.png" alt="facebook"/>
-                </i>
-              </a>
-              <a href="">
-                <i>
-                <img width="38" height="38" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-youtube-offers-videos-and-music-and-original-content-logo-color-tal-revivo.png"
-                 alt="external-youtube-offers-videos-and-music-and-original-content-logo-color-tal-revivo"
-                 className="pt-1"/>
-                </i>
-              </a>
-              <a href="">
-                <i className="bg-black">
-                <img width="48" height="48" src="https://img.icons8.com/color/48/zalo.png" alt="zalo"/>
-                  
-                </i>
-              </a>
-            </div>
+              <div className="flex gap-2 mr-10 mt-1">
+                <a href="">
+                  <i>
+                    <img width="48" height="48" src="https://img.icons8.com/color/48/facebook.png" alt="facebook" />
+                  </i>
+                </a>
+                <a href="">
+                  <i>
+                    <img width="38" height="38" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-youtube-offers-videos-and-music-and-original-content-logo-color-tal-revivo.png"
+                      alt="external-youtube-offers-videos-and-music-and-original-content-logo-color-tal-revivo"
+                      className="pt-1" />
+                  </i>
+                </a>
+                <a href="">
+                  <i className="bg-black">
+                    <img width="48" height="48" src="https://img.icons8.com/color/48/zalo.png" alt="zalo" />
+
+                  </i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
