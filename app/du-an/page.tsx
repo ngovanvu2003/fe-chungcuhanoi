@@ -5,15 +5,7 @@ import { LuBed } from "react-icons/lu";
 import { LiaBathSolid } from "react-icons/lia";
 import { PiPhoneCallLight } from "react-icons/pi";
 import { AiOutlineHeart } from "react-icons/ai";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { CiImageOn } from "react-icons/ci";
+
 const Project = () => {
   return (
     <div className="container max-w-5xl mx-auto ">
@@ -85,9 +77,7 @@ const Project = () => {
                     alt=""
                     className="pl-1"
                   />
-                  {/* <div className="flex relative">
-                23 <CiImageOn />
-              </div> */}
+
                 </div>
               </div>
             </div>
@@ -177,9 +167,7 @@ const Project = () => {
                     alt=""
                     className="pl-1 w-full"
                   />
-                  {/* <div className="flex relative">
-                23 <CiImageOn />
-              </div> */}
+
                 </div>
               </div>
             </div>
@@ -269,9 +257,7 @@ const Project = () => {
                     alt=""
                     className="pl-1 w-full"
                   />
-                  {/* <div className="flex relative">
-                23 <CiImageOn />
-              </div> */}
+
                 </div>
               </div>
             </div>
@@ -361,9 +347,7 @@ const Project = () => {
                     alt=""
                     className="pl-1 w-full"
                   />
-                  {/* <div className="flex relative">
-                23 <CiImageOn />
-              </div> */}
+
                 </div>
               </div>
             </div>

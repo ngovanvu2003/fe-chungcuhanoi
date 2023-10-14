@@ -12,7 +12,7 @@ const SlideProduct = () => {
         "https://wisteria.vn/wp-content/uploads/2023/08/slide-2.webp",
     ];
 
-    const isMobile = window.innerWidth <= 767;  // Kiểm tra xem có phải màn hình điện thoại không
+    const isMobile = window.innerWidth <= 767;
 
     return (
         <div>
@@ -20,7 +20,7 @@ const SlideProduct = () => {
                 {images.map((image, index) => (
                     <div key={index} className="each-slide-effect">
                         <div style={{
-                            height: isMobile ? "200px" : "500px",  // Đặt chiều cao tùy theo loại màn hình
+                            height: isMobile ? "200px" : "500px",
                             border: "1%",
                             backgroundImage: "cover",
                         }}>

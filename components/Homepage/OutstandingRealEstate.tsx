@@ -10,9 +10,7 @@ const OutstandingRealEstate = () => {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 4,
-
         responsive: [
-
             {
                 breakpoint: 600,
                 settings: {

@@ -7,6 +7,7 @@ import { RiSendPlaneLine } from "react-icons/ri";
 const Footer = () => {
   return (
     <div className=" bg-[#F2F2F2] ">
+
       <div className="container m-auto">
         <div className="grid grid-cols-1 md:grid-cols-3">
           <div className="font-sans mr-[16px]">

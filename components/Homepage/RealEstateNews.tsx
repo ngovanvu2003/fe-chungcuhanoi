@@ -10,11 +10,13 @@ import { Card } from '../ui/card';
 const RealEstateNews = () => {
     const settings = {
         arrows: true,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
         initialSlide: 0,
+        autoplay: true,
+        autoplaySpeed: 2000,
         responsive: [
             {
                 breakpoint: 1024,

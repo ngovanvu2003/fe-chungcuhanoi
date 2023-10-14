@@ -1,4 +1,4 @@
-import Header from "./component/header";
+import Header from "../components/Header/header";
 import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer/Footer";
