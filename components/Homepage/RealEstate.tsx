@@ -7,11 +7,12 @@ import { Card } from '../ui/card';
 import useSWR from 'swr';
 import Image from 'next/image';
 import { Skeleton } from '../ui/skeleton';
+import { IProject } from '@/interfaces/project';
 
 
 const RealEstate = () => {
-    const fetcher = (...args: any[]) => fetch(...args).then(res => res.json());
-    const { data, error, isLoading } = useSWR(`https://645746a11a4c152cf97e74ca.mockapi.io/products`, fetcher)
+    const fetcher = (args: string) => fetch(args).then(res => res.json());
+    const { data, error, isLoading } = useSWR<IProject[], Error, string>(`https://645746a11a4c152cf97e74ca.mockapi.io/products`, fetcher)
     const [visibleProduct, setVisibleProduct] = useState(8);
     const hanleLoadMore = () => {
         setVisibleProduct(prevCount => prevCount + 8)
@@ -35,7 +36,7 @@ const RealEstate = () => {
                     return (
                         <div key={item.id} className=' md:grid gap-2 max-md:p-2 md:flex-none my-1  shadow rounded-md relative'>
                             <p className='text-title mb-2  text-base font-semibold md:hidden '>{item.project_name}</p>
-                            <div className='grid grid-cols-[40%,60%] md:grid-cols-none' key={item.id}>
+                            <div className='grid grid-cols-[40%,60%] md:grid-cols-none' >
                                 <Image
                                     alt=''
                                     src={item.project_image}
