@@ -27,11 +27,12 @@ function Header() {
         <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <div className="flex items-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://staticfile.batdongsan.com.vn/images/logo/standard/red/logo.svg"
-                className="h-10 mr-"
-                alt="Flowbite Logo" />
+              <Link href={'/'}>
+                <img
+                  src="https://staticfile.batdongsan.com.vn/images/logo/standard/red/logo.svg"
+                  className="h-10 mr-"
+                  alt="Flowbite Logo" />
+              </Link>
               <div
                 className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
                 id="navbar-sticky"
@@ -56,7 +57,7 @@ function Header() {
                   </li>
                   <li>
                     <Link
-                      href="/tinruc"
+                      href="/tintuc"
                       className={`link ${pathname === '/' ? 'active' : ''} block py-2 text-gray-900 pl-3 pr-4  rounded md:bg-transparent transition-all `}
                     >
                       Tin tức
