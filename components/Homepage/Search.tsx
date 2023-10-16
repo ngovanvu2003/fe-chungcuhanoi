@@ -4,8 +4,7 @@ import { FiRefreshCcw } from "react-icons/fi"
 const Search = () => {
     return (
         <div className="mt-24 mx-20 font-sans text-sm">
-
-            <form action="">
+            <form className="hidden lg:block">
                 <div className="rounded  p-[20px] bg-[#5E5E5E] " >
                     <div className="rounded-lg   flex ">
                         <div>
@@ -20,7 +19,7 @@ const Search = () => {
                         </div>
                         <div className="h-[45px] rounded-r-lg flex w-full  bg-white " >
                             <input className="outline-none w-[100%] h-full ml-[20px]" type="text" placeholder=" Hà Nội" />
-                            <div className=" bg-[#E03C31] rounded-md flex w-[20%] mr-[10px]  my-auto h-[30px] text-white"> <p className="my-auto ml-[10px] mr-[5px]"><BiSearch /></p> <p className="my-auto  ">Tìm Kiếm</p></div>
+                            <div className=" bg-[#E03C31] rounded-md flex items-center w-[20%] mr-[10px]  my-auto h-[30px] text-white"> <p className="my-auto ml-[10px] mr-[5px]"><BiSearch /></p> <p className="my-auto  ">Tìm Kiếm</p></div>
                         </div>
                     </div>
                     <div className="flex gap-3 mt-[20px]">
@@ -65,6 +64,10 @@ const Search = () => {
                         </button>
                     </div>
                 </div>
+            </form>
+            <form className="lg:hiden mt-56 mx-2">
+                <input type="text" className="border" />
+                <button></button>
             </form>
         </div >
     )
