@@ -19,7 +19,6 @@ const HomePage = () => {
             <RealEstateByLocation />
             <RealEstateNews />
             <Introduce />
-
         </div>
     )
 }
