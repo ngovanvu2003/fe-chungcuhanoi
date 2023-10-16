@@ -7,6 +7,7 @@ import Introduce from './Introduce'
 import OutstandingRealEstate from './OutstandingRealEstate'
 import Search from './Search'
 import News from './News'
+import { DialogDemo } from '../modal/ModalSearch'
 
 const HomePage = () => {
     return (
@@ -18,6 +19,7 @@ const HomePage = () => {
             <RealEstateByLocation />
             <RealEstateNews />
             <Introduce />
+
         </div>
     )
 }

@@ -1,9 +1,14 @@
+"use client"
+import { useState } from "react"
 import { BiSearch } from "react-icons/bi"
 import { FiRefreshCcw } from "react-icons/fi"
+import { RiSendPlaneLine } from "react-icons/ri"
+
 
 const Search = () => {
+
     return (
-        <div className="mt-24 mx-20 font-sans text-sm">
+        <div className="mt-24 lg:mx-20 font-sans text-sm">
             <form className="hidden lg:block">
                 <div className="rounded  p-[20px] bg-[#5E5E5E] " >
                     <div className="rounded-lg   flex ">
@@ -65,10 +70,26 @@ const Search = () => {
                     </div>
                 </div>
             </form>
-            <form className="lg:hiden mt-56 mx-2">
-                <input type="text" className="border" />
-                <button></button>
+            <form className="md:hidden mt-44 mx-2 my-2" >
+                <div className="relative ">
+                    <input
+                        type="text"
+                        id="search"
+                        className="block w-full p-3 mt-3  text-sm outline-none text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Nhập email của bạn"
+                        required
+                    />
+                    <button
+
+                        type="submit"
+                        className=" text-white absolute  right-2.5 bottom-2 bg-[#E03C31] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                        <RiSendPlaneLine />
+                    </button>
+
+                </div>
             </form>
+
         </div >
     )
 }
