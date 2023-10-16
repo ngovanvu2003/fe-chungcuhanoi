@@ -77,7 +77,6 @@ const Project = () => {
                     alt=""
                     className="pl-1"
                   />
-
                 </div>
               </div>
             </div>
@@ -167,7 +166,6 @@ const Project = () => {
                     alt=""
                     className="pl-1 w-full"
                   />
-
                 </div>
               </div>
             </div>
@@ -257,7 +255,6 @@ const Project = () => {
                     alt=""
                     className="pl-1 w-full"
                   />
-
                 </div>
               </div>
             </div>
@@ -347,7 +344,6 @@ const Project = () => {
                     alt=""
                     className="pl-1 w-full"
                   />
-
                 </div>
               </div>
             </div>
@@ -599,17 +595,15 @@ const Project = () => {
         <img
           src="https://img.iproperty.com.my/angel-legacy-bds/750x1000-fit/2022/04/22/PHJN6Zw0/20220422113523-d4ca.jpg"
           alt=""
-          className="max-w-full"
+          className="max-w-xl"
         />
-        <div className="flex flex-col max-w-xl justify-between border-e bg-white">
-          <div className="px-4 py-6">
-            <ul className="mt-6 space-y-1">
+        <div className=" max-w-xl flex justify-center bg-white">
+          <div className="">
+            <ul className="space-y-1">
               <li>
                 <details className="group [&_summary::-webkit-details-marker]:hidden">
-                  <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-                    <span className="text-sm font-medium"> Teams </span>
-
-                    <span className="shrink-0 transition duration-300 group-open:-rotate-180">
+                  <summary className="flex cursor-pointer items-center  rounded-lg outline-none text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                    <span className="shrink-0 transition duration-300 group-open:-rotate-90">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-5 w-5"
@@ -617,31 +611,32 @@ const Project = () => {
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </span>
+
+                    <span className="text-sm font-medium"> Xem thêm </span>
                   </summary>
 
-                  <ul className="mt-2 space-y-1 px-4">
+                  <ul className="grid grid-cols-1  mt-2 mx-auto space-y-1 gap-4">
                     <li>
-                      <a
-                        href=""
-                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                      >
-                        Banned Users
-                      </a>
-                    </li>
-
-                    <li>
-                      <a
-                        href=""
-                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                      >
-                        Calendar
-                      </a>
+                      <div className="grid">
+                        <h2 className="font-bold">Tổng quan huyện Củ Chi</h2>
+                        <p>
+                          Nếu như cách đây khoảng 10 năm, Củ Chi vẫn còn là một
+                          khu vực hẻo lánh, dân cư thưa thớt và kinh tế kém phát
+                          triển. Tuy nhiên trong vài năm trở lại đây, Củ Chi đã
+                          “thay da đổi thịt”, có nhiều khởi sắc, thu hút được sự
+                          quan tâm của nhiều nhà đầu tư. Hiện nay tại Củ Chi tập
+                          trung rất nhiều khu công nghiệp, có không ít dân cư,
+                          người lao động tập trung về đây sinh sống và làm việc.
+                          Diện tích đất nông nghiệp ở Củ Chi đã giảm xuống và
+                          thay vào đó là diện tích đất dành cho khu công nghiệp.
+                        </p>
+                      </div>
                     </li>
                   </ul>
                 </details>
