@@ -238,3 +238,12 @@
   background-color: black;
 
 }
+
+.active{
+  color: red;
+}
+.slick-prev:before, .slick-next:before{
+ color:black !important;
+ background:white !important
+}
+
