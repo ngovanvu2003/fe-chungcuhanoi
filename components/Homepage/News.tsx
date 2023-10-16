@@ -138,10 +138,7 @@ const News = () => {
 
                     </div>
                 </div>
-                <div>
-                    <img className="max-w-full" src="https://tpc.googlesyndication.com/simgad/12357706041318739107" alt="" />
-                    <img className="max-w-full" src="https://tpc.googlesyndication.com/simgad/12357706041318739107" alt="" />
-                </div>
+
             </div>
         </div>
     )
