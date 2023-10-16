@@ -68,7 +68,7 @@ function Header() {
             <div >
               <div className="flex md:order-2 items-center gap-1">
 
-                <button className=' md:hidden block ' >
+                <div className=' md:hidden block ' >
                   <Sheet>
                     <SheetTrigger asChild>
                       <Button variant="outline">
@@ -173,7 +173,7 @@ function Header() {
                       </SheetFooter>
                     </SheetContent>
                   </Sheet>
-                </button>
+                </div>
               </div>
             </div>
           </div>
