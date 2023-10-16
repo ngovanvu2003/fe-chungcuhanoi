@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input"
 
 const Login = () => {
     return (
-        <div className="w-full h-max mt-[69px] p-[24px_0_100px_0] bg-[#f9f9f9]">
+        <div className="w-full h-max mt-[69px] p-[24px_0_50px_0] bg-[#f9f9f9]">
             <div className="w-full lg:w-[500px] h-max p-[32px] m-auto bg-white rounded-[8px] shadow-lg">
                 <h5 className="w-full mt-[48px] text-lg font-medium leading-8 ">Xin chào bạn</h5>
                 <h3 className="w-full m-[4px_0_32px] text-3xl font-medium leading-8 ">Đăng nhập tài khoản</h3>
