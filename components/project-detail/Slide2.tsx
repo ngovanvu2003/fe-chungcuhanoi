@@ -7,10 +7,11 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { BsFillPinFill } from 'react-icons/bs';
 
 const Slide2 = () => {
+
     return (
         <div>
             <h1 className='font-bold text-2xl py-3'>Bất động sản dành cho bạn</h1>
-            <Slide slidesToScroll={2} slidesToShow={3} indicators={true} autoplay={false}>
+            <Slide canSwipe={true} slidesToScroll={1} slidesToShow={window.innerWidth <= 767 ? 2 : 3} indicators={true} autoplay={false}>
                 <div className='@apply border-2 border-solid border-[rgb(240,240,240)] rounded-[7px] m-2 pb-5'>
                     <a href="#">
                         <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/11/20231011152756-3a4c_wm.jpg" alt="" />

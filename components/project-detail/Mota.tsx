@@ -118,7 +118,6 @@ const Mota = () => {
                         ngay với tôi để nhận danh sách căn hộ rẻ nhất tháng 10, Miễn phí trung gian 100%.
                     </div>
                 </div>
-
             </div>
         </div>
     )

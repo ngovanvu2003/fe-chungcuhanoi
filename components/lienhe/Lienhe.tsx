@@ -10,11 +10,14 @@ const Lienhe = () => {
     return (
         <div>
             <div>
-                <Thongtin1 />
-                <Thongtin2 />
-                <Thongtin3 />
-                <Thongtin4 />
-                <Thongtin5 />
+                <div className='hidden lg:block'>
+                    <Thongtin1 />
+                    <Thongtin2 />
+                    <Thongtin3 />
+                    <Thongtin4 />
+                    <Thongtin5 />
+                </div>
+
             </div>
         </div>
     )

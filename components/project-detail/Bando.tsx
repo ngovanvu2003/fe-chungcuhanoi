@@ -41,7 +41,6 @@ const Bando = () => {
             </div>
             <div className=''>
                 <Table className='@apply mt-9 border-t-[rgb(240,240,240)] border-t border-solid  border-b-[rgb(240,240,240)] border-b-[10px] '>
-                    <TableCaption>A list of your recent invoices.</TableCaption>
                     <TableHeader>
                         <TableRow>
                             <TableHead className="">Ngày đăng</TableHead>
