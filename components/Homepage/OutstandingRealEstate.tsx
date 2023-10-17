@@ -16,7 +16,7 @@ const OutstandingRealEstate = () => {
                     <MdOutlineArrowRightAlt />
                 </a>
             </div>
-            <Card className='grid grid-cols-4 gap-5  overflow-x-auto border-none rounded-none shadow-none' >
+            <Card className='grid grid-cols-1  mx-1 lg:grid-cols-4 gap-5  overflow-x-auto border-none rounded-none shadow-none' >
                 <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 '>
