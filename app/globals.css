@@ -188,8 +188,9 @@
 .slick-next::before {
   color: black;
   background-color: black;
-
 }
+
+
 
 .active {
   color: red;
@@ -199,4 +200,13 @@
 .slick-next:before {
   color: black !important;
   background: white !important
+}
+
+.tablink {
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.tablink:hover {
+  border-color: red;
 }

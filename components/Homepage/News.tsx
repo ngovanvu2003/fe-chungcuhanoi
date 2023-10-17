@@ -2,6 +2,8 @@
 import { BiTimeFive } from "react-icons/bi"
 import { AiOutlineArrowRight } from "react-icons/ai"
 import { useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 
 const News = () => {
@@ -24,113 +26,179 @@ const News = () => {
 
     return (
         <div className="max-w-full  ">
-            <div className="mt-40">
-                <div className="w-[70%]">
+            <div className="lg:mt-40">
+                <div className="lg:w-[80%] max-lg:px-1">
                     <div >
-                        <div className="flex justify-between">
-                            <div className="flex gap-5 text-2xl font-semibold ">
-                                <button className="tablink hover:underline" id="defaultOpen" onClick={() => openPage('tinnoibat')}>Tin nổi bật</button>
-                                <button className="tablink hover:underline" onClick={() => openPage('tintuc')} >Tin tức</button>
-                                <button className="tablink hover:underline" onClick={() => openPage('bdsMyDinh')} >BĐS TPHCM</button>
-                                <button className="tablink hover:underline" onClick={() => openPage('bdsHaNoi')}>BĐS Hà Nội</button>
+                        <div className="flex justify-between items-center text-gray-500 ">
+                            <div className="flex gap-5 text-xl lg:text-2xl font-semibold overflow-x-auto lg:overflow-x-hidden  whitespace-nowrap ">
+                                <button className="tablink hover:text-black " id="defaultOpen" onClick={() => openPage('tinnoibat')}>Tin nổi bật</button>
+                                <button className="tablink hover:text-black " onClick={() => openPage('tintuc')} >Tin tức</button>
+                                <button className="tablink hover:text-black" onClick={() => openPage('bdsMyDinh')} >BĐS TPHCM</button>
+                                <button className="tablink hover:text-black" onClick={() => openPage('bdsHaNoi')}>BĐS Hà Nội</button>
                             </div>
-                            <div className="flex justify-items-end text-[#E23C31]">
+                            <Link href={''} className="lg:flex gap-1 items-center text-red-500 hover:text-red-400 text-sm hidden ">
                                 <p className="mt-[10px]">Xem Thêm</p>
                                 <p className="mt-[15px]"><AiOutlineArrowRight /></p>
-                            </div>
+                            </Link>
                         </div>
                         <div>
                             <div id="tinnoibat" className="tabcontent">
-                                <div className="flex mt-[20px]" >
-                                    <div className="">
-                                        <img className="max-w-[457px] mr-[30px]" src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/can-ho-chung-cu.jpg" alt="" />
-                                        <p className="pt-[20px] text-[20px] font-semibold">Sàn Môi Giới Bất Động Sản Chi Bạo Để Tuyển Quân</p>
-                                        <div className="flex"><p className="mt-[3px]"><BiTimeFive /></p><p className="ml-[5px]">2 ngày trước</p></div>
+                                <div className="grid lg:grid-cols-[60%,40%] mt-5 lg:gap-4  max-lg:border-b" >
+                                    <div className="max-lg:grid max-lg:grid-cols-2 gap-2 justify-between">
+                                        <Image
+                                            className="rounded mb-5 "
+                                            src="https://loremflickr.com/640/481/city"
+                                            alt=""
+                                            width={100}
+                                            height={100}
+                                            loading="lazy"
+                                            layout="responsive"
+                                            quality={100}
+                                        />
+                                        <div>
+                                            <Link href={''} className=" text-base lg:text-2xl hover:text-gray-500 font-semibold">Sàn Môi Giới Bất Động Sản Chi Bạo Để Tuyển Quân</Link>
+                                            <div className="flex mt-3 items-center text-sm text-gray-500"><p className="mt-[3px]"><BiTimeFive /></p><p className="ml-[5px]">2 ngày trước</p></div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px] border-b border-b-[#EEEEEE]">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE] ">Thị Trường BĐS Năm 2023, Thời Điểm Khó Khăn Nhất Đã Qua?</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Cách Chụp Ảnh, Quay Video Nhà Đẹp - Bí Quyết Cho Thuê Nhà Nhanh Có Thể Bạn Chưa Biết</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]" >Lãi Suất Vay Ngân Hàng Tháng 10/2023 Mới Nhất</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Sàn Môi Giới Bất Động Sản Chi Bạo Để Tuyển Quân</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Ngã Ba Nhơn Trạch Ở Đâu, Xung Quanh Có Gì [Cập Nhật 2023]</p>
+                                    <div className="font-normal hidden lg:block">
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div id="tintuc" className="tabcontent">
-                                <div className="flex mt-[20px]">
-                                    <div className="">
-                                        <img className="max-w-[457px] mr-[30px]" src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/giao-dien.webp" alt="" />
-                                        <p className="pt-[20px] text-[20px] font-semibold">Next Home - Công Ty Cung Cấp Giải Pháp & Thiết Bị Nhà Thông Minh KNX</p>
-                                        <div className="flex"><p className="mt-[3px]"><BiTimeFive /></p><p className="ml-[5px]">4 ngày trước</p></div>
-
+                                <div className="grid lg:grid-cols-[60%,40%] mt-5 lg:gap-4  max-lg:border-b" >
+                                    <div className="max-lg:grid max-lg:grid-cols-2 gap-2 justify-between">
+                                        <Image
+                                            className="rounded mb-5 "
+                                            src="https://loremflickr.com/640/485/city"
+                                            alt=""
+                                            width={100}
+                                            height={100}
+                                            loading="lazy"
+                                            layout="responsive"
+                                            quality={100}
+                                        />
+                                        <div>
+                                            <Link href={''} className=" text-base lg:text-2xl hover:text-gray-500 font-semibold">Sàn Môi Giới Bất Động Sản Chi Bạo Để Tuyển Quân</Link>
+                                            <div className="flex mt-3 items-center text-sm text-gray-500"><p className="mt-[3px]"><BiTimeFive /></p><p className="ml-[5px]">2 ngày trước</p></div>
+                                        </div>
                                     </div>
-
-                                    <div>
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px] border-b border-b-[#EEEEEE]">Thị Xã Phú Mỹ Rà Soát, Thu Hồi Nhiều Dự Án Chậm Triển Khai</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE] ">Thị Trường BĐS Năm 2023, Thời Điểm Khó Khăn Nhất Đã Qua?</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Nhà Riêng Vùng Ven Hà Nội Khó "Giữ Chân" Người Ở Vì Xa Trung Tâm</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]" >4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Cách Chụp Ảnh, Quay Video Nhà Đẹp - Bí Quyết Cho Thuê Nhà Nhanh Có Thể Bạn Chưa Biết</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Next Home - Công Ty Cung Cấp Giải Pháp & Thiết Bị Nhà Thông Minh KNX Lớn Nhất Việt Nam</p>
+                                    <div className="font-normal hidden lg:block">
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div id="bdsMyDinh" className="tabcontent">
-                                <div className="flex mt-[20px]">
-                                    <div className="">
-                                        <img className="max-w-[457px] mr-[30px]" src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/nha-nguyen-can-2.jpg" alt="" />
-                                        <p className="pt-[20px] text-[20px] font-semibold">Sàn Môi Giới Bất Động Sản Chi Bạo Để Tuyển Quân</p>
-                                        <div className="flex"><p className="mt-[3px]"><BiTimeFive /></p><p className="ml-[5px]">2 ngày trước</p></div>
-
+                                <div className="grid lg:grid-cols-[60%,40%] mt-5 lg:gap-4  max-lg:border-b" >
+                                    <div className="max-lg:grid max-lg:grid-cols-2 gap-2 justify-between">
+                                        <Image
+                                            className="rounded mb-5 "
+                                            src="https://loremflickr.com/640/484/city"
+                                            alt=""
+                                            width={100}
+                                            height={100}
+                                            loading="lazy"
+                                            layout="responsive"
+                                            quality={100}
+                                        />
+                                        <div>
+                                            <Link href={''} className=" text-base lg:text-2xl hover:text-gray-500 font-semibold">Sàn Môi Giới Bất Động Sản Chi Bạo Để Tuyển Quân</Link>
+                                            <div className="flex mt-3 items-center text-sm text-gray-500"><p className="mt-[3px]"><BiTimeFive /></p><p className="ml-[5px]">2 ngày trước</p></div>
+                                        </div>
                                     </div>
-
-                                    <div>
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px] border-b border-b-[#EEEEEE]">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE] ">Thị Trường BĐS Năm 2023, Thời Điểm Khó Khăn Nhất Đã Qua?</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Cách Chụp Ảnh, Quay Video Nhà Đẹp - Bí Quyết Cho Thuê Nhà Nhanh Có Thể Bạn Chưa Biết</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]" >Lãi Suất Vay Ngân Hàng Tháng 10/2023 Mới Nhất</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Sàn Môi Giới Bất Động Sản Chi Bạo Để Tuyển Quân</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Ngã Ba Nhơn Trạch Ở Đâu, Xung Quanh Có Gì [Cập Nhật 2023]</p>
+                                    <div className="font-normal hidden lg:block">
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div id="bdsHaNoi" className="tabcontent">
-                                <div className="flex mt-[20px]">
-                                    <div className="">
-                                        <img className="max-w-[457px] mr-[30px]" src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/giao-dien.webp" alt="" />
-                                        <p className="pt-[20px] text-[20px] font-semibold">Next Home - Công Ty Cung Cấp Giải Pháp & Thiết Bị Nhà Thông Minh KNX</p>
-                                        <div className="flex"><p className="mt-[3px]"><BiTimeFive /></p><p className="ml-[5px]">4 ngày trước</p></div>
-
+                                <div className="grid lg:grid-cols-[60%,40%] mt-5 lg:gap-4  max-lg:border-b" >
+                                    <div className="max-lg:grid max-lg:grid-cols-2 gap-2 justify-between">
+                                        <Image
+                                            className="rounded mb-5 "
+                                            src="https://loremflickr.com/640/483/city"
+                                            alt=""
+                                            width={100}
+                                            height={100}
+                                            loading="lazy"
+                                            layout="responsive"
+                                            quality={100}
+                                        />
+                                        <div>
+                                            <Link href={''} className=" text-base lg:text-2xl hover:text-gray-500 font-semibold">Sàn Môi Giới Bất Động Sản Chi Bạo Để Tuyển Quân</Link>
+                                            <div className="flex mt-3 items-center text-sm text-gray-500"><p className="mt-[3px]"><BiTimeFive /></p><p className="ml-[5px]">2 ngày trước</p></div>
+                                        </div>
                                     </div>
-
-                                    <div>
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px] border-b border-b-[#EEEEEE]">Thị Xã Phú Mỹ Rà Soát, Thu Hồi Nhiều Dự Án Chậm Triển Khai</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE] ">Thị Trường BĐS Năm 2023, Thời Điểm Khó Khăn Nhất Đã Qua?</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Nhà Riêng Vùng Ven Hà Nội Khó Giữ Chân Người Ở Vì Xa Trung Tâm</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]" >4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Cách Chụp Ảnh, Quay Video Nhà Đẹp - Bí Quyết Cho Thuê Nhà Nhanh Có Thể Bạn Chưa Biết</p>
-
-                                        <p className=" text-[#2C2C2C] my-[10px] pb-[10px]  border-b border-b-[#EEEEEE]">Next Home - Công Ty Cung Cấp Giải Pháp & Thiết Bị Nhà Thông Minh KNX Lớn Nhất Việt Nam</p>
+                                    <div className="font-normal hidden lg:block">
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
+                                        <div className="border-b  border-b-[#EEEEEE] hover:text-gray-500 py-2">
+                                            <Link href={''} className="  ">4 Bước Đăng Tin Cho Thuê Nhà Hiệu Quả Trên Batdongsan.com.vn</Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
