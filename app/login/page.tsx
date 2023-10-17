@@ -16,11 +16,15 @@ const Login = () => {
     const onHandleSubmit = async (data: FormLogin) => {
         try {
             const results = await Signin(data);
-            console.log(results);
-            // if (results.error){
 
+            if (results.success == false) {
+                alert("Thông tin tài khoản hoặc mật khẩu không chính sác!");
+                return;
+            } else {
+                alert("Đăng nhập thành công!")
+            }
         } catch (error) {
-            console.log(error);
+            alert("Có lỗi xảy ra vui lòng thử lại sau!");
         }
     }
     return (
