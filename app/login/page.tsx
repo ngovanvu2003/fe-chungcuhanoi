@@ -7,9 +7,12 @@ import { useForm } from "react-hook-form"
 import { FormLogin, schemaLogin } from "@/schemas/auths";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Signin } from "@/api/auths";
-
+import Swal from 'sweetalert2';
+import { useEffect } from "react";
+import { useRouter } from 'next/navigation'
 
 const Login = () => {
+    const router = useRouter();
     const { register, handleSubmit, formState: { errors } } = useForm<FormLogin>({
         resolver: yupResolver(schemaLogin)
     })
@@ -18,15 +21,30 @@ const Login = () => {
             const results = await Signin(data);
 
             if (results.success == false) {
-                alert("Thông tin tài khoản hoặc mật khẩu không chính sác!");
+                Swal.fire({
+                    title: 'Opps!',
+                    text: 'Sai tài khoản hoặc mật khẩu rồi anh ơi!',
+                    icon: 'error',
+                    confirmButtonText: 'Quay lại'
+                })
                 return;
             } else {
-                alert("Đăng nhập thành công!")
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Đăng nhập thành công!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                router.push("/admin")
             }
         } catch (error) {
             alert("Có lỗi xảy ra vui lòng thử lại sau!");
         }
     }
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className="w-full h-max mt-[69px] p-[24px_0_50px_0] bg-[#f9f9f9]">
             <div className="w-full lg:w-[500px] h-max p-[32px] m-auto bg-white rounded-[8px] shadow-lg">
