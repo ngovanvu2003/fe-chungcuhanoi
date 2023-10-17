@@ -26,7 +26,7 @@ const RealEstate = () => {
     if (error) return <div>error</div>
 
     return (
-        <Card className='border-none rounded-none px-1 '>
+        <Card className='border-none rounded-none shadow-none px-1 '>
             <div className='flex justify-between items-center my-3 md:my-8'>
                 <h3 className='font-semibold text-2xl'>Bất động sản dành cho bạn</h3>
                 <a href="" className='hover:text-gray-500 text-sm hidden md:block'>Tin nhà đất bán mới nhất </a>

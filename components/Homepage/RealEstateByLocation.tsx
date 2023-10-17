@@ -6,7 +6,7 @@ import {
 import Link from 'next/link'
 const RealEstateByLocation = () => {
     return (
-        <Card className='my-5 mt-14 border-none shadow-none'>
+        <Card className='my-5 mt-14 border-none shadow-none  rounded-none'>
             <CardTitle className='font-semibold text-2xl mb-7'>Bất động sản theo địa điểm</CardTitle>
             <div className='grid grid-cols-1 md:grid-cols-2 px-1 gap-5 items-center'>
                 <Link href='' className='relative  outline-none'>

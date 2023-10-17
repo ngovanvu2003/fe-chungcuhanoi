@@ -1,38 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 import { MdOutlineArrowRightAlt } from 'react-icons/md'
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Card } from '../ui/card'
 
 const OutstandingRealEstate = () => {
-    const settings = {
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2.5,
-                    slidesToScroll: 2.5,
-                    initialSlide: 2,
 
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-
-                }
-            }
-        ]
-    }
     return (
         <div>
-            <div className='flex justify-between items-center my-8'>
+            <div className='flex justify-between items-center my-8   '>
                 <h3 className='font-semibold text-lg md:text-2xl'>Dự án bất động sản nổi bật</h3>
                 <a href="" className='text-red-500 text-sm flex items-center gap-1'>
                     <span>
@@ -41,7 +16,7 @@ const OutstandingRealEstate = () => {
                     <MdOutlineArrowRightAlt />
                 </a>
             </div>
-            <Slider className='grid grid-cols-4 gap-5  overflow-x-auto ' {...settings}>
+            <Card className='grid grid-cols-4 gap-5  overflow-x-auto border-none rounded-none shadow-none' >
                 <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 '>
@@ -75,7 +50,7 @@ const OutstandingRealEstate = () => {
                         <span>Trung Hòa - Cầu Giấy</span>
                     </div>
                 </div>
-            </Slider>
+            </Card>
         </div>
     )
 }
