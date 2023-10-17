@@ -24,7 +24,7 @@ const Khoanggia = () => {
                     <TableHeader>
                         <TableRow>
                             <TableCell><h1 className='font-bold'>Các dự án cùng khoảng giá</h1><span>Trong vòng bán kính 5km</span></TableCell>
-                            <TableCell><h1 className='font-bold'>Giá bán phổ biến nhất</h1></TableCell>
+                            <TableCell colSpan={2}><h1 className='font-bold'>Giá bán phổ biến nhất</h1></TableCell>
                         </TableRow>
                     </TableHeader>
                     <TableBody>

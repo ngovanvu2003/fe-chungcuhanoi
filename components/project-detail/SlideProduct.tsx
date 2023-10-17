@@ -12,15 +12,14 @@ const SlideProduct = () => {
         "https://wisteria.vn/wp-content/uploads/2023/08/slide-2.webp",
     ];
 
-    const isMobile = window.innerWidth <= 767;
 
     return (
         <div>
             <Zoom indicators={index => <div className="indicator"></div>} >
                 {images.map((image, index) => (
-                    <div key={index} className="each-slide-effect">
+                    <div key={index} className="each-slide-effect lg:h-[400px] md:h-[400px] sm:h-[200px]">
                         <div style={{
-                            height: isMobile ? "200px" : "500px",
+                            height: "200px",
                             border: "1%",
                             backgroundImage: "cover",
                         }}>

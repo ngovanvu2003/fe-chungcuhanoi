@@ -9,7 +9,7 @@ const Tindaxem = () => {
         <div>
             <div className='pb-20'>
                 <h1 className='font-bold text-2xl'>Tin đăng đã xem</h1>
-                <div className='@apply grid grid-cols-1 lg:grid-cols-3 gap-4'>
+                <div className='@apply grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-3 gap-4'>
                     <div className='@apply border-2 border-solid border-[rgb(240,240,240)] rounded-[7px]'>
                         <a href="#">
                             <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/11/20231011152756-3a4c_wm.jpg" alt="" className='w-[100%]' />
