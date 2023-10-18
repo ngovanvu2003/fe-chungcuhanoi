@@ -15,8 +15,8 @@ const Thongtin = () => {
     return (
         <div>
             <div>
-                <span className='@apply font-bold text-2xl pb-5 leading-7 font-[normal] tracking-[-0.2px] text-[#2C2C2C] block'>Đặc điểm bất động sản</span>
-                <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8">
+                <span className=' font-bold text-2xl leading-7 font-[normal] tracking-[-0.2px] text-[#2C2C2C] block'>Đặc điểm bất động sản</span>
+                <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8 py-5">
                     <div className="">
                         <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
                             <tbody className="divide-y divide-gray-200">
@@ -53,30 +53,30 @@ const Thongtin = () => {
             </div>
             <div>
                 <div>
-                    <span className='@apply font-bold text-2xl pb-5 leading-7 font-[normal] tracking-[-0.2px] text-[#2C2C2C]'>Thông tin dự án</span>
-                    <a href="#" className='@apply float-right text-[rgb(224,60,49)] text-b leading-6 font-bold pr-[5%]'><span> Xem 914 tin đăng bán</span> </a>
+                    <span className=' font-bold text-2xl pb-5 leading-7 font-[normal] tracking-[-0.2px] text-[#2C2C2C]'>Thông tin dự án</span>
+                    <a href="#" className=' float-right text-[rgb(224,60,49)] text-b leading-6 font-bold pr-[5%]'><span> Xem 914 tin đăng bán</span> </a>
                 </div>
-                <div className=' @apply flex p-4 outline-[1px_solid_#F2F2F2]'>
-                    <div className='@apply w-[10%] m-2 rounded'>
+                <div className='  flex p-4 outline-[1px_solid_#F2F2F2]'>
+                    <div className=' lg:w-[15%] md:w-[15%] sm:w-[10%] m-2 ro._unded'>
                         <a href="#">
-                            <img className='@apply w-full rounded' src="https://file4.batdongsan.com.vn/crop/320x320/2021/06/24/20210624111352-242d.jpg" alt="" />
+                            <img className=' w-full rounded' src="https://file4.batdongsan.com.vn/crop/320x320/2021/06/24/20210624111352-242d.jpg" alt="" />
                         </a>
                     </div>
                     <div>
-                        <p className='@apply font-bold pl-2'>Vinhomes Ocean Park Gia Lâm</p>
-                        <div className='@apply text-sm leading-5 font-[normal] text-[#505050]'>
-                            <span className='@apply inline-flex p-2'>
+                        <p className=' font-bold pl-2'>Vinhomes Ocean Park Gia Lâm</p>
+                        <div className=' text-sm leading-5 font-[normal] text-[#505050]'>
+                            <span className=' inline-flex p-2'>
                                 <PiWarningCircle />
                                 <span> Đang mở bán</span>
                             </span>
                             <span>
-                                <span className='@apply inline-flex pl-3'>
+                                <span className=' inline-flex pl-3'>
                                     <HiOutlineHomeModern />
                                     66
                                 </span>
                             </span>
                             <div>
-                                <span className='@apply inline-flex pl-2'>
+                                <span className=' inline-flex pl-2'>
                                     <MdOutlineHomeRepairService />
                                     Tập đoàn Vingroup
                                 </span>

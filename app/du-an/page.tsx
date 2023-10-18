@@ -448,7 +448,6 @@ const Project = () => {
 
                     <span className="text-sm font-medium"> Xem thêm </span>
                   </summary>
-
                   <ul className="grid grid-cols-1  mt-2 mx-auto space-y-1 gap-4">
                     <li>
                       <div className="grid">

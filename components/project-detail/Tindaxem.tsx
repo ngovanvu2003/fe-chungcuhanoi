@@ -9,8 +9,8 @@ const Tindaxem = () => {
         <div>
             <div className='pb-20'>
                 <h1 className='font-bold text-2xl'>Tin đăng đã xem</h1>
-                <div className='@apply grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-3 gap-4'>
-                    <div className='@apply border-2 border-solid border-[rgb(240,240,240)] rounded-[7px]'>
+                <div className='grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-3 gap-4'>
+                    <div className='border-2 border-solid border-[rgb(240,240,240)] rounded-[7px]'>
                         <a href="#">
                             <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/11/20231011152756-3a4c_wm.jpg" alt="" className='w-[100%]' />
                             <div className='p-4 '>
@@ -18,18 +18,18 @@ const Tindaxem = () => {
                                     <span style={{ "overflow": "hidden", "textOverflow": "ellipsis", "display": "-webkit-box", "WebkitLineClamp": "2", "WebkitBoxOrient": "vertical", fontSize: "14px", fontWeight: "bolder" }}>QUỸ CĂN CUỐI CÙNG THE TONKIN 1PN + 2PN, 2PN + , 3PN CHỈ 3TỶ9 Ở NGAY T10/2023 - CK 20% - 800 TR GTCH</span>
                                 </div>
                                 <div>
-                                    <span className='@apply pr-5 font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>3,96 tỷ</span>
-                                    <span className='@apply font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>80 m</span>
+                                    <span className='pr-5 font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>3,96 tỷ</span>
+                                    <span className='font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>80 m</span>
                                 </div>
-                                <div className='@apply overflow-hidden text-sm leading-5 font-[normal]'><span className='float-left pt-1'><BsFillPinFill /></span>Nam Từ Liêm, Hà Nội</div>
+                                <div className='overflow-hidden text-sm leading-5 font-[normal]'><span className='float-left pt-1'><BsFillPinFill /></span>Nam Từ Liêm, Hà Nội</div>
                                 <div>
-                                    <span className='  @apply text-xs leading-4 font-[normal] block text-[#999] float-left mx-0 my-2'>Đăng hôm qua</span>
-                                    <span className='@apply float-right ml-2'><AiOutlineHeart /></span>
+                                    <span className='  text-xs leading-4 font-[normal] block text-[#999] float-left mx-0 my-2'>Đăng hôm qua</span>
+                                    <span className='float-right ml-2'><AiOutlineHeart /></span>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div className='@apply border-2 border-solid border-[rgb(240,240,240)] rounded-[7px]'>
+                    <div className='border-2 border-solid border-[rgb(240,240,240)] rounded-[7px]'>
                         <a href="#">
                             <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/11/20231011152756-3a4c_wm.jpg" alt="" className='w-[100%]' />
                             <div className='p-4 '>
@@ -37,18 +37,18 @@ const Tindaxem = () => {
                                     <span style={{ "overflow": "hidden", "textOverflow": "ellipsis", "display": "-webkit-box", "WebkitLineClamp": "2", "WebkitBoxOrient": "vertical", fontSize: "14px", fontWeight: "bolder" }}>QUỸ CĂN CUỐI CÙNG THE TONKIN 1PN + 2PN, 2PN + , 3PN CHỈ 3TỶ9 Ở NGAY T10/2023 - CK 20% - 800 TR GTCH</span>
                                 </div>
                                 <div>
-                                    <span className='@apply pr-5 font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>3,96 tỷ</span>
-                                    <span className='@apply font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>80 m</span>
+                                    <span className='pr-5 font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>3,96 tỷ</span>
+                                    <span className='font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>80 m</span>
                                 </div>
-                                <div className='@apply overflow-hidden text-sm leading-5 font-[normal]'><span className='float-left pt-1'><BsFillPinFill /></span>Nam Từ Liêm, Hà Nội</div>
+                                <div className='overflow-hidden text-sm leading-5 font-[normal]'><span className='float-left pt-1'><BsFillPinFill /></span>Nam Từ Liêm, Hà Nội</div>
                                 <div>
-                                    <span className='  @apply text-xs leading-4 font-[normal] block text-[#999] float-left mx-0 my-2'>Đăng hôm qua</span>
-                                    <span className='@apply float-right ml-2'><AiOutlineHeart /></span>
+                                    <span className='  text-xs leading-4 font-[normal] block text-[#999] float-left mx-0 my-2'>Đăng hôm qua</span>
+                                    <span className='float-right ml-2'><AiOutlineHeart /></span>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div className='@apply border-2 border-solid border-[rgb(240,240,240)] rounded-[7px]'>
+                    <div className='border-2 border-solid border-[rgb(240,240,240)] rounded-[7px]'>
                         <a href="#">
                             <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/11/20231011152756-3a4c_wm.jpg" alt="" className='w-[100%]' />
                             <div className='p-4 '>
@@ -56,13 +56,13 @@ const Tindaxem = () => {
                                     <span style={{ "overflow": "hidden", "textOverflow": "ellipsis", "display": "-webkit-box", "WebkitLineClamp": "2", "WebkitBoxOrient": "vertical", fontSize: "14px", fontWeight: "bolder" }}>QUỸ CĂN CUỐI CÙNG THE TONKIN 1PN + 2PN, 2PN + , 3PN CHỈ 3TỶ9 Ở NGAY T10/2023 - CK 20% - 800 TR GTCH</span>
                                 </div>
                                 <div>
-                                    <span className='@apply pr-5 font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>3,96 tỷ</span>
-                                    <span className='@apply font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>80 m</span>
+                                    <span className='pr-5 font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>3,96 tỷ</span>
+                                    <span className='font-bold text-base leading-[26px] font-[normal] text-[#E03C31] leading-[26px];'>80 m</span>
                                 </div>
-                                <div className='@apply overflow-hidden text-sm leading-5 font-[normal]'><span className='float-left pt-1'><BsFillPinFill /></span>Nam Từ Liêm, Hà Nội</div>
+                                <div className='overflow-hidden text-sm leading-5 font-[normal]'><span className='float-left pt-1'><BsFillPinFill /></span>Nam Từ Liêm, Hà Nội</div>
                                 <div>
-                                    <span className='  @apply text-xs leading-4 font-[normal] block text-[#999] float-left mx-0 my-2'>Đăng hôm qua</span>
-                                    <span className='@apply float-right ml-2'><AiOutlineHeart /></span>
+                                    <span className='  text-xs leading-4 font-[normal] block text-[#999] float-left mx-0 my-2'>Đăng hôm qua</span>
+                                    <span className='float-right ml-2'><AiOutlineHeart /></span>
                                 </div>
                             </div>
                         </a>

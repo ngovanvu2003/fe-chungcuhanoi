@@ -23,11 +23,11 @@ const NavUser = () => {
                         <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                 </div>
-                <div className='@apply text-white bg-[#009BA1] border text-sm font-[normal] tracking-[-0.2px] px-[15px] py-[7px] rounded-lg border-solid border-[#009BA1] font-extrabold mx-3'>
+                <div className=' text-white bg-[#009BA1] border text-sm font-[normal] tracking-[-0.2px] px-[15px] py-[7px] rounded-lg border-solid border-[#009BA1] font-extrabold mx-3'>
                     <span>0969 812 662 </span>
                     <span>Sao chép</span>
                 </div>
-                <div className='@apply text-[#2C2C2C] bg-white text-sm font-[normal] tracking-[-0.2px] px-[15px] py-[7px] rounded-lg border border-solid border-[#ccc] font-extrabold mx-3' >
+                <div className=' text-[#2C2C2C] bg-white text-sm font-[normal] tracking-[-0.2px] px-[15px] py-[7px] rounded-lg border border-solid border-[#ccc] font-extrabold mx-3' >
                     <button onClick={handleDownloadButtonClick}>Yêu cầu liên hệ lại </button>
                     <Formlienhe
                         isOpen={isModalOpen}
