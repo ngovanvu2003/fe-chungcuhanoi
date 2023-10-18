@@ -22,7 +22,7 @@ export const Signup = (data: FormSignup) => {
 }
 
 export const Signin = (data: FormLogin) => {
-    const url = `${process.env.BĐS_API}/signin`;
+    const url = `http://localhost:8000/api/signin`;
     return fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
