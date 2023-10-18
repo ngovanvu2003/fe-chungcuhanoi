@@ -16,12 +16,12 @@ const signup = () => {
   });
   const onHandleSubmit = async (data: FormSignup) => {
     try {
-        console.log(1);
-        
+      console.log(1);
+
       const results = await Signup(data);
       console.log(results);
       alert("Đắng ký thành công")
-      // if (results.error){
+
     } catch (error) {
       console.log(error);
       alert("Đăng ký lại đi anh")
@@ -51,11 +51,11 @@ const signup = () => {
                     type="Name"
                     placeholder="Name"
                   />
-                    <div className="text-red-500 text-sm my-2">
-                  {errors.name && errors.name.message}
+                  <div className="text-red-500 text-sm my-2">
+                    {errors.name && errors.name.message}
+                  </div>
                 </div>
-                </div>
-              
+
 
                 <div className="mb-4">
                   <label className="block mb-2 text-sm font-bold text-gray-700">
