@@ -4,7 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FormSignup, schemaSignup } from "@/schemas/auths";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Signup } from "@/api/auths";
+import { Signup } from "@/app/api/auths";
 
 const signup = () => {
   const {

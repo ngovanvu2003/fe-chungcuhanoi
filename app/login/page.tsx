@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
 import { FormLogin, schemaLogin } from "@/schemas/auths";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Signin } from "@/api/auths";
+import { Signin } from "@/app/api/auths";
 import Swal from 'sweetalert2';
 import { useEffect } from "react";
 import { useRouter } from 'next/navigation'
