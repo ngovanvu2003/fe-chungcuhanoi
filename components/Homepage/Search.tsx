@@ -13,7 +13,7 @@ const Search = () => {
                 <div className="rounded  p-[20px] bg-[#5E5E5E] " >
                     <div className="rounded-lg   flex ">
                         <div>
-                            <select className="rounded-l-lg pl-[10px] h-[45px] outline-none border-2 border-r-[#EBEBEB]">
+                            <select defaultValue={1} className="rounded-l-lg pl-[10px] h-[45px] outline-none border-2 border-r-[#EBEBEB]">
                                 <option value="">Tất cả dự án</option>
                                 <option value="">Căn hộ chung cư</option>
                                 <option value="">Cao ốc văn phòng</option>
@@ -28,7 +28,7 @@ const Search = () => {
                         </div>
                     </div>
                     <div className="flex gap-3 mt-[20px]">
-                        <select name="" id="" value={''} className="rounded-md text-white pl-[10px] bg-inherit w-[23%] h-[30px] outline-none border ">
+                        <select name="" id="" defaultValue={1} className="rounded-md text-white pl-[10px] bg-inherit w-[23%] h-[30px] outline-none border ">
                             <option value="" className="text-[#303030]">Hà Nội</option>
                             <option value="" className="text-[#303030]">Tất cả dự án</option>
                             <option value="" className="text-[#303030]">Căn hộ chung cư</option>
@@ -37,7 +37,7 @@ const Search = () => {
                             <option value="" className="text-[#303030]">Khu đô thị mới</option>
                             <option value="" className="text-[#303030]">Khu phức hợp</option>
                         </select>
-                        <select name="" id="" className="rounded-md text-white pl-[10px] bg-inherit w-[23%] h-[30px] outline-none border ">
+                        <select name="" id="" defaultValue={1} className="rounded-md text-white pl-[10px] bg-inherit w-[23%] h-[30px] outline-none border ">
                             <option value="" className="text-[#303030]">Mức Giá</option>
                             <option value="" className="text-[#303030]">Tất cả dự án</option>
                             <option value="" className="text-[#303030]">Căn hộ chung cư</option>
@@ -46,7 +46,7 @@ const Search = () => {
                             <option value="" className="text-[#303030]">Khu đô thị mới</option>
                             <option value="" className="text-[#303030]">Khu phức hợp</option>
                         </select>
-                        <select name="" id="" className="rounded-md text-white pl-[10px] bg-inherit w-[23%] h-[30px] outline-none border">
+                        <select name="" id="" defaultValue={1} className="rounded-md text-white pl-[10px] bg-inherit w-[23%] h-[30px] outline-none border">
                             <option value="" className="text-[#303030]">Diện Tích</option>
                             <option value="" className="text-[#303030]">Tất cả dự án</option>
                             <option value="" className="text-[#303030]">Căn hộ chung cư</option>
@@ -55,7 +55,7 @@ const Search = () => {
                             <option value="" className="text-[#303030]">Khu đô thị mới</option>
                             <option value="" className="text-[#303030]">Khu phức hợp</option>
                         </select>
-                        <select name="" id="" className="rounded-md text-white pl-[10px] bg-inherit w-[23%] h-[30px] outline-none border">
+                        <select name="" id="" defaultValue={1} className="rounded-md text-white pl-[10px] bg-inherit w-[23%] h-[30px] outline-none border">
                             <option value="" className="text-[#303030]">Lọc Thêm</option>
                             <option value="" className="text-[#303030]">Tất cả dự án</option>
                             <option value="" className="text-[#303030]">Căn hộ chung cư</option>

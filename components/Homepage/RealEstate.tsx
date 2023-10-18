@@ -31,14 +31,14 @@ const RealEstate = () => {
                 <h3 className='font-semibold text-2xl'>Bất động sản dành cho bạn</h3>
                 <a href="" className='hover:text-gray-500 text-sm hidden md:block'>Tin nhà đất bán mới nhất </a>
             </div>
-            <Link href={''} className='md:grid md:grid-cols-4 gap-7 md:max-w-screen-2xl mx-auto'>
-                {productToShow?.map((item: any) => {
+            <Link href={'/du-an'} className='md:grid md:grid-cols-4 gap-7 md:max-w-screen-2xl mx-auto'>
+                {productToShow?.map((item: IProject) => {
                     return (
                         <div key={item.id} className=' md:grid gap-2 max-md:p-2 md:flex-none my-1  shadow rounded-md relative'>
                             <p className='text-title mb-2  text-base font-semibold md:hidden '>{item.project_name}</p>
                             <div className='grid grid-cols-[40%,60%] md:grid-cols-none' >
                                 <Image
-                                    alt=''
+                                    alt='Anh hihi'
                                     src={item.project_image}
                                     className='md:w-full rounded md:rounded-t-md'
                                     width={200}
@@ -64,7 +64,7 @@ const RealEstate = () => {
                     )
                 })}
             </Link>
-            {visibleProduct < data.length && (
+            {visibleProduct < (data as any).length && (
                 <button className='mx-auto flex items-center gap-2 border px-5 py-1 mt-4 md:my-10 md:px-10 rounded-lg border-gray-500 border-solid md:py-3' onClick={hanleLoadMore}>
                     <span>
                         Mở rộng
