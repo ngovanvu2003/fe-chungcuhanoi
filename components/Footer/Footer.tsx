@@ -134,10 +134,11 @@ const Footer = () => {
                 <div className="mt-4">
                   <div className="font-medium">QUỐC GIA & NGÔN NGỮ</div>
                   <select
+                    defaultValue={"US"}
                     id="countries"
                     className="w-[162.78px] bg-gray-50 border mt-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   >
-                    <option selected >Việt Nam</option>
+                    <option value="h"  >Việt Nam</option>
                     <option value="US">United States</option>
                     <option value="CA">Canada</option>
                     <option value="FR">France</option>
