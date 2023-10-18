@@ -25,7 +25,7 @@ const Login = () => {
                     title: 'Opps!',
                     text: 'Sai tài khoản hoặc mật khẩu rồi anh ơi!',
                     icon: 'error',
-                    confirmButtonText: 'Quay lại'
+                    confirmButtonText: 'Mình quay lại nha anh'
                 })
                 return;
             } else {
