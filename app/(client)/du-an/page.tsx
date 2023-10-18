@@ -8,7 +8,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 
 const Project = () => {
   return (
-    <div className="container max-w-5xl mx-auto ">
+    <div className="container max-w-5xl mx-auto m-24">
       <div className="md:flex flex-col md:flex-row">
         <div>
           <div className="mb-4 md:mb-0 text-center md:text-left">
