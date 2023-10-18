@@ -1,12 +1,15 @@
 "use client";
-import React from "react";
-
+import React, { useEffect } from "react";
+import Swal from 'sweetalert2';
 import { useForm } from "react-hook-form";
 import { FormSignup, schemaSignup } from "@/schemas/auths";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Signup } from "@/app/api/auths";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const signup = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -16,17 +19,37 @@ const signup = () => {
   });
   const onHandleSubmit = async (data: FormSignup) => {
     try {
-      console.log(1);
-
       const results = await Signup(data);
-      console.log(results);
-      alert("Đắng ký thành công")
+      if (results.success == false) {
+        Swal.fire({
+          title: 'Opps!',
+          text: 'Email hoặc Số điện thoại tồn tại rồi anh ơi!',
+          icon: 'error',
+          confirmButtonText: 'Mình quay lại nha anh'
+        })
+        return;
+      } else {
+        Swal.fire({
+          position: 'top',
+          icon: 'success',
+          title: 'Đăng ký thành công!',
+          showConfirmButton: false,
+          timer: 2500
+        })
+        router.push("/login")
+      }
 
     } catch (error) {
-      console.log(error);
-      alert("Đăng ký lại đi anh")
+      Swal.fire({
+        title: 'Opps!',
+        text: 'Có lỗi xảy ra vui lòng thử lại!',
+        icon: 'error',
+      })
     }
   };
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className="system-ui bg-gray-300 pt-8 md:p-8">
       <div className="container mx-auto p-0">
@@ -142,12 +165,12 @@ const signup = () => {
                 <div className="text-center">
                   <span> Bạn đã có tài khoản? </span>
 
-                  <a
-                    href="/sigin"
+                  <Link
+                    href="/login"
                     className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800 no-underline"
                   >
                     Đăng nhập!
-                  </a>
+                  </Link>
                 </div>
               </form>
             </div>

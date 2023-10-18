@@ -39,7 +39,11 @@ const Login = () => {
                 router.push("/admin")
             }
         } catch (error) {
-            alert("Có lỗi xảy ra vui lòng thử lại sau!");
+            Swal.fire({
+                title: 'Opps!',
+                text: 'Có lỗi xảy ra vui lòng thử lại!',
+                icon: 'error',
+            })
         }
     }
     useEffect(() => {
