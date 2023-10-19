@@ -18,7 +18,7 @@ const Khoanggia = () => {
                 <h1 className='font-bold text-2xl'>Khoảng giá phổ biến</h1>
                 <p>Bán căn hộ chung cư tại Vinhomes Ocean Park Gia Lâm</p>
             </div>
-            <div className='@apply border border-solid border-[rgb(216,216,216)] p-4 m-4 rounded-[10px]'>
+            <div className=' border border-solid border-[rgb(216,216,216)] p-4 m-4 rounded-[10px]'>
                 <Table>
                     {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
                     <TableHeader>

@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-import Pro1 from './Pro1'
 import SlideProduct from './SlideProduct'
 import Mota from './Mota'
 import Slide2 from './Slide2'
@@ -16,7 +15,6 @@ const Product = () => {
         <div>
             <SlideProduct />
             <div className='md:px-5 sm:px-1'>
-                <Pro1 />
                 <Mota />
                 <Thongtin />
                 <Khoanggia />

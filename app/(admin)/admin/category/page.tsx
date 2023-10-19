@@ -68,6 +68,5 @@ const DataTable = () => {
       </Table>
     </div>
   );
-};
-
+}
 export default DataTable;

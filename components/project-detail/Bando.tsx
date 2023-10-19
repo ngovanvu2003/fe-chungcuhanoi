@@ -30,17 +30,17 @@ const Bando = () => {
             <div>
                 <h1 className='font-bold text-2xl'>Tìm kiếm theo từ khóa</h1>
                 <div>
-                    <a href="#" className='@apply mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ Vinhomes Ocean Park Gia Lâm từ 30 m2 đến 50 m2</a>
-                    <a href="#" className='@apply mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ Dương Xá Gia Lâm</a>
-                    <a href="#" className='@apply mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ An Đào Gia Lâm</a>
-                    <a href="#" className='@apply mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ Gia Lâm Hà Nội</a>
-                    <a href="#" className='@apply mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ Hà Nội 1PN</a>
-                    <a href="#" className='@apply mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ Hà Nội từ 1 tỉ đến 2 tỉ</a>
+                    <a href="#" className=' mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ Vinhomes Ocean Park Gia Lâm từ 30 m2 đến 50 m2</a>
+                    <a href="#" className=' mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ Dương Xá Gia Lâm</a>
+                    <a href="#" className=' mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ An Đào Gia Lâm</a>
+                    <a href="#" className=' mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ Gia Lâm Hà Nội</a>
+                    <a href="#" className=' mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ Hà Nội 1PN</a>
+                    <a href="#" className=' mt-2 overflow-hidden block float-left bg-[#F2F2F2] text-[#2C2C2C] cursor-pointer mr-2 px-4 py-1.5 rounded-[40px]'>Căn hộ Hà Nội từ 1 tỉ đến 2 tỉ</a>
                     <a href="#"></a>
                 </div>
             </div>
             <div className=''>
-                <Table className='@apply mt-9 border-t-[rgb(240,240,240)] border-t border-solid  border-b-[rgb(240,240,240)] border-b-[10px] '>
+                <Table className=' mt-9 border-t-[rgb(240,240,240)] border-t border-solid  border-b-[rgb(240,240,240)] border-b-[10px] '>
                     <TableHeader>
                         <TableRow>
                             <TableHead className="">Ngày đăng</TableHead>
