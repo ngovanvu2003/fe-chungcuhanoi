@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 
-const apiUrl = 'http://127.0.0.1:8000/api/category';  // Thay thế bằng API endpoint thực tế của bạn
+const apiUrl = 'http://localhost:8080/api/category';
 
 const fetcher = async (url: any) => {
     const response = await fetch(url);
@@ -16,10 +16,10 @@ export const useFetchData = () => {
         isError: error,
     };
 };
-export const removeCategories = (id:any)=>{
-    const url = `http://localhost:8000/api/category/${id}`;
+export const removeCategories = (id: any) => {
+    const url = `http://localhost:8080/api/category/${id}`;
     return fetch(url, {
         method: 'DELETE',
-        
+
     }).then((res) => res.json());
 }

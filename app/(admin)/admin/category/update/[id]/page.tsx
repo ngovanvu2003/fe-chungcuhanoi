@@ -14,9 +14,9 @@ import {
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { getCategoryById, updateCategory } from "@/app/api/category"
-import { useRouter } from "next/router"
+
 
 const formSchema = z.object({
     category_name: z.string().min(2, {
@@ -44,8 +44,6 @@ const page = () => {
             try {
                 if (id) {
                     const { category } = await getCategoryById(id);
-                    // console.log(category)
-                    // Đổ dữ liệu vào form
                     form.setValue('category_name', category.category_name);
                     form.setValue('category_description', category.category_description);
                 }
@@ -73,43 +71,48 @@ const page = () => {
         }
     }
     return (
-        <div className="flex justify-center">
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 lg:w-[60%] md:w-[70%] w-[100%] ">
-                    <FormField
-                        control={form.control}
-                        name="category_name"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>category_name</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="category_name" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="category_description"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>category_description</FormLabel><br />
-                                <FormControl>
-                                    <textarea
-                                        className="w-full border border-solid border-[rgb(224,224,224)] p-2 rounded-[5px]"
-                                        placeholder="category_description"
-                                        {...field}
-                                        rows={4}  // Số dòng muốn hiển thị
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <Button type="submit">Submit</Button>
-                </form>
-            </Form>
+        <div>
+            <h2 className='text-3xl my-5 text-center'>
+                Cập nhật danh mục
+            </h2>
+            <div className="flex justify-center">
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 lg:w-[60%] md:w-[70%] w-[100%] ">
+                        <FormField
+                            control={form.control}
+                            name="category_name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Name</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="category_name" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="category_description"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Description</FormLabel><br />
+                                    <FormControl>
+                                        <textarea
+                                            className="w-full border border-solid border-[rgb(224,224,224)] p-2 rounded-[5px]"
+                                            placeholder="category_description"
+                                            {...field}
+                                            rows={4}  // Số dòng muốn hiển thị
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <Button type="submit">Submit</Button>
+                    </form>
+                </Form>
+            </div>
         </div>
     )
 }

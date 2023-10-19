@@ -29,6 +29,7 @@ const DataTable = () => {
     return <div>Error loading data</div>;
   }
   const HandleRemove = async (id: string) => {
+
     try {
 
       Swal.fire({
@@ -67,6 +68,12 @@ const DataTable = () => {
   }
   return (
     <div>
+      <div className='flex justify-between items-center my-5'>
+        <h2 className='text-3xl'>
+          Danh sách danh mục
+        </h2>
+        <Button className='mr-2' variant="outline"><Link href={`/admin/category/add`}>Thêm danh mục</Link></Button>
+      </div>
       <Table>
         <TableHeader>
           <TableRow>
@@ -83,7 +90,7 @@ const DataTable = () => {
               <TableCell>{invoice.category_name}</TableCell>
               <TableCell>{invoice.category_description}</TableCell>
               <TableCell className="text-right">
-                <Button className='mr-2' variant="outline"><Link href={`/admin/category/update/${invoice?.id}`}>Update</Link></Button>
+                <Button className='mr-2' variant="outline"><Link href={`/admin/category/update/${invoice?._id}`}>Update</Link></Button>
                 <Button className='' variant="outline" onClick={() => HandleRemove(invoice._id)}>Xóa</Button>
               </TableCell>
             </TableRow>

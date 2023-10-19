@@ -17,7 +17,8 @@ import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
 import { addCategory } from "@/app/api/category"
 import { useState } from "react"
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+
 
 const formSchema = z.object({
     category_name: z.string().min(2, {
@@ -44,12 +45,15 @@ const page = () => {
         setIsSubmitting(true);
         try {
             await addCategory(categoryData);
-            setTimeout(() => {
-                router.push('/admin/category');
-            }, 1000)
+            Swal.fire({
+                title: '',
+                text: 'Thêm thành công !',
+                icon: 'success',
+                timer: 1500
+            })
+            router.push('/admin/category');
+
         } catch (error) {
-            console.log("cate đã tồn tại")
-            // console.error("Failed thêm thất bại:", error.message);
             Swal.fire({
                 title: '',
                 text: 'Category đã tồn tại vui lòng nhập lại !',
@@ -71,7 +75,7 @@ const page = () => {
                         name="category_name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>category_name</FormLabel>
+                                <FormLabel>Name</FormLabel>
                                 <FormControl>
                                     <Input placeholder="category_name" {...field} />
                                 </FormControl>
@@ -84,7 +88,7 @@ const page = () => {
                         name="category_description"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>category_description</FormLabel>
+                                <FormLabel>Description</FormLabel>
                                 <FormControl>
                                     <textarea
                                         className="w-full border border-solid border-[rgb(224,224,224)] p-2 rounded-[5px]"
