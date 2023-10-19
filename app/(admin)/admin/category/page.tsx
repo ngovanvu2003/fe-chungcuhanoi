@@ -12,7 +12,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { Link } from 'lucide-react';
+import Link from 'next/link';
+
 const DataTable = () => {
   const { data: cate, isLoading, isError } = useFetchData();
   const [categorys, setcategorys] = useState([])
