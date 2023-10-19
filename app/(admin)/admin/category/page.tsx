@@ -19,12 +19,12 @@ const DataTable = () => {
   const Category = cate?.response.data
 
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isError) {
-    return <div>Error loading data</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+  // if (isError) {
+  //   return <div>Error loading data</div>;
+  // }
   const HandleRemove = async (id: string) => {
     try {
       await removeCategories(id);
@@ -53,7 +53,7 @@ const DataTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {Category.map((invoice: any, index: number) => (
+          {Category?.map((invoice: any, index: number) => (
             <TableRow key={invoice._id}>
               <TableCell className="font-medium">{index + 1}</TableCell>
               <TableCell>{invoice.category_name}</TableCell>
