@@ -18,11 +18,11 @@ export default function AdminLayout({
   }, []);
 
   return (
-    <main className="flex">
+    <main className="">
       <div className="dark:bg-boxdark-2 dark:text-bodydark">
         <div className=" flex h-screen overflow-hidden">
           <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-          <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+          <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden w-full">
             <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
             <main>
