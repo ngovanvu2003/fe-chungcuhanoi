@@ -16,7 +16,7 @@ export const useFetchData = () => {
         isError: error,
     };
 };
-export const removeCategories = (id: any) => {
+export const removeCategories = (id: string | number) => {
     const url = `http://localhost:8080/api/category/${id}`;
     return fetch(url, {
         method: 'DELETE',

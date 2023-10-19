@@ -18,11 +18,12 @@ import { useForm } from "react-hook-form"
 import { addCategory } from "@/app/api/category"
 import { useState } from "react"
 import { useRouter } from "next/navigation";
+import { ICategorys } from "@/interfaces/auths";
 
 
 const formSchema = z.object({
     category_name: z.string().min(2, {
-        message: "category_name must be at least 2 characters.",
+        message: "Tối thiểu 2 ký tự",
     }),
     category_description: z.string()
 })
@@ -41,7 +42,7 @@ const page = () => {
         },
     })
 
-    const onSubmit = async (categoryData: any) => {
+    const onSubmit = async (categoryData: ICategorys) => {
         setIsSubmitting(true);
         try {
             await addCategory(categoryData);
@@ -77,7 +78,7 @@ const page = () => {
                             <FormItem>
                                 <FormLabel>Name</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="category_name" {...field} />
+                                    <Input placeholder="Nhập tên danh mục..." {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -92,7 +93,7 @@ const page = () => {
                                 <FormControl>
                                     <textarea
                                         className="w-full border border-solid border-[rgb(224,224,224)] p-2 rounded-[5px]"
-                                        placeholder="category_description"
+                                        placeholder="Nhập mô tả danh mục..."
                                         {...field}
                                         rows={4}  // Số dòng muốn hiển thị
                                     />

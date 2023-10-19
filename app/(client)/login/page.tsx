@@ -84,7 +84,7 @@ const Login = () => {
                     <div className="text-center mt-5">
                         <span> Bạn chưa có tài khoản? </span>
                         <Link
-                            href="/login"
+                            href="/signup"
                             className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800 no-underline"
                         >
                             Đăng ký!

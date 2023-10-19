@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { getCategoryById, updateCategory } from "@/app/api/category"
+import { ICategorys } from "@/interfaces/auths"
 
 
 const formSchema = z.object({
@@ -39,7 +40,6 @@ const page = () => {
     })
 
     useEffect(() => {
-        // Hàm lấy thông tin danh mục khi id thay đổi
         const fetchData = async () => {
             try {
                 if (id) {
@@ -47,7 +47,7 @@ const page = () => {
                     form.setValue('category_name', category.category_name);
                     form.setValue('category_description', category.category_description);
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.error("Failed to fetch category:", error.message);
             }
         };
@@ -56,7 +56,7 @@ const page = () => {
     }, [id, form]);
 
 
-    const onSubmit = async (categoryData: any) => {
+    const onSubmit = async (categoryData: ICategorys) => {
         setIsSubmitting(true);
         try {
             await updateCategory(id, categoryData)
@@ -64,7 +64,7 @@ const page = () => {
                 router.push('/admin/category');
             }, 1000)
             console.log("update thành công")
-        } catch (error) {
+        } catch (error: any) {
             console.error("Failed thêm thất bại:", error.message);
         } finally {
             setIsSubmitting(false);
@@ -102,7 +102,7 @@ const page = () => {
                                             className="w-full border border-solid border-[rgb(224,224,224)] p-2 rounded-[5px]"
                                             placeholder="category_description"
                                             {...field}
-                                            rows={4}  // Số dòng muốn hiển thị
+                                            rows={4}
                                         />
                                     </FormControl>
                                     <FormMessage />
