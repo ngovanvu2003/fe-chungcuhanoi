@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
 import { useParams } from "next/navigation"
 import { getCategoryById, updateCategory } from "@/app/api/category"
+import { useRouter } from "next/router"
 
 const formSchema = z.object({
     category_name: z.string().min(2, {
@@ -26,6 +27,7 @@ const formSchema = z.object({
 
 
 const page = () => {
+    const router = useRouter();
     const { id } = useParams()
     const [isSubmitting, setIsSubmitting] = useState(false);
     const form = useForm<z.infer<typeof formSchema>>({
@@ -60,7 +62,9 @@ const page = () => {
         setIsSubmitting(true);
         try {
             await updateCategory(id, categoryData)
-            // console.log(categoryData);
+            setTimeout(() => {
+                router.push('/admin/category');
+            }, 1000)
             console.log("update thành công")
         } catch (error) {
             console.error("Failed thêm thất bại:", error.message);

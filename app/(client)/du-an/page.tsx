@@ -7,6 +7,7 @@ import { PiPhoneCallLight } from "react-icons/pi";
 import { AiOutlineHeart } from "react-icons/ai";
 
 const Project = () => {
+
   return (
     <div className="container max-w-5xl mx-auto m-24">
       <div className="md:flex flex-col md:flex-row">

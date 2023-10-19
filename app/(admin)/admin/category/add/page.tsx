@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
 import { addCategory } from "@/app/api/category"
 import { useState } from "react"
+import { useRouter } from "next/router";
 
 const formSchema = z.object({
     category_name: z.string().min(2, {
@@ -28,6 +29,8 @@ const formSchema = z.object({
 
 
 const page = () => {
+    const router = useRouter();
+
     const [isSubmitting, setIsSubmitting] = useState(false);
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -41,7 +44,9 @@ const page = () => {
         setIsSubmitting(true);
         try {
             await addCategory(categoryData);
-            console.log("Category thêm thành công");
+            setTimeout(() => {
+                router.push('/admin/category');
+            }, 1000)
         } catch (error) {
             console.log("cate đã tồn tại")
             // console.error("Failed thêm thất bại:", error.message);

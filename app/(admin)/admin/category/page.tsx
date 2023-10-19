@@ -12,7 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { error } from 'console';
+import { Link } from 'lucide-react';
 const DataTable = () => {
   const { data: cate, isLoading, isError } = useFetchData();
   const [categorys, setcategorys] = useState([])
@@ -82,7 +82,7 @@ const DataTable = () => {
               <TableCell>{invoice.category_name}</TableCell>
               <TableCell>{invoice.category_description}</TableCell>
               <TableCell className="text-right">
-                <Button className='mr-2' variant="outline">sửa</Button>
+                <Button className='mr-2' variant="outline"><Link href={`/admin/category/update/${invoice?.id}`}>Update</Link></Button>
                 <Button className='' variant="outline" onClick={() => HandleRemove(invoice._id)}>Xóa</Button>
               </TableCell>
             </TableRow>
