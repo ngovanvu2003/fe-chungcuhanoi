@@ -1,7 +1,7 @@
 "use client"
 import { removeCategories, useFetchData } from '@/app/(client)/api/category';
 import React, { useEffect, useState } from 'react';
-import { useToast } from "@/components/ui/use-toast"
+import Swal from 'sweetalert2';
 import {
   Table,
   TableBody,
@@ -12,13 +12,15 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
+import { error } from 'console';
 const DataTable = () => {
     const { data: cate, isLoading, isError } = useFetchData();
     const [categorys,setcategorys] = useState([])
-    const { toast } = useToast()
-    const Category = cate?.response.data 
 
-  
+    useEffect(() =>{
+      setcategorys(cate?.response.data)
+    },[cate?.response.data])
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -27,20 +29,41 @@ const DataTable = () => {
     }
 const HandleRemove = async (id: string) => {
   try {
-    await removeCategories(id);
-    const updatedCategorys = categorys.filter(item => item._id !== id);
-    setcategorys(updatedCategorys);
-    toast({
-      description: "Danh mục đã được xóa thành công.",
-    })
 
+    Swal.fire({
+      title: 'Bạn có chắc muốn xóa ?',
+      showCancelButton: true,
+      confirmButtonText: 'ok',
+  
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await removeCategories(id)
+        .then(({ message }) => {
+          const updatedCategories = categorys.filter((item: any) => item._id !== id);
+          setcategorys(updatedCategories);
+          Swal.fire({
+            position: 'top',
+            icon: 'success',
+            title: `${message}`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        })
+        .catch((error) => {
+          Swal.fire({
+            position: 'top',
+            icon: 'error',
+            title: `${error.message}`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        });
+      }
+    })   
   } catch (error) {
-    toast({
-      description: "Lỗi xóa danh mục:"+ error,
-    })
-  }
+    console.error(error)
 }
-
+}
     return (
         <div>
     <Table>
@@ -53,7 +76,7 @@ const HandleRemove = async (id: string) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Category.map((invoice:any,index:number) => (
+        {categorys?.map((invoice:any,index:number) => (
           <TableRow key={invoice._id}>
             <TableCell className="font-medium">{index+1}</TableCell>
             <TableCell>{invoice.category_name}</TableCell>
@@ -70,4 +93,4 @@ const HandleRemove = async (id: string) => {
     );
 };
 
-export default DataTable;
+export default DataTable
