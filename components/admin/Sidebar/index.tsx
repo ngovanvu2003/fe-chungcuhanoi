@@ -205,7 +205,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       fill=""
                     />
                   </svg>
-                  Project
+                  Dự án
                 </Link>
               </li>
 
@@ -232,7 +232,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       fill=""
                     />
                   </svg>
-                  Category
+                  Danh mục
                 </Link>
               </li>
               {/* <!-- Menu Item Profile --> */}

@@ -77,10 +77,10 @@ const DataTable = () => {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead >STT</TableHead>
+            <TableHead >#</TableHead>
             <TableHead>Tên danh mục </TableHead>
             <TableHead>Mô tả </TableHead>
-            <TableHead className="text-right">Action</TableHead>
+            <TableHead className="text-right">Hành động</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -90,7 +90,7 @@ const DataTable = () => {
               <TableCell>{invoice.category_name}</TableCell>
               <TableCell>{invoice.category_description}</TableCell>
               <TableCell className="text-right">
-                <Button className='mr-2' variant="outline"><Link href={`/admin/category/update/${invoice?._id}`}>Update</Link></Button>
+                <Button className='mr-2' variant="outline"><Link href={`/admin/category/update/${invoice?._id}`}>Cập nhật</Link></Button>
                 <Button className='' variant="outline" onClick={() => HandleRemove(invoice._id)}>Xóa</Button>
               </TableCell>
             </TableRow>
