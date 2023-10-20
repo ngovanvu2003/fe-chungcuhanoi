@@ -20,13 +20,12 @@ export default function AdminLayout({
   return (
     <main className="">
       <div className="dark:bg-boxdark-2 dark:text-bodydark">
-        <div className=" flex h-screen overflow-hidden">
+        <div className=" flex h-screen overflow-x-hidden">
           <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-          <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden w-full">
+          <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
             <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
             <main>
-              <div className="mx-auto max-w-screen-xl  w-screen p-4 md:p-6 2xl:p-10">
+              <div className=" p-4 md:p-6 2xl:p-10">
                 {children}
               </div>
             </main>
