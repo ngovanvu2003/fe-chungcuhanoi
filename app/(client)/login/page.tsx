@@ -11,17 +11,23 @@ import Swal from 'sweetalert2';
 import { useEffect } from "react";
 import { useRouter } from 'next/navigation'
 import Link from "next/link";
+import { useLocalStorage } from "@/app/useLocalStore/useLocalStore";
 
 const Login = () => {
     const router = useRouter();
+    const [user, setUser] = useLocalStorage('user', null);
     const { register, handleSubmit, formState: { errors } } = useForm<FormLogin>({
         resolver: yupResolver(schemaLogin)
     })
+    console.log(user);
     const onHandleSubmit = async (data: FormLogin) => {
         try {
-            const results = await Signin(data);
-
-            if (results.success == false) {
+            const reponse = await Signin(data);
+            setUser({
+                token: reponse.token,
+                user: reponse.user
+            })
+            if (reponse.success == false) {
                 Swal.fire({
                     title: 'Opps!',
                     text: 'Sai tài khoản hoặc mật khẩu rồi anh ơi!',

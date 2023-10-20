@@ -12,7 +12,7 @@ export const fetchUser = (id: string) => {
 
 
 export const Signup = (data: FormSignup) => {
-    const url = 'http://localhost:8000/api/signup';
+    const url = 'http://localhost:8080/api/signup';
     return fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -23,7 +23,7 @@ export const Signup = (data: FormSignup) => {
 }
 
 export const Signin = (data: FormLogin) => {
-    const url = `http://localhost:8000/api/signin`;
+    const url = `http://localhost:8080/api/signin`;
     return fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
