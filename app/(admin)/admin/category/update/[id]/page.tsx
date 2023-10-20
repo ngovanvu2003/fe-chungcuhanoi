@@ -17,7 +17,7 @@ import { useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { getCategoryById, updateCategory } from "@/app/api/category"
 import { ICategorys } from "@/interfaces/auths"
-
+import Swal from 'sweetalert2';
 
 const formSchema = z.object({
     category_name: z.string().min(2, {
@@ -47,7 +47,7 @@ const page = () => {
                     form.setValue('category_name', category.category_name);
                     form.setValue('category_description', category.category_description);
                 }
-            } catch (error: any) {
+            } catch (error) {
                 console.error("Failed to fetch category:", error.message);
             }
         };
@@ -60,12 +60,20 @@ const page = () => {
         setIsSubmitting(true);
         try {
             await updateCategory(id, categoryData)
-            setTimeout(() => {
-                router.push('/admin/category');
-            }, 1000)
-            console.log("update thành công")
-        } catch (error: any) {
-            console.error("Failed thêm thất bại:", error.message);
+            Swal.fire({
+                title: '',
+                text: 'Cập nhật thành công !',
+                icon: 'success',
+                timer: 1500
+            })
+            router.push('/admin/category');
+
+        } catch (error) {
+            Swal.fire({
+                title: 'Opps',
+                text: 'Cập nhật thất bại!',
+                icon: 'error',
+            })
         } finally {
             setIsSubmitting(false);
         }

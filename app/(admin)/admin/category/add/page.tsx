@@ -29,7 +29,6 @@ const formSchema = z.object({
 })
 
 
-
 const page = () => {
     const router = useRouter();
 
@@ -57,7 +56,7 @@ const page = () => {
         } catch (error) {
             Swal.fire({
                 title: '',
-                text: 'Category đã tồn tại vui lòng nhập lại !',
+                text: 'Danh mục đã tồn tại vui lòng nhập lại !',
                 icon: 'error',
                 confirmButtonText: 'Nhập lại'
             })
