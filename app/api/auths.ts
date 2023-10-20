@@ -6,6 +6,7 @@ const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
 export const fetchUser = (id: string) => {
     const url = `/api/user/${id}`;
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useSWR(url, fetcher);
 };
 
