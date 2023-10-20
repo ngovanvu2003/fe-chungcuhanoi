@@ -19,7 +19,7 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormLogin>({
         resolver: yupResolver(schemaLogin)
     })
-    console.log(user);
+
     const onHandleSubmit = async (data: FormLogin) => {
         try {
             const reponse = await Signin(data);
