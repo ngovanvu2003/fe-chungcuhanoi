@@ -1,11 +1,9 @@
 import useSWR from "swr";
-import axios from "axios";
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
 export const fetchUser = (id: string) => {
     const url = `/api/projects/${id}`;
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useSWR(url, fetcher);
 };
 

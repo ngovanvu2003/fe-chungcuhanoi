@@ -1,5 +1,4 @@
 "use client"
-import { removeCategories, useFetchData } from '@/app/(client)/api/category';
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import {
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import Link from 'next/link';
+import { removeCategories, useFetchData } from '@/app/api/category';
 
 const DataTable = () => {
   const { data: cate, isLoading, isError } = useFetchData();

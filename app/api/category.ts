@@ -10,7 +10,6 @@ const fetcher = async (url) => {
 
 export const useFetchData = () => {
     const { data, error } = useSWR(apiUrl, fetcher);
-
     return {
         data,
         isLoading: !error && !data,
@@ -67,3 +66,12 @@ export const addCategory = async (newCategoryData: any) => {
         throw new Error('Thêm mới danh mục thất bại.');
     }
 };
+
+
+export const removeCategories = (id: string | number) => {
+    const url = `http://localhost:8080/api/category/${id}`;
+    return fetch(url, {
+        method: 'DELETE',
+
+    }).then((res) => res.json());
+}
