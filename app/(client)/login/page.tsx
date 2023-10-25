@@ -27,7 +27,7 @@ const Login = () => {
                 token: reponse.token,
                 user: reponse.user
             })
-            if (reponse.success == false) {
+            if (reponse.error === true) {
                 Swal.fire({
                     title: 'Opps!',
                     text: 'Sai tài khoản hoặc mật khẩu rồi anh ơi!',
