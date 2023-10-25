@@ -20,6 +20,13 @@ export const createProject = (data: any) => {
         },
     }).then((res) => res.json());
 }
+export const removeProject = (id: string | number) => {
+    const url = `http://localhost:8080/api/projects/${id}`;
+    return fetch(url, {
+        method: 'DELETE',
+    }).then((res) => res.json());
+}
+
 export const upLoadFiles = async (files: any) => {
     if (files) {
         const CLOUD_NAME = "ddu7xygjs";
