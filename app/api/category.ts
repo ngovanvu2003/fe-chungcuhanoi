@@ -2,7 +2,7 @@ import useSWR, { mutate } from 'swr';
 
 const apiUrl = 'http://localhost:8080/api/category';
 
-const fetcher = async (url) => {
+const fetcher = async (url: string) => {
     const response = await fetch(url);
     const data = await response.json();
     return data;
@@ -68,9 +68,9 @@ export const addCategory = async (newCategoryData: any) => {
 };
 
 
-export const removeCategories = (id: string | number) => {
+export const removeCategories = async (id: string | number) => {
     const url = `http://localhost:8080/api/category/${id}`;
-    return fetch(url, {
+    return await fetch(url, {
         method: 'DELETE',
 
     }).then((res) => res.json());

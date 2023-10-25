@@ -1,16 +1,16 @@
 import useSWR from "swr";
+import axios from "axios";
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
-
 export const fetchUser = (id: string) => {
     const url = `/api/projects/${id}`;
     return useSWR(url, fetcher);
 };
 
 
-export const createProject = (data: any) => {
+export const createProject = async (data: any) => {
     const url = 'http://localhost:8080/api/projects';
-    return fetch(url, {
+    return await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -18,9 +18,9 @@ export const createProject = (data: any) => {
         },
     }).then((res) => res.json());
 }
-export const removeProject = (id: string | number) => {
+export const removeProject = async (id: string | number) => {
     const url = `http://localhost:8080/api/projects/${id}`;
-    return fetch(url, {
+    return await fetch(url, {
         method: 'DELETE',
     }).then((res) => res.json());
 }
