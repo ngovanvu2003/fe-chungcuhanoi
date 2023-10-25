@@ -40,11 +40,11 @@ const page = () => {
             <form >
                 <div className="min-h-32 lg:col-span-3 ">
                     <div className='bg-white border border-slate-300 p-5 rounded-md'>
-                        <h2 className=" text-slate-700 font-semibold text-[35px] uppercase text-center">Update User</h2>
+                        <h3 className=" text-slate-700 font-semibold text-[35px] uppercase text-center">Cập nhật thông tin</h3>
                         <div className="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-y-10 lg:gap-x-6 p-4">
                             <div className='col-span-2'>
                                 <label className="block text-slate-800 text-sm font-medium mb-2">
-                                    User Name
+                                    Tên người dùng
                                 </label>
                                 <input
                                     type="text"
