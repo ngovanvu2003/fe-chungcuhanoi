@@ -14,7 +14,7 @@ export const fetchUser = (id: string) => {
 const apiUrl = "http://localhost:8080/api";
 
 export const Signup = async (data: FormSignup) => {
-    const url = `/${apiUrl}/signup`;
+    const url = `${apiUrl}/signup`;
     return await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -25,7 +25,7 @@ export const Signup = async (data: FormSignup) => {
 }
 
 export const Signin = async (data: FormLogin) => {
-    const url = `/${apiUrl}/signin`;
+    const url = `${apiUrl}/signin`;
     return await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
