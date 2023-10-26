@@ -1,35 +1,10 @@
 "use client"
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button"
+
 import Link from 'next/link';
-import { BiX } from "react-icons/bi";
-import { BsFillImageFill } from "react-icons/bs";
 const page = () => {
-  const [user,setUser]= useState<any>({});
-    useEffect(() => {
-   
-      const lcal = JSON.parse(localStorage.getItem("user") as string);
-      // console.log(lcal);
-      
-      setUser(lcal.user);
-    },[])
-    console.log(user);
+
+
     
-  //   if (isLoading) {
-  //     return <div>Loading...</div>;
-  //   }
-  //   if (isError) {
-  //     return <div>Error loading data</div>;
-  //   }
   return (
     <div className="overflow-x-auto text-black">
     <form >
@@ -51,7 +26,7 @@ const page = () => {
                           Tên người dùng
                         </label>  
                         <div className="border-solid border p-2 mt-2">
-                          {user.name}
+                          hello
                         </div>
                     </div>
                    
@@ -60,7 +35,7 @@ const page = () => {
                           Email
                         </label>  
                         <div className="border-solid border p-2 mt-2">
-                          {user.email}
+                         hhaa
                         </div>
                     </div>
 
@@ -69,7 +44,7 @@ const page = () => {
                           SĐT
                         </label>  
                         <div className="border-solid border p-2 mt-2">
-                          {user.phone}
+                          hihi
                         </div>
                     </div>
                   
@@ -82,7 +57,7 @@ const page = () => {
                             type="submit"
                             className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
-                            <Link href={`/admin/seting/user/update//${user._id}`}>Cập nhật</Link>
+                            <Link href={`/admin/settings/user/update/1`}>Cập nhật</Link>
                         </button>
                     </div>
                 </div>

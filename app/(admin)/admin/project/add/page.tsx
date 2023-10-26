@@ -25,13 +25,15 @@ const page = () => {
         selectedValue !== '' ? setDisableSelect(false) : setDisableSelect(true)
     }, [selectedValue])
 
-    const { user } = JSON.parse(localStorage.getItem('user') as any) || ''
+    const user = JSON.parse(localStorage.getItem('myacctoken') as any) || ''
+    console.log("ua", user);
+
     const router = useRouter();
     const { register, handleSubmit, formState: { errors } } = useForm<any>();
 
     const [images, setImages] = useState<any>([]);
     const [images1, setImages1] = useState<any>({});
-console.log("img1",images1)
+    console.log("img1", images1)
     const handleAddImage = (event: any) => {
         const files = event.target.files;
         for (let i = 0; i < files.length; i++) {
@@ -41,7 +43,7 @@ console.log("img1",images1)
                 const imageUrl = e.target.result;
                 setImages([...images, { files, file, imageUrl }]);
             }
-           
+
             reader.readAsDataURL(file);
         }
     };
@@ -60,8 +62,8 @@ console.log("img1",images1)
 
 
     const onHandleAdd = async (value: any) => {
- 
-     
+
+
         try {
             // const arrayImage = Array.from(getDataFromImages())
             // console.log("can",value.project_image);
@@ -71,7 +73,7 @@ console.log("img1",images1)
             //     const file = updatedImages[i];
             //     setImages1({...file});
             // }
-       
+
             // const updatedImages2:any = updatedImages.map((item:any) => item);
             // console.log(updatedImages2);
             // setImageUpload((prevImages: any) => [...prevImages, ...updatedImages] as any);
@@ -81,26 +83,27 @@ console.log("img1",images1)
                 project_image: imgs,
                 userId: user?._id
             }
-          
-            const response = await createProject(formReq);
-            if (response.success == true) {
-                Swal.fire({
-                    position: 'top',
-                    icon: 'success',
-                    title: `${response.message}`,
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                router.push("/admin/project")
-                return;
-            } else {
-                Swal.fire({
-                    title: 'Opps!',
-                    text: `${response.message}`,
-                    icon: 'error',
-                    confirmButtonText: 'Vui lòng thêm lại dữ liệu'
-                })
-            }
+            console.log(formReq);
+
+            // const response = await createProject(formReq);
+            // if (response.success == true) {
+            //     Swal.fire({
+            //         position: 'top',
+            //         icon: 'success',
+            //         title: `${response.message}`,
+            //         showConfirmButton: false,
+            //         timer: 1500
+            //     })
+            //     router.push("/admin/project")
+            //     return;
+            // } else {
+            //     Swal.fire({
+            //         title: 'Opps!',
+            //         text: `${response.message}`,
+            //         icon: 'error',
+            //         confirmButtonText: 'Vui lòng thêm lại dữ liệu'
+            //     })
+            // }
         } catch (error) {
             Swal.fire({
                 title: 'Opps!',

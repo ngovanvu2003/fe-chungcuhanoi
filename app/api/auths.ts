@@ -2,6 +2,7 @@ import { FormSignup } from '@/schemas/auths';
 import { FormLogin } from '@/schemas/auths';
 import useSWR from 'swr';
 import useGetToken from './getToken';
+import axios from 'axios';
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
@@ -34,35 +35,3 @@ export const Signin = async (data: FormLogin) => {
     }).then((res) => res.json());
 };
 
-export const useFetchDataUser = () => {
-    // Sử dụng SWR để gửi yêu cầu API lấy token
-    const { data: tokenData, error: tokenError } = useSWR(`${apiUrl}/user`, fetcher);
-
-    // Kiểm tra xem có lỗi khi lấy token hay không
-    if (tokenError) {
-        // Xử lý lỗi khi lấy token
-        return {
-            data: null,
-            isLoading: false,
-            isError: true,
-        };
-    }
-
-    // Lấy token từ dữ liệu phản hồi
-    const token = useGetToken(); // Giả sử token nằm trong phản hồi JSON
-
-    // Sử dụng token trong lời gọi API tiếp theo
-    const { data, error } = useSWR(`${apiUrl}/profile/`, (url) =>
-        fetch(url, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        }).then((res) => res.json())
-    );
-
-    return {
-        data,
-        isLoading: !error && !data,
-        isError: error,
-    };
-};
