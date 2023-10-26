@@ -15,7 +15,7 @@ import { useLocalStorage } from "@/app/useLocalStore/useLocalStore";
 
 const Login = () => {
     const router = useRouter();
-    const [user, setUser] = useLocalStorage('user', null);
+    const [user, setUser] = useLocalStorage('myacctoken', null);
     const { register, handleSubmit, formState: { errors } } = useForm<FormLogin>({
         resolver: yupResolver(schemaLogin)
     })

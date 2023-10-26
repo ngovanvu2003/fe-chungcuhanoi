@@ -1,5 +1,9 @@
 import useSWR from "swr";
 import axios from "axios";
+import useGetToken from "./getToken";
+
+
+const apiUrl = "http://localhost:8080/api/projects";
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 export const fetchUser = (id: string) => {
@@ -7,19 +11,21 @@ export const fetchUser = (id: string) => {
     return useSWR(url, fetcher);
 };
 
-
 export const createProject = async (data: any) => {
-    const url = 'http://localhost:8080/api/projects';
+    const token = useGetToken();
+    const url = `${apiUrl}`;
     return await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
+
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
         },
     }).then((res) => res.json());
 }
 export const removeProject = async (id: string | number) => {
-    const url = `http://localhost:8080/api/projects/${id}`;
+    const url = `/${apiUrl}/` + id;
     return await fetch(url, {
         method: 'DELETE',
     }).then((res) => res.json());

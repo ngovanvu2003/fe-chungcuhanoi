@@ -69,7 +69,7 @@ export const addCategory = async (newCategoryData: any) => {
 
 
 export const removeCategories = async (id: string | number) => {
-    const url = `http://localhost:8080/api/category/${id}`;
+    const url = `/${apiUrl}/${id}`;
     return await fetch(url, {
         method: 'DELETE',
 
