@@ -25,7 +25,7 @@ export const createProject = async (data: any) => {
     }).then((res) => res.json());
 }
 export const removeProject = async (id: string | number) => {
-    const url = `/${apiUrl}/` + id;
+    const url = `${apiUrl}/` + id;
     return await fetch(url, {
         method: 'DELETE',
     }).then((res) => res.json());
