@@ -35,3 +35,15 @@ export const Signin = async (data: FormLogin) => {
     }).then((res) => res.json());
 };
 
+// Hàm get one
+export const getUser = async (token: any) => {
+    const response = await fetch(`${apiUrl}/user/token/${token}`);
+
+    if (response.ok) {
+        const data = await response.json();
+        return data;
+    } else {
+        throw new Error('Không thể lấy thông tin danh mục.');
+    }
+};
+
