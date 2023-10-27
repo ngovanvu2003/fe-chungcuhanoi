@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import axios from "axios";
+import { log } from "console";
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
@@ -8,23 +9,33 @@ export const fetchUser = (id: string) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     return useSWR(url, fetcher);
 };
+// const proxy = require('http-proxy-middleware');
+// module.exports = function(app) {
+//     app.use('/api',
+//         proxy({
+//             target: 'http://localhost:8000',
+//             changeOrigin: true,
+//         })
+//     );
+// };
 
-
-export const createProject = (data: any) => {
+export const createProject = async (data: any) => {
     const url = 'http://localhost:8080/api/projects';
-    return fetch(url, {
+    const res = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json',
         },
-    }).then((res) => res.json());
+    });
+    return await res.json();
 }
-export const removeProject = (id: string | number) => {
+export const removeProject = async (id: string | number) => {
     const url = `http://localhost:8080/api/projects/${id}`;
-    return fetch(url, {
+    const res = await fetch(url, {
         method: 'DELETE',
-    }).then((res) => res.json());
+    });
+    return await res.json();
 }
 
 export const upLoadFiles = async (files: any) => {

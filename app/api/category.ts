@@ -1,8 +1,9 @@
 import useSWR, { mutate } from 'swr';
+import { RequestInfo } from 'undici-types';
 
 const apiUrl = 'http://localhost:8080/api/category';
 
-const fetcher = async (url) => {
+const fetcher = async (url: RequestInfo) => {
     const response = await fetch(url);
     const data = await response.json();
     return data;
@@ -10,7 +11,7 @@ const fetcher = async (url) => {
 
 export const useFetchData = () => {
     const { data, error } = useSWR(apiUrl, fetcher);
-
+    
     return {
         data,
         isLoading: !error && !data,
