@@ -1,6 +1,6 @@
 import { FormSignup } from '@/schemas/auths';
 import { FormLogin } from '@/schemas/auths';
-import useSWR from 'swr';
+
 
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
@@ -8,7 +8,7 @@ const fetcher = (url: any) => fetch(url).then((res) => res.json());
 export const fetchUser = (id: string) => {
     const url = `/api/user/${id}`;
 
-    return useSWR(url, fetcher);
+    return useSWr(url, fetcher);
 };
 const apiUrl = `${process.env.NEXT_PUBLIC_BDS_API}`;
 
