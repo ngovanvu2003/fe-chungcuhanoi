@@ -7,7 +7,7 @@ const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
 export const fetchUser = (id: string) => {
     const url = `/api/user/${id}`;
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+
     return useSWR(url, fetcher);
 };
 const apiUrl = `${process.env.NEXT_PUBLIC_BDS_API}`;

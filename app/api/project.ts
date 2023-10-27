@@ -33,8 +33,8 @@ export const removeProject = async (id: string | number) => {
 
 export const upLoadFiles = async (files: any) => {
     if (files) {
-        const CLOUD_NAME = "ddu7xygjs";
-        const PRESET_NAME = "ECMA-SCRIP";
+        const CLOUD_NAME = `${process.env.NEXT_PUBLIC_CLOUD_NAME}`;
+        const PRESET_NAME = `${process.env.NEXT_PUBLIC_PRESET_NAME}`;
         const FOLDER_NAME = "portfolio";
         const urls = [];
         const api = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
