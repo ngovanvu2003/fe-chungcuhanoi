@@ -96,19 +96,22 @@ useEffect(() => {
                 <p className="text-2xl font-semibold">
                     Danh sách dự án
                 </p>
-                <div className="flex justify-between my-10">
+               
+                <div className="flex justify-between my-10 ">
                      {/* select-search theo địa chỉ */}
-                     <div className="w-10"><label htmlFor="searchBy">Địa điểm:</label></div>
-                     <div>
-                        
-                        <select id="searchBy" value={search} onChange={(e) => setSearch(e.target.value)}>
-                            <option value="" onClick={searchBDS}>Tất cả </option>
+                     <div >
+                     <label htmlFor="searchBy" className="inline-block w-[5rem] text-sl mt-2">Địa điểm :</label>
+                     
+                     </div>
+                     
+                     <div  className="pr-2 border border-gray-300 rounded p-2 w-64 mr-3" > 
+                        <select id="searchBy" value={search} onChange={(e) => setSearch(e.target.value)} >
+                            <option value=""  onClick={searchBDS}>Tất cả</option>
                             {quanhuyen?.map((item:any , index :any) =>{
                                 return (
-                                         <option value={item.path_with_type}>{index} {item.path_with_type} </option>
+                                         <option value={item.name_with_type}>{index}. {item.name_with_type} </option>
                                 )
                             })}
-
                         </select>
                     </div>
                       {/* search filter  */}
