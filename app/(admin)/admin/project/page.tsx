@@ -19,11 +19,11 @@ import Image from "next/image";
 
 export default function TableDemo() {
     const fetcher = (args: string) => fetch(args).then(res => res.json());
-    const { data, error, isLoading } = useSWR<any, Error, string>(`http://localhost:8080/api/projects`, fetcher)
+    const { data, error, isLoading } = useSWR<any, Error, string>(`${process.env.NEXT_PUBLIC_BDS_API}/projects`, fetcher)
     const [projects, setprojects] = useState([]);
-    console.log(projects);
+
     
-    const ListAllProject = data?.response.data;
+    const ListAllProject = data?.response?.data;
     console.log(ListAllProject);
     
     useEffect(() => {

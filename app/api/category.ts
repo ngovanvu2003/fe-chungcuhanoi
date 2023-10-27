@@ -1,12 +1,13 @@
 import useSWR, { mutate } from 'swr';
 
-const apiUrl = 'http://localhost:8080/api/category';
 
 const fetcher = async (url: string) => {
     const response = await fetch(url);
     const data = await response.json();
     return data;
 };
+const apiUrl = `${process.env.NEXT_PUBLIC_BDS_API}/category`;
+
 
 export const useFetchData = () => {
     const { data, error } = useSWR(apiUrl, fetcher);

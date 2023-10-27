@@ -18,7 +18,7 @@ const page = () => {
       }
     }
     fetchUser();
-  },[listUser])
+  },[])
 
     
   return (

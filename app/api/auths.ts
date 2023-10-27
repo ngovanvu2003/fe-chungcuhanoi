@@ -1,8 +1,7 @@
 import { FormSignup } from '@/schemas/auths';
 import { FormLogin } from '@/schemas/auths';
 import useSWR from 'swr';
-import useGetToken from './getToken';
-import axios from 'axios';
+
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
@@ -11,7 +10,7 @@ export const fetchUser = (id: string) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     return useSWR(url, fetcher);
 };
-const apiUrl = "http://localhost:8080/api";
+const apiUrl = `${process.env.NEXT_PUBLIC_BDS_API}`;
 
 export const Signup = async (data: FormSignup) => {
     const url = `${apiUrl}/signup`;
