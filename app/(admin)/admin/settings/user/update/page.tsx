@@ -3,40 +3,55 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { BiX } from "react-icons/bi";
-import { MdCircle, MdOutlinePhoto } from "react-icons/md";
+import {  useRouter } from "next/navigation"
 import { BsFillImageFill } from "react-icons/bs";
-import { useParams } from "next/navigation";
+
 import { useForm } from "react-hook-form";
-// import { getUserById } from "@/app/api/user";
-
+import { updateuser, useFetchData } from "@/app/(client)/api/user";
+import Swal from 'sweetalert2';
 const page = () => {
+    const router = useRouter();
+    const { data, isLoading, isError } = useFetchData();
+    const { register, handleSubmit, setValue } = useForm();
+    const [userData, setUserData] = useState(null);
+    const datauser = data?.user
 
-    const {slug} = useParams()
-    console.log(slug)
+    
+    useEffect(() => {
+        if (!isLoading && !isError && data) {
+            setValue("name", datauser.name);
+            setValue("email", datauser.email);
+            setValue("phone", datauser.phone);
+            
+            setUserData(datauser);
+        }
+    }, [isLoading, isError, datauser, setValue]);
 
-    const {
-        register,
-        handleSubmit,
-    } = useForm()
 
+    const onhandlesubmit= async(user:any) => {
 
-    // const userfull = getUserById(slug)
-    // console.log(userfull)
-    // const [selectedValue, 
-    // ] = useState<string>('');
-    // const [disableSelect, setDisableSelect] = useState<boolean>(true);
+        try {
+            await updateuser(user)
+            Swal.fire({
+                title: '',
+                text: 'Cập nhật thành công !',
+                icon: 'success',
+                timer: 1500
+            })
+            router.push('/admin/settings/user');
 
-    // const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    //     setSelectedValue(event.target.value);
-    // }
-
-    // useEffect(() => {
-    //     selectedValue !== '' ? setDisableSelect(false) : setDisableSelect(true)
-    // }, [selectedValue])
+        } catch (error) {
+            Swal.fire({
+                title: 'Opps',
+                text: 'Cập nhật thất bại!',
+                icon: 'error',
+            })
+        } 
+       
+    }
 
     return (
-        <div className="overflow-x-auto text-black">
+        <div className="overflow-x-auto text-black" onSubmit={handleSubmit(onhandlesubmit)}>
             <form >
                 <div className="min-h-32 lg:col-span-3 ">
                     <div className='bg-white border border-slate-300 p-5 rounded-md'>
@@ -47,6 +62,7 @@ const page = () => {
                                     Tên người dùng
                                 </label>
                                 <input
+                                {...register("name")}
                                     type="text"
                                     className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                                     placeholder="User Name"
@@ -57,6 +73,7 @@ const page = () => {
                                     Email
                                 </label>
                                 <input
+                                {...register('email')}
                                     type="text"
                                     className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                                     placeholder="Email"
@@ -67,6 +84,7 @@ const page = () => {
                                     Password
                                 </label>
                                 <input
+                                 {...register('password')}
                                     type="text"
                                     className=" block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                                     placeholder="******"
@@ -77,6 +95,8 @@ const page = () => {
                                     Phone
                                 </label>
                                 <input
+                                 {...register('phone')}
+                                
                                     type="text"
                                     className=" block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                                     placeholder="SĐT"
