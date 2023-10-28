@@ -1,16 +1,19 @@
 import useSWR, { mutate } from 'swr';
+import { RequestInfo } from 'undici-types';
 
 
-const fetcher = async (url: string) => {
+const fetcher = async (url: RequestInfo) => {
     const response = await fetch(url);
     const data = await response.json();
     return data;
 };
-const apiUrl = `${process.env.NEXT_PUBLIC_BDS_API}/category`;
+
+const apiUrl = `${process.env.NEXT_PUBLIC_BDS_API_CATEGORY}`;
 
 
 export const useFetchData = () => {
     const { data, error } = useSWR(apiUrl, fetcher);
+    
     return {
         data,
         isLoading: !error && !data,
