@@ -1,6 +1,6 @@
 import useGetToken from "./getToken"
 
-const listInfoAccount = async () => {
+export const listInfoAccount = async () => {
     const token = useGetToken();
 
 }
