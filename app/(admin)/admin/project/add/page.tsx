@@ -66,45 +66,13 @@ const page = () => {
 
   const onHandleAdd = async (value: any) => {
     try {
-      // const arrayImage = Array.from(getDataFromImages())
-      // console.log("can",value.project_image);
-      // console.log("cos",arrayImage);
-      // const updatedImages:any = arrayImage.map((item:any , index:any) => item?.files);
-      // for (let i = 0; i < updatedImages.length; i++) {
-      //     const file = updatedImages[i];
-      //     setImages1({...file});
-      // }
 
-      // const updatedImages2:any = updatedImages.map((item:any) => item);
-      // console.log(updatedImages2);
-      // setImageUpload((prevImages: any) => [...prevImages, ...updatedImages] as any);
       const imgs = await upLoadFiles(value.project_image);
       const formReq = {
         ...value,
         project_image: imgs,
         userId: user?._id,
       };
-      console.log(formReq);
-
-      // const response = await createProject(formReq);
-      // if (response.success == true) {
-      //     Swal.fire({
-      //         position: 'top',
-      //         icon: 'success',
-      //         title: `${response.message}`,
-      //         showConfirmButton: false,
-      //         timer: 1500
-      //     })
-      //     router.push("/admin/project")
-      //     return;
-      // } else {
-      //     Swal.fire({
-      //         title: 'Opps!',
-      //         text: `${response.message}`,
-      //         icon: 'error',
-      //         confirmButtonText: 'Vui lòng thêm lại dữ liệu'
-      //     })
-      // }
     } catch (error) {
       Swal.fire({
         title: "Opps!",

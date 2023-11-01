@@ -39,6 +39,24 @@ const page = () => {
   });
   const { data } = useFetchData();
   const listCategories = data?.response?.data;
+
+  const [quanhuyen, setDataquanhuyen] = useState<any>();
+  useEffect(() => {
+    fetch(
+      "https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode=01&limit=-1"
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        const items = result.data.data;
+        console.log(items);
+        setDataquanhuyen(items);
+      })
+      .catch((error) => {
+        console.error("Lỗi khi gọi API:", error);
+      });
+  }, []);
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,13 +76,14 @@ const page = () => {
         console.error("Failed to fetch project:");
       }
     };
-
     fetchData();
   }, [slug, form]);
-  const onSubmit = async (projectData: IProject) => {
+  const onHandleSubmit = async (projectData: IProject) => {
     setIsSubmitting(true);
     try {
-      await updateProject(slug, projectData);
+      const results = await updateProject(slug, projectData);
+      console.log(results);
+
       Swal.fire({
         title: "",
         text: "Cập nhật thành công !",
@@ -96,7 +115,7 @@ const page = () => {
   return (
     <div className="overflow-x-auto text-black">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(onHandleSubmit)}>
           <div className="min-h-32 lg:col-span-3 ">
             <div className="bg-white border border-slate-300 p-5  rounded-md">
               <h2 className=" text-slate-700 font-semibold text-[35px] uppercase text-center">
@@ -113,6 +132,7 @@ const page = () => {
                     placeholder="Tên dự án"
                     {...form.register("project_name")}
                   />
+                  { }
                 </div>
                 <div className="grid grid-rows-[max-content_auto]">
                   <label className="block text-slate-800 text-sm font-medium mb-2">
