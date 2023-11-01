@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -14,62 +15,39 @@ import useSWR from "swr";
 import Swal from "sweetalert2";
 import { removeProject } from "@/app/api/project";
 import Image from "next/image";
-import { CiTrash } from "react-icons/ci";
-import { AiFillPlusCircle } from "react-icons/ai";
 
 export default function TableDemo() {
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
-
   const { data, error, isLoading } = useSWR<any, Error, string>(
-    `${process.env.NEXT_PUBLIC_BDS_API_PROJECT}`,
+    `${process.env.NEXT_PUBLIC_BDS_API}/projects`,
     fetcher
   );
-  const [projects, setprojects] = useState(data?.response?.data);
-  const [search, setSearch] = useState("");
-  const { data: searchQuery } = useSWR<any, Error, string>(
-    `${process.env.NEXT_PUBLIC_BDS_API_PROJECT}?_search=${search}`,
-    fetcher
-  );
+  const [projects, setprojects] = useState([]);
 
-  const [quanhuyen, setDataquanhuyen] = useState<any>();
-  useEffect(() => {
-    fetch(
-      "https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode=01&limit=-1"
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        const items = result.data.data;
-        console.log(items);
-        setDataquanhuyen(items);
-      })
-      .catch((error) => {
-        console.error("Lỗi khi gọi API:", error);
-      });
-  }, []);
+  const ListAllProject = data?.response?.data;
 
   useEffect(() => {
-    setprojects(searchQuery?.response?.data);
-  }, [searchQuery?.response?.data]);
-  const searchBDS = (e: any) => {
-    setSearch(e.target.value);
-  };
+    setprojects(ListAllProject);
+  }, [ListAllProject]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>error</div>;
-  const HandleRemovePrject = async (id: string) => {
+  const HandleRemove = async (id: string | number) => {
     try {
       Swal.fire({
-        title: "Bạn có chắc muốn xóa ?",
+        title: "Xóa đê",
         showCancelButton: true,
         confirmButtonText: "ok",
       }).then(async (result) => {
         if (result.isConfirmed) {
           await removeProject(id)
             .then(({ message }) => {
-              const updatedCategories = projects.filter(
+              const updatedProjects = projects.filter(
                 (item: any) => item._id !== id
               );
-              setprojects(updatedCategories);
+
+              // Update the state with the new data after removing the project
+              setprojects(updatedProjects);
               Swal.fire({
                 position: "top",
                 icon: "success",
@@ -89,62 +67,15 @@ export default function TableDemo() {
             });
         }
       });
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) { }
   };
-
   return (
     <div>
       <div className="flex justify-between my-10">
         <p className="text-2xl font-semibold">Danh sách dự án</p>
-
-        <div className="flex justify-between my-10 ">
-          {/* select-search theo địa chỉ */}
-          <div>
-            <label
-              htmlFor="searchBy"
-              className="inline-block w-[5rem] text-sl mt-2"
-            >
-              Địa điểm :
-            </label>
-          </div>
-
-          <div className="pr-2 border border-gray-300 rounded p-2 w-64 mr-3">
-            <select
-              id="searchBy"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            >
-              <option value="" onClick={searchBDS}>
-                Tất cả
-              </option>
-              {quanhuyen?.map((item: any, index: any) => {
-                return (
-                  <option value={item.name_with_type}>
-                    {index}. {item.name_with_type}{" "}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          {/* search filter  */}
-          <input
-            type="search"
-            className="mr-5 block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-            onChange={(e) => searchBDS(e)}
-            placeholder="Search ... "
-          />
-
-          <Button className="mr-5">
-            <CiTrash />
-          </Button>
-          <Button className="" variant="outline">
-            <Link href={"/admin/project/add"}>
-              <AiFillPlusCircle />
-            </Link>
-          </Button>
-        </div>
+        <Button className="" variant="outline">
+          <Link href={"/admin/project/add"}>Thêm dự án</Link>
+        </Button>
       </div>
       <Table className="">
         <TableHeader>
@@ -163,7 +94,7 @@ export default function TableDemo() {
         </TableHeader>
 
         <TableBody className=" border-collapse border">
-          {projects?.map((invoice: any, index: number) => (
+          {ListAllProject?.map((invoice: any, index: number) => (
             <TableRow key={invoice?._id}>
               <TableCell className="font-medium">{index + 1}</TableCell>
               <TableCell className="font-medium">
@@ -193,14 +124,12 @@ export default function TableDemo() {
               </TableCell>
               <TableCell className="text-right">
                 <Button className="mr-2" variant="outline">
-                  <Link href={`/admin/project/update/${invoice?._id}`}>
-                    Cập nhật
-                  </Link>
+                  <Link href={`/admin/category/update/`}>Cập nhật</Link>
                 </Button>
                 <Button
                   className=""
                   variant="outline"
-                  onClick={() => HandleRemovePrject(invoice._id)}
+                  onClick={() => HandleRemove(invoice?._id)}
                 >
                   Xóa
                 </Button>
