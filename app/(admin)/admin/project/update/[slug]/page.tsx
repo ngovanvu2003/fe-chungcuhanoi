@@ -24,6 +24,10 @@ const formSchema = z.object({
   project_acreage: z.number(),
   project_district: z.string(),
   category_name: z.string(),
+  categoryId: z.string(),
+  map_link: z.string(),
+  project_image: z.string()
+
 });
 
 const page = () => {
@@ -31,16 +35,30 @@ const page = () => {
   const { slug } = useParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
+
     resolver: zodResolver(formSchema),
     defaultValues: {
       project_name: "",
       project_content: "",
+      categoryId: "",
+      project_district: "",
+      project_location: "",
+      map_link: "",
+      project_image: "",
     },
+
   });
   const { data } = useFetchData();
+
   const listCategories = data?.response?.data;
 
   const [quanhuyen, setDataquanhuyen] = useState<any>();
+  const [images, setImages] = useState<any>([]);
+  const handleRemoveImage = (index: any) => {
+    const newImages = [...images];
+    newImages.splice(index, 1);
+    setImages(newImages);
+  };
   useEffect(() => {
     fetch(
       "https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode=01&limit=-1"
@@ -48,7 +66,6 @@ const page = () => {
       .then((response) => response.json())
       .then((result) => {
         const items = result.data.data;
-        console.log(items);
         setDataquanhuyen(items);
       })
       .catch((error) => {
@@ -56,12 +73,13 @@ const page = () => {
       });
   }, []);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (slug) {
           const { project } = await getProjectById(slug);
+          setImages(project.project_image)
+          form.setValue('project_location', project.project_location)
           form.setValue("project_name", project.project_name);
           form.setValue("project_content", project.project_content);
           form.setValue("project_price", project.project_price);
@@ -70,8 +88,10 @@ const page = () => {
           form.setValue("project_location", project.project_location);
           form.setValue("project_acreage", project.project_acreage);
           form.setValue("project_district", project.project_district);
-          form.setValue("category_name", listCategories.category_name);
+          form.setValue("categoryId", project.categoryId);
+          form.setValue("map_link", project.map_link)
         }
+
       } catch (error) {
         console.error("Failed to fetch project:");
       }
@@ -81,7 +101,10 @@ const page = () => {
   const onHandleSubmit = async (projectData: IProject) => {
     setIsSubmitting(true);
     try {
-      const results = await updateProject(slug, projectData);
+      const results = await updateProject(slug, {
+        ...projectData,
+        project_image: images
+      });
       console.log(results);
 
       Swal.fire({
@@ -138,7 +161,9 @@ const page = () => {
                   <label className="block text-slate-800 text-sm font-medium mb-2">
                     Danh mục
                   </label>
-                  <select className="w-full h-full min-h-[30px] px-2 border border-slate-300 rounded-md">
+                  <select
+                    {...form.register("categoryId")}
+                    className="w-full h-full min-h-[30px] px-2 border border-slate-300 rounded-md">
                     {listCategories?.map((item: any) => {
                       return (
                         <option key={item?._id} value={item?._id}>
@@ -186,13 +211,15 @@ const page = () => {
                     Quận/Huyện
                   </label>
                   <select
+                    {...form.register("project_district")}
                     value={selectedValue}
                     onChange={handleChange}
                     className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                   >
-                    <option value="">Quận/Huyện</option>
-                    <option value="Hà Nội">Hà Nội</option>
-                    <option value="Hà Nội">Hà Nội</option>
+                    {quanhuyen?.map((item: any) => (
+                      <option key={item?._id} value={item?._id}>{item?.name}</option>
+                    ))}
+
                   </select>
                 </div>
                 <div className="grid grid-rows-[max-content_auto]">
@@ -211,10 +238,11 @@ const page = () => {
                     Địa chỉ cụ thể
                   </label>
                   <input
+                    {...form.register("project_location")}
                     type="text"
                     className=" block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                     placeholder="Địa chỉ..."
-                    {...form.register("project_district")}
+
                   />
                 </div>
                 <div className="col-span-2">
@@ -233,10 +261,23 @@ const page = () => {
                     Map link
                   </label>
                   <input
+                    {...form.register('map_link')}
                     type="text"
                     className=" block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                     placeholder="http://..."
                   />
+                </div>
+                <div className="image-list">
+                  {images.map((image: any, index: any) => (
+                    <div key={index}>
+                      <img
+                        src={image}
+                        alt={`Ảnh ${index}`}
+                        key={index}
+                      />
+                      <h2 onClick={() => handleRemoveImage(index)}>Xóa</h2>
+                    </div>
+                  ))}
                 </div>
                 <div className="col-span-2">
                   <label
@@ -258,6 +299,7 @@ const page = () => {
                         >
                           <span>Upload a file</span>
                           <input
+                            {...form.register("project_image")}
                             id="file-upload"
                             type="file"
                             multiple

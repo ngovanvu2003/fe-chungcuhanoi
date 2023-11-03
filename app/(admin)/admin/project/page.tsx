@@ -124,7 +124,7 @@ export default function TableDemo() {
               </TableCell>
               <TableCell className="text-right">
                 <Button className="mr-2" variant="outline">
-                  <Link href={`/admin/category/update/`}>Cập nhật</Link>
+                  <Link href={`/admin/project/update/${invoice?._id}`}>Cập nhật</Link>
                 </Button>
                 <Button
                   className=""

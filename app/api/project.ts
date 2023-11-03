@@ -45,9 +45,7 @@ export const updateProject = async (projectId: any, projectData: any) => {
     },
     body: JSON.stringify(projectData),
   });
-
   if (response.ok) {
-
     mutate(apiUrl);
     return true;
   } else {

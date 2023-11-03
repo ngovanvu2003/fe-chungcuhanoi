@@ -1,15 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import { createProject, upLoadFiles } from "@/app/api/project";
 import { useEffect, useState } from "react";
 import { BiX } from "react-icons/bi";
-import { MdCircle, MdOutlinePhoto } from "react-icons/md";
 import { BsFillImageFill } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import { getUser } from "@/app/api/auths";
 import { useFetchData } from "@/app/api/category";
 const page = () => {
     const [selectedValue, setSelectedValue] = useState<string>("");
@@ -76,25 +72,13 @@ const page = () => {
 
     const onHandleAdd = async (value: any) => {
         try {
-            // const arrayImage = Array.from(getDataFromImages())
-            // console.log("can",value.project_image);
-            // console.log("cos",arrayImage);
-            // const updatedImages:any = arrayImage.map((item:any , index:any) => item?.files);
-            // for (let i = 0; i < updatedImages.length; i++) {
-            //     const file = updatedImages[i];
-            //     setImages1({...file});
-            // }
 
-            // const updatedImages2:any = updatedImages.map((item:any) => item);
-            // console.log(updatedImages2);
-            // setImageUpload((prevImages: any) => [...prevImages, ...updatedImages] as any);
             const imgs = await upLoadFiles(value.project_image);
             const formReq = {
                 ...value,
                 project_image: imgs,
                 userId: "653b76e9ea42a6a6490f955c",
             };
-            console.log(formReq);
 
             const response = await createProject(formReq);
             if (response.success == true) {
@@ -212,9 +196,8 @@ const page = () => {
                                     <option value="">chọn</option>
                                     {quanhuyen?.map((item: any, index: any) => {
                                         return (
-                                            // eslint-disable-next-line react/jsx-key
                                             <option value={item.name_with_type}>
-                                                {index}) {item.name_with_type}{" "}
+                                                {index} {item.name_with_type}{" "}
                                             </option>
                                         );
                                     })}
