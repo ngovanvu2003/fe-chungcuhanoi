@@ -1,4 +1,4 @@
-import Link from 'next/link'
+"use client"
 import React from 'react'
 import { MdOutlineArrowRightAlt } from 'react-icons/md'
 import { Card } from '../ui/card'
@@ -16,11 +16,17 @@ const OutstandingRealEstate = () => {
                     <MdOutlineArrowRightAlt />
                 </a>
             </div>
-            <Card className='grid grid-cols-1  mx-1 lg:grid-cols-4 gap-5  overflow-x-auto border-none rounded-none shadow-none' >
+            <Card className='grid grid-cols-1  mx-1 md:grid-cols-2 xl:grid-cols-4 gap-5  overflow-x-auto border-none rounded-none shadow-none' >
                 <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 '>
-                        <p className='truncate  text-green-600 text-xs bg-green-100 px-1 py-1 rounded'><span className='font-semibold' >Đang mở bán</span>- 10/2023: Mở bán phân khu mới</p>
+                        <span
+                            className='font-semibold truncate rounded  text-green-600 text-xs bg-green-100 px-1 py-1'
+                        >
+                            Đang mở bán
+                            <span>- 10/2023: Mở bán phân khu mới</span>
+                        </span>
+
                         <div>
                             <p className=' text-lg font-semibold '>Vinhomes Smart City</p>
                         </div>
@@ -31,7 +37,12 @@ const OutstandingRealEstate = () => {
                 <div className='  shadow rounded-md'>
                     <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
                     <div className='p-3 '>
-                        <p className='truncate  text-green-600 text-xs bg-green-100 px-1 py-1 rounded'><span className='font-semibold' >Đang mở bán</span>- 10/2023: Mở bán phân khu mới</p>
+                        <span
+                            className='font-semibold truncate rounded  text-green-600 text-xs bg-green-100 px-1 py-1'
+                        >
+                            Đang mở bán- <span>- 10/2023: Mở bán phân khu mới</span>
+                        </span>
+
                         <div>
                             <p className=' text-lg font-semibold '>Vinhomes Smart City</p>
                         </div>

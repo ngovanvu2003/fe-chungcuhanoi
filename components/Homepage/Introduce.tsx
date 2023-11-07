@@ -21,18 +21,18 @@ const Introduce = () => {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
                     infinite: true,
-
+                    arrows: false
                 }
             },
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    initialSlide: 1,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2,
                     arrows: false
                 }
             },
@@ -47,7 +47,7 @@ const Introduce = () => {
         ]
     }
     return (
-        <Slider className='border-none grid grid-cols-4 gap-10 text-center my-10' {...settings}>
+        <Slider className='border-none grid md:grid-cols-2 xl:grid-cols-4 gap-10 text-center my-10' {...settings}>
             <div>
                 <Link href={''}>
                     <img className='mx-auto' src="https://staticfile.batdongsan.com.vn/images/box-link-footer/ForSale.svg" alt="" />

@@ -13,11 +13,9 @@ import { IProject } from '@/interfaces/project';
 const RealEstate = () => {
     const fetcher = (args: string) => fetch(args).then(res => res.json());
     const { data, error, isLoading } = useSWR<IProject[], Error, string>(`${process.env.NEXT_PUBLIC_BDS_API_PROJECT}`, fetcher)
-    console.log(data);
-    const listData=data?.response?.data;
-    console.log(listData);
-    
-    
+    const listData = data?.response?.data;
+
+
     const [visibleProduct, setVisibleProduct] = useState(8);
     const hanleLoadMore = () => {
         setVisibleProduct(prevCount => prevCount + 8)
@@ -36,7 +34,7 @@ const RealEstate = () => {
                 <h3 className='font-semibold text-2xl'>Bất động sản dành cho bạn</h3>
                 <a href="" className='hover:text-gray-500 text-sm hidden md:block'>Tin nhà đất bán mới nhất </a>
             </div>
-            <Link href={'/du-an'} className='md:grid md:grid-cols-4 gap-7 md:max-w-screen-2xl mx-auto'>
+            <Link href={'/du-an'} className='md:grid md:grid-cols-3 xl:grid-cols-4 gap-7 md:max-w-screen-2xl mx-auto'>
                 {productToShow?.map((item: IProject) => {
                     return (
                         <div key={item?._id} className=' md:grid gap-2 max-md:p-2 md:flex-none my-1  shadow rounded-md relative'>
