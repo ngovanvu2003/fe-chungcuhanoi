@@ -82,18 +82,6 @@ const RealEstateByLocation = () => {
                     </Link>
                 </div>
             </div>
-            <div className='my-5 flex gap-5  whitespace-nowrap overflow-x-auto md:overflow-x-hidden '>
-                <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>
-                <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>
-                <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>
-                <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>
-                <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>
-                <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>
-                <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>
-                <Link href={''} className='text-sm my-5 border px-3 rounded-full bg-gray-100 py-2'>VinHome Smart City</Link>
-
-            </div>
-
         </Card>
     )
 }

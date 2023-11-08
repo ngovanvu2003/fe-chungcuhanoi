@@ -175,6 +175,16 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .text-detail {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -moz-line-clamp: 1;
+    overflow: hidden;
+  }
+}
 
 .slick-slide>div {
   margin: 0 10px;
@@ -183,6 +193,7 @@
 .slick-list {
   margin: 0 -10px;
 }
+
 .slick-prev::before,
 .slick-next::before {
   color: black;

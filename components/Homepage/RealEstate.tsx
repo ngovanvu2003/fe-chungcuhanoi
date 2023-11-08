@@ -8,13 +8,14 @@ import useSWR from 'swr';
 import Image from 'next/image';
 import { Skeleton } from '../ui/skeleton';
 import { IProject } from '@/interfaces/project';
+import { AiOutlineFieldTime } from 'react-icons/ai';
+import { VND } from '@/app/api/project';
 
 
 const RealEstate = () => {
     const fetcher = (args: string) => fetch(args).then(res => res.json());
     const { data, error, isLoading } = useSWR<IProject[], Error, string>(`${process.env.NEXT_PUBLIC_BDS_API_PROJECT}`, fetcher)
     const listData = data?.response?.data;
-
 
     const [visibleProduct, setVisibleProduct] = useState(8);
     const hanleLoadMore = () => {
@@ -38,11 +39,11 @@ const RealEstate = () => {
                 {productToShow?.map((item: IProject) => {
                     return (
                         <div key={item?._id} className=' md:grid gap-2 max-md:p-2 md:flex-none my-1  shadow rounded-md relative'>
-                            <p className='text-title mb-2  text-base font-semibold md:hidden '>{item?.project_name}</p>
+                            <p className='text-title   text-base font-semibold md:hidden mb-4'>{item?.project_name}</p>
                             <div className='grid grid-cols-[40%,60%] md:grid-cols-none' >
                                 <Image
                                     alt='Anh hihi'
-                                    src={item?.project_image[0]}
+                                    src={item?.project_image}
                                     className='md:w-full rounded md:rounded-t-md'
                                     width={200}
                                     height={200}
@@ -51,16 +52,21 @@ const RealEstate = () => {
                                     layout="responsive"
                                     quality={100}
                                 />
-                                <div className='px-4 pt-2 text-title max-md:absolute  top-6 left-36'>
+                                <div className='px-4 pt-2 text-title max-md:absolute  top-10 left-36'>
                                     <div className='hidden md:block'>
                                         <p className='text-title  text-base font-semibold '>{item?.project_name}</p>
                                     </div>
-                                    <p className=' text-red-500 font-semibold text-xl my-2'>{item?.project_acreage} m2</p>
+                                    <p className=' text-red-500 font-semibold text-base md:text-lg my-2'>{VND.format(item?.project_price)
+                                    } - {item?.project_acreage} m2</p>
                                     <p className='flex items-center gap-1 font-sans text-sm'>
                                         <i><CiLocationOn /></i>
                                         <span>{item?.project_district}</span>
                                     </p>
-                                    <p className='text-xs text-gray-500 my-2 md:my-5'>  Đăng hôm nay</p>
+                                    <p className=' text-gray-500 my-2 md:my-5 flex items-center gap-1'>
+                                        <i><AiOutlineFieldTime /></i>
+                                        <span className='text-sm'>Đăng hôm nay</span>
+
+                                    </p>
                                 </div>
                             </div>
                         </div>

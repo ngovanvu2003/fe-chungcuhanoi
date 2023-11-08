@@ -1,5 +1,5 @@
 export interface IProject {
-    id?: number | string,
+    _id?: number | string,
     project_name: string,
     project_acreage: number,
     project_price: number,

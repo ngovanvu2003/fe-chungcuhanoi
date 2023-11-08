@@ -88,3 +88,7 @@ export const upLoadFiles = async (files: any) => {
     return urls;
   }
 };
+export const VND = new Intl.NumberFormat('vi-VN', {
+  style: "currency",
+  currency: "VND"
+})

@@ -16,7 +16,7 @@ const RealEstateNews = () => {
         slidesToScroll: 1,
         initialSlide: 0,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 2000,
         responsive: [
             {
                 breakpoint: 1024,
@@ -31,9 +31,9 @@ const RealEstateNews = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1,
                     arrows: false
                 }
             },

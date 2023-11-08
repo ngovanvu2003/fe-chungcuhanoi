@@ -13,9 +13,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import useSWR from "swr";
 import Swal from "sweetalert2";
-import { removeProject } from "@/app/api/project";
+import { VND, removeProject } from "@/app/api/project";
 import Image from "next/image";
-
+import { AiOutlineDelete } from "react-icons/ai";
+import { VscRequestChanges } from "react-icons/vsc"
+import { MdGroupAdd } from "react-icons/md";
 export default function TableDemo() {
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
   const { data, error, isLoading } = useSWR<any, Error, string>(
@@ -25,6 +27,7 @@ export default function TableDemo() {
   const [projects, setprojects] = useState([]);
 
   const ListAllProject = data?.response?.data;
+  console.log(ListAllProject);
 
   useEffect(() => {
     setprojects(ListAllProject);
@@ -35,9 +38,9 @@ export default function TableDemo() {
   const HandleRemove = async (id: string | number) => {
     try {
       Swal.fire({
-        title: "Xóa đê",
+        title: "Bạn có muốn xóa không?",
         showCancelButton: true,
-        confirmButtonText: "ok",
+        confirmButtonText: "Xóa",
       }).then(async (result) => {
         if (result.isConfirmed) {
           await removeProject(id)
@@ -70,26 +73,26 @@ export default function TableDemo() {
     } catch (error) { }
   };
   return (
-    <div>
+    <div className=" overflow-x-auto">
       <div className="flex justify-between my-10">
         <p className="text-2xl font-semibold">Danh sách dự án</p>
         <Button className="" variant="outline">
-          <Link href={"/admin/project/add"}>Thêm dự án</Link>
+          <Link href={"/admin/project/add"}><MdGroupAdd /> </Link>
         </Button>
       </div>
-      <Table className="">
+      <Table className="overflow-x-auto w-[1500px]">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">#</TableHead>
+            <TableHead className="">#</TableHead>
             <TableHead>Tên dự án</TableHead>
             <TableHead>Gia tiền</TableHead>
-            <TableHead className="text-right">Số phòng</TableHead>
-            <TableHead className="text-right">Ảnh</TableHead>
-            <TableHead className="text-right">Địa điểm</TableHead>
-            <TableHead className="text-right">Mô tả</TableHead>
-            <TableHead className="text-right">Địa chỉ cụ thể</TableHead>
-            <TableHead className="text-right">Diện tích</TableHead>
-            <TableHead className="text-right">Action</TableHead>
+            <TableHead className="">Số phòng</TableHead>
+            <TableHead className="">Ảnh</TableHead>
+            <TableHead className="">Địa điểm</TableHead>
+            <TableHead className="">Mô tả</TableHead>
+            <TableHead className="">Địa chỉ cụ thể</TableHead>
+            <TableHead className="text-center">Diện tích</TableHead>
+            <TableHead className="w-[150px] text-center">Action</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -100,16 +103,22 @@ export default function TableDemo() {
               <TableCell className="font-medium">
                 {invoice?.project_name}
               </TableCell>
-              <TableCell>{invoice?.project_price}</TableCell>
+              <TableCell>{VND.format(invoice?.project_price)}</TableCell>
               <TableCell> {invoice?.project_room}</TableCell>
               <TableCell>
-                <Image
-                  className="w-[50px]"
-                  src={invoice?.project_image}
-                  alt="anh phong"
-                  width={300}
-                  height={300}
-                />{" "}
+                {invoice?.project_image[0] ? (
+                  <Image
+                    className="w-[50px]"
+                    src={invoice.project_image[0]}
+                    alt="anh phong"
+                    width={300}
+                    height={300}
+                  />
+                ) : (
+                  // Handle the case when there is no image
+                  <p>No image available</p>
+                )}
+
               </TableCell>
               <TableCell>{invoice?.project_location}</TableCell>
               <TableCell>{invoice?.project_content}</TableCell>
@@ -120,18 +129,15 @@ export default function TableDemo() {
                 {invoice?.project_acreage}
               </TableCell>
               <TableCell className="text-right">
-                {invoice?.project_acreage}
-              </TableCell>
-              <TableCell className="text-right">
                 <Button className="mr-2" variant="outline">
-                  <Link href={`/admin/project/update/${invoice?._id}`}>Cập nhật</Link>
+                  <Link href={`/admin/project/update/${invoice?._id}`}><VscRequestChanges /> </Link>
                 </Button>
                 <Button
                   className=""
                   variant="outline"
                   onClick={() => HandleRemove(invoice?._id)}
                 >
-                  Xóa
+                  <AiOutlineDelete />
                 </Button>
               </TableCell>
             </TableRow>
