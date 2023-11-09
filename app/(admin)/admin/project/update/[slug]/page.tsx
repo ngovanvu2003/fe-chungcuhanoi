@@ -61,11 +61,11 @@ const page = () => {
   };
   useEffect(() => {
     fetch(
-      "https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode=01&limit=-1"
+      "https://api-hanoi.onrender.com/hanoiCitys"
     )
       .then((response) => response.json())
       .then((result) => {
-        const items = result.data.data;
+        const items = result[0]?.districts;
         setDataquanhuyen(items);
       })
       .catch((error) => {
@@ -105,8 +105,6 @@ const page = () => {
         ...projectData,
         project_image: images
       });
-      console.log(results);
-
       Swal.fire({
         title: "",
         text: "Cập nhật thành công !",
@@ -217,7 +215,7 @@ const page = () => {
                     className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                   >
                     {quanhuyen?.map((item: any) => (
-                      <option key={item?._id} value={item?._id}>{item?.name}</option>
+                      <option key={item?.code} value={item?.code}>{item?.name}</option>
                     ))}
 
                   </select>
@@ -249,8 +247,8 @@ const page = () => {
                   <label className="block text-slate-800 text-sm font-medium mb-2">
                     Mô tả dự án
                   </label>
-                  <input
-                    type="text"
+                  <textarea
+
                     className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                     placeholder="Tên dự án"
                     {...form.register("project_content")}

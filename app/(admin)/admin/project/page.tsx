@@ -27,7 +27,6 @@ export default function TableDemo() {
   const [projects, setprojects] = useState([]);
 
   const ListAllProject = data?.response?.data;
-  console.log(ListAllProject);
 
   useEffect(() => {
     setprojects(ListAllProject);

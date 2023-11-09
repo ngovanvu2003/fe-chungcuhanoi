@@ -62,7 +62,7 @@ const RealEstate = () => {
                                         <i><CiLocationOn /></i>
                                         <span>{item?.project_district}</span>
                                     </p>
-                                    <p className=' text-gray-500 my-2 md:my-5 flex items-center gap-1'>
+                                    <p className=' text-gray-500 my-2 md:my-3 flex items-center gap-1'>
                                         <i><AiOutlineFieldTime /></i>
                                         <span className='text-sm'>Đăng hôm nay</span>
 

@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import { useFetchData } from "@/app/api/category";
 const page = () => {
     const [selectedValue, setSelectedValue] = useState<string>("");
-
+    const [phuong, setPhuong] = useState([]);
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedValue(event.target.value);
     };
@@ -17,17 +17,29 @@ const page = () => {
     const [quanhuyen, setDataquanhuyen] = useState<any>();
     useEffect(() => {
         fetch(
-            "https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode=01&limit=-1"
+            "https://api-hanoi.onrender.com/hanoiCitys"
         )
             .then((response) => response.json())
             .then((result) => {
-                const items = result.data.data;
-                setDataquanhuyen(items);
+                const item = result[0]?.districts;
+                setDataquanhuyen(item);
             })
             .catch((error) => {
                 console.error("Lỗi khi gọi API:", error);
             });
     }, []);
+    const handleChanges = (event: any) => {
+        const selectedDistrict = event.target.value;
+        setSelectedValue(selectedDistrict);
+
+        // Tìm danh sách phường tương ứng với quận/huyện đã chọn
+        const district = quanhuyen?.find((item: any) => item?.code === selectedDistrict);
+        console.log("district", district);
+        setPhuong(district?.wards);
+    };
+    console.log("data", phuong);
+
+    console.log(quanhuyen);
 
     const { data: cate, isLoading, isError } = useFetchData();
 
@@ -105,8 +117,6 @@ const page = () => {
                 text: `${error?.message}`,
                 icon: "error",
             });
-
-            console.log(error);
         }
     };
 
@@ -190,14 +200,14 @@ const page = () => {
                                 <select
                                     value={selectedValue}
                                     {...register("project_district")}
-                                    onChange={handleChange}
+                                    onChange={handleChanges}
                                     className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                                 >
                                     <option value="">chọn</option>
-                                    {quanhuyen?.map((item: any, index: any) => {
+                                    {quanhuyen?.map((item: any) => {
                                         return (
-                                            <option value={item.name_with_type}>
-                                                {index} {item.name_with_type}{" "}
+                                            <option key={item?.code} value={item.id}>
+                                                {item.name}
                                             </option>
                                         );
                                     })}
@@ -208,7 +218,9 @@ const page = () => {
                                     Phường
                                 </label>
                                 <select className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
-                                    <option value="">Abc</option>
+                                    {phuong?.map((item: any) => (
+                                        <option key={item?.code} value={item?.code}>{item?.name}</option>
+                                    ))}
                                 </select>
                             </div>
                             <div className="col-span-2">
