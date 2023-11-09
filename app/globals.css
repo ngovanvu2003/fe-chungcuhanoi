@@ -207,3 +207,8 @@
 .tablink:hover {
   border-color: red;
 }
+.imgP {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
