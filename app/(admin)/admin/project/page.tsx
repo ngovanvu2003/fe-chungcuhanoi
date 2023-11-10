@@ -71,9 +71,8 @@ export default function TableDemo() {
             });
         }
       });
-    } catch (error) {}
+    } catch (error) { }
   };
-  console.log(ListAllProject);
 
   return (
     <div className=" overflow-x-auto">
@@ -97,6 +96,7 @@ export default function TableDemo() {
             <TableHead className="">Mô tả</TableHead>
             <TableHead className="">Địa chỉ cụ thể</TableHead>
             <TableHead className="text-center">Diện tích</TableHead>
+            <TableHead className="text-center">Trạng thái</TableHead>
             <TableHead className="w-[150px] text-center">Action</TableHead>
           </TableRow>
         </TableHeader>
@@ -131,6 +131,9 @@ export default function TableDemo() {
               </TableCell>
               <TableCell className="text-right">
                 {invoice?.project_acreage}
+              </TableCell>
+              <TableCell className="text-right">
+                {invoice?.status}
               </TableCell>
               <TableCell className="text-right">
                 <Button className="mr-2" variant="outline">

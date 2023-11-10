@@ -16,6 +16,7 @@ const RealEstate = () => {
     const fetcher = (args: string) => fetch(args).then(res => res.json());
     const { data, error, isLoading } = useSWR<IProject[], Error, string>(`${process.env.NEXT_PUBLIC_BDS_API_PROJECT}`, fetcher)
     const listData = data?.response?.data;
+    console.log(listData);
 
     const [visibleProduct, setVisibleProduct] = useState(8);
     const hanleLoadMore = () => {
@@ -35,7 +36,7 @@ const RealEstate = () => {
                 <h3 className='font-semibold text-2xl'>Bất động sản dành cho bạn</h3>
                 <a href="" className='hover:text-gray-500 text-sm hidden md:block'>Tin nhà đất bán mới nhất </a>
             </div>
-            <Link href={'/du-an'} className='md:grid md:grid-cols-3 xl:grid-cols-4 gap-7 md:max-w-screen-2xl mx-auto'>
+            <div className='md:grid md:grid-cols-3 xl:grid-cols-4 gap-7 md:max-w-screen-2xl mx-auto'>
                 {productToShow?.map((item: IProject) => {
                     return (
                         <div key={item?._id} className=' md:grid gap-2 max-md:p-2 md:flex-none my-1  shadow rounded-md relative'>
@@ -43,7 +44,7 @@ const RealEstate = () => {
                             <div className='grid grid-cols-[40%,60%] md:grid-cols-none' >
                                 <Image
                                     alt='Anh hihi'
-                                    src={item?.project_image}
+                                    src={item?.project_image[0]?.image_url}
                                     className='md:w-full rounded md:rounded-t-md'
                                     width={200}
                                     height={200}
@@ -72,7 +73,7 @@ const RealEstate = () => {
                         </div>
                     )
                 })}
-            </Link>
+            </div>
             {visibleProduct < (listData as any).length && (
                 <button className='mx-auto flex items-center gap-2 border px-5 py-1 mt-4 md:my-10 md:px-10 rounded-lg border-gray-500 border-solid md:py-3' onClick={hanleLoadMore}>
                     <span>

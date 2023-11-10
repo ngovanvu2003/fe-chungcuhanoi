@@ -260,7 +260,17 @@ const page = () => {
                   {...register("map_link")}
                 />
               </div>
+              <div className="col-span-2">
+                <label className="block text-slate-800 text-sm font-medium mb-2">
+                  Trạng thái dự án
+                </label>
+                <select {...register("status")} defaultValue={1} className="border py-2 w-full px-2">
+                  <option value="1">Sắp mở bán</option>
+                  <option value="2">Đang mở bán</option>
+                  <option value="3">Đã bàn giao</option>
+                </select>
 
+              </div>
               {/* Form uploading */}
               <div className="col-span-2">
                 <FormUpload
