@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect,useState } from "react";
 import { BsShare } from "react-icons/bs";
@@ -15,7 +16,7 @@ import { getProjectById } from "@/app/api/project";
 const Index = () => {
 
 
-const [project, setProject] = useState(null);
+const [project, setProject] = useState<any>(null);
 const { id } = useParams<any>();
 
 useEffect(() => {
@@ -107,7 +108,7 @@ useEffect(() => {
          
         </div>
         <div className=" mb-5">
-          <a href="">{project?.project_location}</a>
+          <a href="">{project?.project_location }</a>
           <a href="" className="text-[#74150F] font-medium">
             Xem bản đồ
           </a>
@@ -116,7 +117,7 @@ useEffect(() => {
           <div className="relative">
             <img
               className="w-[100%] rounded-l-lg"
-              src={project?.project_image[0]?.image_url}
+              src={project?.project_image[0]?.image_url || ''}
               alt=""
             />
             <div className="absolute top-0 left-0 bg-slate-50 py-1 px-2 border rounded-md m-2 text-[#999] font-serif">
@@ -127,7 +128,7 @@ useEffect(() => {
             <div>
               <img
                 className="w-[100%] h-[100%]"
-                src={project?.project_image[1]?.image_url}
+                src={project?.project_image[1]?.image_url || ''}
                 alt=""
               />
             </div>
@@ -135,14 +136,14 @@ useEffect(() => {
               <div>
                 <img
                   className="w-[100%] h-[100%] rounded-tr-lg"
-                  src={project?.project_image[2]?.image_url}
+                  src={project?.project_image[2]?.image_url || ''}
                   alt=""
                 />
               </div>
               <div>
                 <img
                   className="w-[100%] h-[100%] rounded-br-lg"
-                  src={project?.project_image[3]?.image_url}
+                  src={project?.project_image[3]?.image_url || ''}
                   alt=""
                 />
               </div>
@@ -199,7 +200,7 @@ useEffect(() => {
               <label>
                 <h4>Diện tích</h4>
               </label>
-              <span>20 ha</span>
+              <span>{project?.project_acreage}</span>
             </div>
           </div>
 
@@ -214,7 +215,7 @@ useEffect(() => {
 
           <figure className="text-center text-[#999] ">
             <img
-              src={project?.project_image[0]?.image_url}
+              src={project?.project_image[0]?.image_url || ''}
               alt=""
               className="sm:w-[390px] sm:h-[200px] md:w-[100%] md:h-[400px]"
             />
@@ -480,7 +481,6 @@ useEffect(() => {
           <div className="mt-4 border border-solid rounded-lg">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.530475101017!2d105.59684152232977!3d21.091407092712373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134578f23c93a2b%3A0x8ca735f22ac7af97!2zUGjDuiBUaOG7i25oLCBOZ-G7jWMgVOG6o28sIFBow7pjIFRo4buNLCBIYW5vaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1699432334673!5m2!1sen!2s"
-              allowFullScreen=""
               className=" rounded-t-lg w-[100%] h-[400px]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
