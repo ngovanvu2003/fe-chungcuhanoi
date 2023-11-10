@@ -143,6 +143,7 @@ const page = () => {
           icon: "success",
           timer: 1500,
         });
+        router.push("/admin/project")
       }
     } catch (error) {
       Swal.fire({
@@ -172,7 +173,7 @@ const page = () => {
         <div className="min-h-32 lg:col-span-3 ">
           <div className="bg-white border border-slate-300 p-5 rounded-md">
             <h2 className=" text-slate-700 font-semibold text-[35px] uppercase text-center">
-              Thêm mới dự án
+              Cập nhật dự án
             </h2>
             <div className="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-y-10 lg:gap-x-6 p-4">
               <div className="col-span-2">
@@ -365,7 +366,7 @@ const page = () => {
                   type="submit"
                   className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Thêm mới
+                  Cập nhật
                 </button>
               </div>
             </div>

@@ -34,7 +34,7 @@ const page = () => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(event.target.value);
   };
-  const [quanhuyen, setDataquanhuyen] = useStat<any>();
+  const [quanhuyen, setDataquanhuyen] = useState<any>();
   useEffect(() => {
     fetch("https://api-hanoi.onrender.com/hanoiCitys")
       .then((response) => response.json())
