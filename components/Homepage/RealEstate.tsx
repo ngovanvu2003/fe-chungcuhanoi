@@ -54,7 +54,7 @@ const RealEstate = () => {
                                 />
                                 <div className='px-4 pt-2 text-title max-md:absolute  top-10 left-36'>
                                     <div className='hidden md:block'>
-                                        <p className='text-title  text-base font-semibold '>{item?.project_name}</p>
+                                        <Link href={`du-an/chi-tiet-du-an/${item._id}`}><p className='text-title  text-base font-semibold '>{item?.project_name}</p></Link>
                                     </div>
                                     <p className=' text-red-500 font-semibold text-base md:text-lg my-2'>{VND.format(item?.project_price)
                                     } - {item?.project_acreage} m2</p>

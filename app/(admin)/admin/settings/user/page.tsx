@@ -1,24 +1,11 @@
 "use client"
 
-import { getUser } from '@/app/api/auths';
+import { useFetchData } from '@/app/(client)/api/user';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 const page = () => {
-  const [user,setUser]=useState('');
-  const listUser=user?.user;
-  useEffect(()=>{
-    const {token} = JSON.parse(localStorage.getItem("myacctoken")!);
-    const fetchUser = async()=>{
-      try {
-        const data = await getUser(token);
-      setUser(data);
-      
-      } catch (error) {
-       alert('Có lỗi xảy ra vui lòng thử lại !')
-      }
-    }
-    fetchUser();
-  },[])
+  const { data, isLoading, isError } = useFetchData();
+  const datauser = data?.user
 
     
   return (
@@ -42,7 +29,7 @@ const page = () => {
                           Tên người dùng
                         </label>  
                         <div className="border-solid border p-2 mt-2">
-                          {listUser?.name}
+                          {datauser?.name}
                         </div>
                     </div>
                    
@@ -51,7 +38,7 @@ const page = () => {
                           Email
                         </label>  
                         <div className="border-solid border p-2 mt-2">
-                         {listUser?.email}
+                         {datauser?.email}
                         </div>
                     </div>
 
@@ -60,7 +47,7 @@ const page = () => {
                           SĐT
                         </label>  
                         <div className="border-solid border p-2 mt-2">
-                          {listUser?.phone}
+                          {datauser?.phone}
                         </div>
                     </div>
                   
@@ -72,7 +59,7 @@ const page = () => {
                             type="submit"
                             className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
-                            <Link href={`/admin/settings/user/update/${listUser?._id}`}>Cập nhật</Link>
+                            <Link href={`/admin/settings/user/update`}>Cập nhật</Link>
                         </button>
                     </div>
                 </div>
