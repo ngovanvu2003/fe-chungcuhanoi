@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -16,8 +15,9 @@ import Swal from "sweetalert2";
 import { VND, removeProject } from "@/app/api/project";
 import Image from "next/image";
 import { AiOutlineDelete } from "react-icons/ai";
-import { VscRequestChanges } from "react-icons/vsc"
+import { VscRequestChanges } from "react-icons/vsc";
 import { MdGroupAdd } from "react-icons/md";
+import { DeleteImage } from "@/app/api/upload";
 export default function TableDemo() {
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
   const { data, error, isLoading } = useSWR<any, Error, string>(
@@ -34,7 +34,7 @@ export default function TableDemo() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>error</div>;
-  const HandleRemove = async (id: string | number) => {
+  const HandleRemove = async (id: string | number, arrayImages: any) => {
     try {
       Swal.fire({
         title: "Bạn có muốn xóa không?",
@@ -44,10 +44,12 @@ export default function TableDemo() {
         if (result.isConfirmed) {
           await removeProject(id)
             .then(({ message }) => {
+              arrayImages.map((item: any) => {
+                DeleteImage(item.public_id);
+              });
               const updatedProjects = projects.filter(
                 (item: any) => item._id !== id
               );
-
               // Update the state with the new data after removing the project
               setprojects(updatedProjects);
               Swal.fire({
@@ -69,14 +71,18 @@ export default function TableDemo() {
             });
         }
       });
-    } catch (error) { }
+    } catch (error) {}
   };
+  console.log(ListAllProject);
+
   return (
     <div className=" overflow-x-auto">
       <div className="flex justify-between my-10">
         <p className="text-2xl font-semibold">Danh sách dự án</p>
         <Button className="" variant="outline">
-          <Link href={"/admin/project/add"}><MdGroupAdd /> </Link>
+          <Link href={"/admin/project/add"}>
+            <MdGroupAdd />{" "}
+          </Link>
         </Button>
       </div>
       <Table className="overflow-x-auto w-[1500px]">
@@ -108,16 +114,15 @@ export default function TableDemo() {
                 {invoice?.project_image[0] ? (
                   <Image
                     className="w-[50px]"
-                    src={invoice.project_image[0]}
+                    src={invoice?.project_image[0]?.image_url}
                     alt="anh phong"
                     width={300}
                     height={300}
                   />
                 ) : (
                   // Handle the case when there is no image
-                  <p>No image available</p>
+                  <p>{invoice.project_image[0]}</p>
                 )}
-
               </TableCell>
               <TableCell>{invoice?.project_location}</TableCell>
               <TableCell>{invoice?.project_content}</TableCell>
@@ -129,12 +134,16 @@ export default function TableDemo() {
               </TableCell>
               <TableCell className="text-right">
                 <Button className="mr-2" variant="outline">
-                  <Link href={`/admin/project/update/${invoice?._id}`}><VscRequestChanges /> </Link>
+                  <Link href={`/admin/project/update/${invoice?._id}`}>
+                    <VscRequestChanges />{" "}
+                  </Link>
                 </Button>
                 <Button
                   className=""
                   variant="outline"
-                  onClick={() => HandleRemove(invoice?._id)}
+                  onClick={() =>
+                    HandleRemove(invoice?._id, invoice?.project_image)
+                  }
                 >
                   <AiOutlineDelete />
                 </Button>
