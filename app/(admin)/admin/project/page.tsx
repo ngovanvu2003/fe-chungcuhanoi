@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -18,7 +18,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { VscRequestChanges } from "react-icons/vsc";
 import { MdGroupAdd } from "react-icons/md";
 import { DeleteImage } from "@/app/api/upload";
-export default function TableDemo() {
+const ListProjects = React.memo(() => {
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
   const { data, error, isLoading } = useSWR<any, Error, string>(
     `${process.env.NEXT_PUBLIC_BDS_API}/projects`,
@@ -157,4 +157,5 @@ export default function TableDemo() {
       </Table>
     </div>
   );
-}
+});
+export default ListProjects

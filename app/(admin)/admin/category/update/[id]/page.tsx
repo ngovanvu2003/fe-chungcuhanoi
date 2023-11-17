@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { getCategoryById, updateCategory } from "@/app/api/category"
 import { ICategorys } from "@/interfaces/auths"
@@ -27,7 +27,7 @@ const formSchema = z.object({
 })
 
 
-const page = () => {
+const UpdateCategories = React.memo(() => {
     const router = useRouter();
     const { id } = useParams()
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,7 +47,7 @@ const page = () => {
                     form.setValue('category_name', category.category_name);
                     form.setValue('category_description', category.category_description);
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.error("Failed to fetch category:", error.message);
             }
         };
@@ -123,6 +123,6 @@ const page = () => {
             </div>
         </div>
     )
-}
+});
 
-export default page
+export default UpdateCategories;
