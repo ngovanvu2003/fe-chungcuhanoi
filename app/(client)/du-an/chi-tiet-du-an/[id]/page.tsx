@@ -18,6 +18,7 @@ const Index = () => {
     const fetchProject = async () => {
       try {
         const response = await getProjectById(id);
+        
         if (response && response.project) {
           setProject(response.project);
         }
