@@ -9,7 +9,7 @@ import Search from './Search'
 import News from './News'
 import { DialogDemo } from '../modal/ModalSearch'
 
-const HomePage = () => {
+const HomePage = React.memo(() => {
     return (
         <div className='md:mx-10'>
             <Search />
@@ -21,6 +21,6 @@ const HomePage = () => {
             <Introduce />
         </div>
     )
-}
+});
 
 export default HomePage

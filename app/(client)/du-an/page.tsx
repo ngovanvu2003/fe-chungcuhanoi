@@ -4,21 +4,14 @@ import SearchPrj from "../../../components/admin/projects/searchprj";
 import Proj from "../../../components/admin/projects/project";
 import useSWR from "swr";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useEffect, useState } from "react";
-const Project = () => {
+import React from "react";
+const Project = React.memo(() => {
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
   const { data, error, isLoading } = useSWR<any, Error, string>(
     `${process.env.NEXT_PUBLIC_BDS_API}/projects`,
     fetcher
   );
-  const [projects, setprojects] = useState([]);
-
   const ListAllProject = data?.response?.data;
-
-  useEffect(() => {
-    setprojects(ListAllProject);
-  }, [ListAllProject]);
-
 
   if (error) return <div>error</div>
   if (isLoading) return <Skeleton />
@@ -54,7 +47,7 @@ const Project = () => {
               </select>
             </div>
           </div>
-          {projects?.map((item: any) => {
+          {ListAllProject?.map((item: any) => {
             return <Proj key={item?._id} dataProject={item} />
           })}
         </div>
@@ -101,6 +94,6 @@ const Project = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Project;
