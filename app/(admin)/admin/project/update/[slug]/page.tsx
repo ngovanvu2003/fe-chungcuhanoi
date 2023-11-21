@@ -23,7 +23,6 @@ const page = () => {
   const { data: cate } = useFetchData();
   const categoryData = cate?.response?.data;
   const [selectedFiles, setSelectedFiles] = useState<any>([]);
-  const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<any>([]);
 
   const {
@@ -84,7 +83,6 @@ const page = () => {
   }, [images?.project_image, setValue, slug]);
 
   const handleFileInputChange = (e: any) => {
-    setLoading(true);
     const files = e.target.files;
     const fileList = Array.from(files);
     const uploadDelay = 1500;
@@ -93,7 +91,6 @@ const page = () => {
         ...prevSelectedFiles,
         ...fileList,
       ]);
-      setLoading(false);
     }, uploadDelay);
   };
 

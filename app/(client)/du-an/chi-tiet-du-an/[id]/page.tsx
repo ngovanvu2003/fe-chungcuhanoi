@@ -11,7 +11,7 @@ import { useParams } from "next/navigation";
 import { getProjectById } from "@/app/api/project";
 import LocationOnTheMap from "@/components/admin/ProjectDetail/LocationOnTheMap";
 
-const Index = React.memo(() => {
+const ProjectDetail = React.memo(() => {
   const [project, setProject] = useState(null);
   const { id } = useParams<any>();
   useEffect(() => {
@@ -201,4 +201,4 @@ const Index = React.memo(() => {
     </div>
   );
 });
-export default Index;
+export default ProjectDetail;

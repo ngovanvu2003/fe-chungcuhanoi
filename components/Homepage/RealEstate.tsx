@@ -16,19 +16,17 @@ const RealEstate = () => {
     const fetcher = (args: string) => fetch(args).then(res => res.json());
     const { data, error, isLoading } = useSWR<IProject[], Error, string>(`${process.env.NEXT_PUBLIC_BDS_API_PROJECT}`, fetcher)
     const listData = data?.response?.data;
-    console.log(listData);
-
     const [visibleProduct, setVisibleProduct] = useState(8);
     const hanleLoadMore = () => {
         setVisibleProduct(prevCount => prevCount + 8)
     }
     const productToShow = listData?.slice(0, visibleProduct);
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
 
     if (isLoading) return <Skeleton />
     if (error) return <div>error</div>
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <Card className='border-none shadow-none rounded-none px-1 '>
