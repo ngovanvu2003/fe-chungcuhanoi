@@ -143,7 +143,7 @@ const page = () => {
           icon: "success",
           timer: 1500,
         });
-        router.push("/admin/project")
+        router.push("/admin/project");
       }
     } catch (error) {
       Swal.fire({
@@ -283,19 +283,118 @@ const page = () => {
                   {...register("project_location")}
                 />
               </div>
-
+              {/* Start Group Desc */}
               <div className="col-span-2">
                 <label htmlFor="" className="block text-sm font-medium mb-2">
                   Mô tả dự án
                 </label>
-                <textarea
-                  placeholder="Mô tả dự án..."
-                  cols={30}
-                  rows={5}
-                  {...register("project_content")}
-                  className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0 focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-                ></textarea>
+                <div className="overview w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 grid gap-1">
+                  <label htmlFor="overviewDescription">Tổng quan:</label>
+                  <input
+                    className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 "
+                    placeholder="Mô tả"
+                    type="text"
+                    id=""
+                    name=""
+                  ></input>
+                  <div className="grid justify-start">
+                    <FormUpload />
+                  </div>
+                </div>
+                <div className="overview w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 mt-2">
+                  <label htmlFor="overviewDescription">Vị trí:</label>
+                  <input
+                    className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 mb-2"
+                    type="text"
+                    placeholder="Mô tả"
+                    id=""
+                    name=""
+                  ></input>
+                  <div className="grid justify-start">
+                    <FormUpload />
+                  </div>
+
+                  <input
+                    type="text"
+                    className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 my-2"
+                    id="overviewImage"
+                    name="overviewImage"
+                  ></input>
+                </div>
+                <div className="overview w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 grid gap-1 mt-2">
+                  <label htmlFor="overviewDescription">Tiện ích:</label>
+                  <input
+                    className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 "
+                    placeholder="Tiêu đề"
+                    type="text"
+                    id=""
+                    name=""
+                  ></input>
+                  <input
+                    className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 mt-1 mb-1"
+                    placeholder="Mô tả"
+                    type="text"
+                    id=""
+                    name=""
+                  ></input>
+                  <div>
+                    <div className="grid justify-start">
+                      <FormUpload />
+                    </div>
+                    <input
+                      type="text"
+                      className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 my-2"
+                      placeholder="Mô tả hình ảnh"
+                      id="overviewImage"
+                      name="overviewImage"
+                    ></input>
+                  </div>
+                </div>
+                <div className="overview w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 grid gap-2 mt-2">
+                  <label htmlFor="overviewDescription">
+                    Thiết kế mặt bằng:
+                  </label>
+                  <input
+                    className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700"
+                    type="text"
+                    placeholder="Tiêu đề"
+                    id=""
+                    name=""
+                  ></input>
+                  <div className="grid justify-start">
+                    <FormUpload />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Mô tả hình ảnh"
+                    className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700"
+                    id="overviewImage"
+                    name="overviewImage"
+                  ></input>
+                  <input
+                    type="text"
+                    placeholder="Mô tả chi tiết"
+                    className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700"
+                    id="overviewImage"
+                    name="overviewImage"
+                  ></input>
+                </div>
+
+                <div className="overview w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 mt-2">
+                  <label htmlFor="overviewDescription">
+                    {" "}
+                    Tiện ích bổ sung:
+                  </label>
+                  <input
+                    className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700"
+                    placeholder="Tiêu đề"
+                    type="text"
+                    id=""
+                    name=""
+                  ></input>
+                </div>
               </div>
+              {/* End Group Desc */}
               <div className="col-span-2">
                 <label className="block text-slate-800 text-sm font-medium mb-2">
                   Map link

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { BsArrowRight } from "react-icons/bs";
 import SearchPrj from "../../../components/admin/projects/searchprj";
 import Proj from "../../../components/admin/projects/project";
@@ -13,12 +13,12 @@ const Project = React.memo(() => {
   );
   const ListAllProject = data?.response?.data;
 
-  if (error) return <div>error</div>
-  if (isLoading) return <Skeleton />
+  if (error) return <div>error</div>;
+  if (isLoading) return <Skeleton />;
   return (
     <div className="container max-w-7xl mx-auto m-20">
       <SearchPrj />
-      <div className="grid md:grid-cols-[60%,40%] gap-6 ">
+      <div className="grid md:grid-cols-[60%,37.5%] gap-6">
         <div>
           <div className="flex flex-wrap  ">
             <a href="#" className="text-gray-400">
@@ -48,11 +48,11 @@ const Project = React.memo(() => {
             </div>
           </div>
           {ListAllProject?.map((item: any) => {
-            return <Proj key={item?._id} dataProject={item} />
+            return <Proj key={item?._id} dataProject={item} />;
           })}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden md:block ">
           <div className="flex justify-between gap-8">
             <h2>Đánh giá dự án</h2>
             <a href="" className="flex gap-2 text-red-600  items-center">
