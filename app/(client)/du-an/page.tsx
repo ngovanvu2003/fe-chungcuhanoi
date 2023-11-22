@@ -9,7 +9,7 @@ const Project = React.memo(() => {
   const { data, error, isLoading } = useSWR<any, Error, string>(
     `${process.env.NEXT_PUBLIC_BDS_API}/projects`,
     fetcher
-  );x``
+  );
   const ListAllProject = data?.response?.data;
 
   if (error) return <div>error</div>;

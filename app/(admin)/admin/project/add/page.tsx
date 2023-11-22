@@ -27,8 +27,6 @@ const AddProject = () => {
   };
 
   const fetchWards = async (districtCode: any) => {
-    console.log("districtCode", districtCode);
-
     try {
       const response = await axios.get(`https://provinces.open-api.vn/api/d/${districtCode}?depth=2`);
       console.log("response", response);
@@ -38,7 +36,6 @@ const AddProject = () => {
       console.error('Error fetching wards:', error);
     }
   };
-  console.log(wards);
 
   const handleDistrictChange = (event: any) => {
     const selectedDistrictCode = event.target.value;
