@@ -24,9 +24,9 @@ const RealEstate = () => {
 
     if (isLoading) return <Skeleton />
     if (error) return <div>error</div>
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+    // useEffect(() => {
+    //     window.scrollTo(0, 0)
+    // }, [])
 
     return (
         <Card className='border-none shadow-none rounded-none px-1 '>

@@ -2,7 +2,8 @@
 const SearchPrj = () => {
   return (
     <div className="border p-3 mb-2 w-full hidden lg:block">
-      <div className=" grid grid-cols-[30%,12%,12%,12%,12%,12%] w-100 gap-4 items-center mx-auto  justify-between">
+      <form
+        className=" grid grid-cols-[30%,12%,12%,12%,12%,12%] w-100 gap-4 items-center mx-auto  justify-between">
         <div className="">
           <input
             type="text"
@@ -62,7 +63,7 @@ const SearchPrj = () => {
             <option value="">Đang mở bán</option>
           </select>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

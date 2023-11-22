@@ -16,8 +16,6 @@ const AddProject = () => {
   const [selectedWard, setSelectedWard] = useState('');
   const [result, setResult] = useState('');
 
-
-
   const fetchDistricts = async () => {
     try {
       const response = await axios.get('https://provinces.open-api.vn/api/?depth=2');
@@ -62,13 +60,16 @@ const AddProject = () => {
     }
   };
 
-
+  const [loading, setLoading] = useState(false);
 
   // useState upload image
   const [selectedFiles, setSelectedFiles] = useState<any>([]);
+  console.log("[]", selectedFiles);
+
   //----------------------------------------------------------------
   //  Thêm ảnh vào mảng
   const handleFileInputChange = (e: any) => {
+    setLoading(true);
     const files = e.target.files;
     const fileList = Array.from(files);
     const uploadDelay = 1500;
@@ -77,10 +78,10 @@ const AddProject = () => {
         ...prevSelectedFiles,
         ...fileList,
       ]);
+      setLoading(false);
     }, uploadDelay);
   };
   // ----------------------------------------------------------------
-
 
   const { data: cate, isLoading, isError } = useFetchData();
   const categoryData = cate?.response?.data;
@@ -95,7 +96,7 @@ const AddProject = () => {
 
   const onHanldSubmit = async (value: any) => {
     try {
-      if (Array.isArray(selectedFiles) && selectedFiles.length === 0) {
+      if (Array.isArray(selectedFiles) && selectedFiles?.length === 0) {
         Swal.fire({
           title: "Opps!",
           text: `Bạn chưa chọn ảnh`,
@@ -407,13 +408,13 @@ const AddProject = () => {
               {/* Form uploading */}
               <div className="col-span-2">
                 <FormUpload
-
+                  loading={loading}
                   handleFileInputChange={handleFileInputChange}
                   selectedFiles={selectedFiles}
                 />
                 <div
                   className={
-                    selectedFiles.length
+                    selectedFiles?.length
                       ? " border-dashed border-2 rounded-[8px] border-[#e5e5e5] "
                       : ""
                   }
@@ -422,7 +423,7 @@ const AddProject = () => {
                     setSelectedFiles={setSelectedFiles}
                     selectedFiles={selectedFiles}
                     handleFileInputChange={handleFileInputChange}
-
+                    loading={loading}
                   />
                 </div>
               </div>

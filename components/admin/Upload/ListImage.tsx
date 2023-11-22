@@ -15,7 +15,7 @@ const ListFiles = ({
   };
   return (
     <>
-      {selectedFiles.length > 0 && (
+      {selectedFiles?.length > 0 && (
         <div className=" m-2 text-center">
           {selectedFiles.map((file: any, index: any) => (
             <div

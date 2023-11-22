@@ -413,7 +413,7 @@ const page = () => {
                 />
                 <div
                   className={
-                    selectedFiles.length
+                    selectedFiles?.length
                       ? " border-dashed border-2 rounded-[8px] border-[#e5e5e5] "
                       : ""
                   }
