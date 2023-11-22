@@ -6,7 +6,7 @@ const FormUpload = ({ handleFileInputChange, selectedFiles, loading }: any) => {
       <div>
         <div
           className={`${
-            selectedFiles.length ? "hidden" : "flex justify-center"
+            selectedFiles?.length ? "hidden" : "flex justify-center"
           }`}
         >
           <input
