@@ -12,94 +12,137 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import useSWR from "swr";
 import Swal from "sweetalert2";
-import { VND, removeProject } from "@/app/api/project";
+import {  removeProject } from "@/app/api/project";
 import Image from "next/image";
-import { AiOutlineDelete } from "react-icons/ai";
-import { VscRequestChanges } from "react-icons/vsc";
-import { MdGroupAdd } from "react-icons/md";
-import { DeleteImage } from "@/app/api/upload";
-const ListProjects = React.memo(() => {
-  const fetcher = (args: string) => fetch(args).then((res) => res.json());
-  const { data, error, isLoading } = useSWR<any, Error, string>(
-    `${process.env.NEXT_PUBLIC_BDS_API}/projects`,
-    fetcher
-  );
-  const [projects, setprojects] = useState([]);
+import { CiTrash } from "react-icons/ci";
+import { AiFillPlusCircle } from "react-icons/ai";
 
-  const ListAllProject = data?.response?.data;
+export default function TableDemo() {
+    const fetcher = (args: string) => fetch(args).then(res => res.json());
+    const { data, error, isLoading } = useSWR<any, Error, string>(`http://localhost:8080/api/projects`, fetcher)
+    const [projects, setprojects] = useState(data?.response?.data);
+    const [search, setSearch] = useState('')
+    const { data: searchQuery } = useSWR<any, Error, string>(`http://localhost:8080/api/projects?_search=${search}`, fetcher)
+    // const handleSearch = (e: any) => {
+    //     e.target.value.https://vn-public-apis.fpo.vn/districts/getAll?limit=-1
+    // };
+const [quanhuyen, setDataquanhuyen] = useState<any>();
+useEffect(() => {
+  fetch('https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode=01&limit=-1')
+    .then(response => response.json())
+    .then(result => {
+      const items = result.data.data; 
+      console.log(items)
+      setDataquanhuyen(items);
+    })
+    .catch(error => {
+      console.error('Lỗi khi gọi API:', error);
+    });
+}, []);
 
-  useEffect(() => {
-    setprojects(ListAllProject);
-  }, [ListAllProject]);
+    useEffect(() => {
+        setprojects(searchQuery?.response?.data)
+    }, [searchQuery?.response?.data])
+    const searchBDS = (e: any) => {
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>error</div>;
-  const HandleRemove = async (id: string | number, arrayImages: any) => {
-    try {
-      Swal.fire({
-        title: "Bạn có muốn xóa không?",
-        showCancelButton: true,
-        confirmButtonText: "Xóa",
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          await removeProject(id)
-            .then(({ message }) => {
-              arrayImages.map((item: any) => {
-                DeleteImage(item.public_id);
-              });
-              const updatedProjects = projects.filter(
-                (item: any) => item._id !== id
-              );
-              // Update the state with the new data after removing the project
-              setprojects(updatedProjects);
-              Swal.fire({
-                position: "top",
-                icon: "success",
-                title: `${message}`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
+        setSearch(e.target.value)
+    }
+
+    if (isLoading) return <div>Loading...</div>
+    if (error) return <div>error</div>
+    const HandleRemovePrject = async (id: string) => {
+
+        try {
+
+            Swal.fire({
+                title: 'Bạn có chắc muốn xóa ?',
+                showCancelButton: true,
+                confirmButtonText: 'ok',
+
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    await removeProject(id)
+                        .then(({ message }) => {
+                            const updatedCategories = projects.filter((item: any) => item._id !== id);
+                            setprojects(updatedCategories);
+                            Swal.fire({
+                                position: 'top',
+                                icon: 'success',
+                                title: `${message}`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        })
+                        .catch((error) => {
+                            Swal.fire({
+                                position: 'top',
+                                icon: 'error',
+                                title: `${error.message}`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        });
+                }
             })
-            .catch((error) => {
-              Swal.fire({
-                position: "top",
-                icon: "error",
-                title: `${error.message}`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            });
+        } catch (error) {
+            console.error(error)
         }
       });
     } catch (error) { }
   };
 
-  return (
-    <div className=" overflow-x-auto">
-      <div className="flex justify-between my-10">
-        <p className="text-2xl font-semibold">Danh sách dự án</p>
-        <Button className="" variant="outline">
-          <Link href={"/admin/project/add"}>
-            <MdGroupAdd />{" "}
-          </Link>
-        </Button>
-      </div>
-      <Table className="overflow-x-auto w-[1500px]">
-        <TableHeader>
-          <TableRow>
-            <TableHead className="">#</TableHead>
-            <TableHead>Tên dự án</TableHead>
-            <TableHead>Gia tiền</TableHead>
-            <TableHead className="">Số phòng</TableHead>
-            <TableHead className="">Ảnh</TableHead>
-            <TableHead className="">Địa điểm</TableHead>
-            <TableHead className="">Mô tả</TableHead>
-            <TableHead className="">Địa chỉ cụ thể</TableHead>
-            <TableHead className="text-center">Diện tích</TableHead>
-            <TableHead className="text-center">Trạng thái</TableHead>
-            <TableHead className="w-[150px] text-center">Action</TableHead>
-          </TableRow>
-        </TableHeader>
+    return (
+        <div>
+            <div className="flex justify-between my-10">
+                <p className="text-2xl font-semibold">
+                    Danh sách dự án
+                </p>
+               
+                <div className="flex justify-between my-10 ">
+                     {/* select-search theo địa chỉ */}
+                     <div >
+                     <label htmlFor="searchBy" className="inline-block w-[5rem] text-sl mt-2">Địa điểm :</label>
+                     
+                     </div>
+                     
+                     <div  className="pr-2 border border-gray-300 rounded p-2 w-64 mr-3" > 
+                        <select id="searchBy" value={search} onChange={(e) => setSearch(e.target.value)} >
+                            <option value=""  onClick={searchBDS}>Tất cả</option>
+                            {quanhuyen?.map((item:any , index :any) =>{
+                                return (
+                                         <option value={item.name_with_type}>{index}. {item.name_with_type} </option>
+                                )
+                            })}
+                        </select>
+                    </div>
+                      {/* search filter  */}
+                      <input
+                        type="search"
+                        className="mr-5 block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+                        onChange={(e) => searchBDS(e)}
+                        placeholder="Search ... "
+                    />
+                   
+                    <Button className="mr-5"><CiTrash /></Button>
+                    <Button className='' variant="outline" ><Link href={'/admin/project/add'}><AiFillPlusCircle /></Link></Button>
+                </div>
+
+            </div>
+            <Table className="">
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="w-[100px]">#</TableHead>
+                        <TableHead>Tên dự án</TableHead>
+                        <TableHead>Gia tiền</TableHead>
+                        <TableHead className="text-right">Số phòng</TableHead>
+                        <TableHead className="text-right">Ảnh</TableHead>
+                        <TableHead className="text-right">Địa điểm</TableHead>
+                        <TableHead className="text-right">Mô tả</TableHead>
+                        <TableHead className="text-right">Địa chỉ cụ thể</TableHead>
+                        <TableHead className="text-right">Diện tích</TableHead>
+                        <TableHead className="text-right">Action</TableHead>
+                    </TableRow>
+                </TableHeader>
 
         <TableBody className=" border-collapse border">
           {ListAllProject?.map((invoice: any, index: number) => (
