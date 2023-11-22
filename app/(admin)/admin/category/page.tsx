@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button"
 import Link from 'next/link';
 import { removeCategories, useFetchData } from '@/app/api/category';
 
-const DataTable = () => {
+const ListCategories = React.memo(() => {
   const { data: cate, isLoading, isError } = useFetchData();
   const [categorys, setcategorys] = useState([])
 
@@ -98,6 +98,6 @@ const DataTable = () => {
       </Table>
     </div>
   );
-};
+});
 
-export default DataTable
+export default ListCategories

@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
 import { addCategory } from "@/app/api/category"
-import { useState } from "react"
+import React, { useState } from "react"
 import { useRouter } from "next/navigation";
 import { ICategorys } from "@/interfaces/auths";
 
@@ -29,9 +29,8 @@ const formSchema = z.object({
 })
 
 
-const page = () => {
+const AddCategories = React.memo(() => {
     const router = useRouter();
-
     const [isSubmitting, setIsSubmitting] = useState(false);
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -106,6 +105,6 @@ const page = () => {
             </Form>
         </div>
     )
-}
+});
 
-export default page
+export default AddCategories

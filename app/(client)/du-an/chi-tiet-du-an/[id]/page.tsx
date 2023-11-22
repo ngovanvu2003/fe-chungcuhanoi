@@ -6,19 +6,19 @@ import Details from "@/components/admin/ProjectDetail/Details";
 import Location from "@/components/admin/ProjectDetail/Location";
 import { BsShare } from "react-icons/bs";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { getProjectById } from "@/app/api/project";
 import LocationOnTheMap from "@/components/admin/ProjectDetail/LocationOnTheMap";
 
-const Index = () => {
+const ProjectDetail = React.memo(() => {
   const [project, setProject] = useState(null);
   const { id } = useParams<any>();
   useEffect(() => {
     const fetchProject = async () => {
       try {
         const response = await getProjectById(id);
-        
+
         if (response && response.project) {
           setProject(response.project);
         }
@@ -200,5 +200,5 @@ const Index = () => {
       <RelatedProducts />
     </div>
   );
-};
-export default Index;
+});
+export default ProjectDetail;
