@@ -3,9 +3,14 @@ export interface IProject1 {
   project_name: string;
   project_image: string;
 }
-
+export interface ListAllProjecs {
+  response: ListAllProject;
+}
+export interface ListAllProject {
+  data: IProject[];
+}
 export interface IProject {
-  id?: number | string;
+  _id?: number | string;
   project_name: string;
   project_location: string;
   project_district: string;
@@ -27,8 +32,8 @@ export interface IProject {
   deleted?: boolean;
 }
 export interface ImgProject {
-  public_id?: Object | string;
-  img_url: string;
+  public_id?: string;
+  image_url: string;
 }
 export interface IprojectResponse {
   data: IProject[];

@@ -7,26 +7,28 @@ import { Card } from '../ui/card';
 import useSWR from 'swr';
 import Image from 'next/image';
 import { Skeleton } from '../ui/skeleton';
-import { IProject } from '@/interfaces/project';
+import { IProject, ListAllProject } from '@/interfaces/project';
 import { AiOutlineFieldTime } from 'react-icons/ai';
 import { VND } from '@/app/api/project';
 
 
 const RealEstate = () => {
     const fetcher = (args: string) => fetch(args).then(res => res.json());
-    const { data, error, isLoading } = useSWR<IProject[], Error, string>(`${process.env.NEXT_PUBLIC_BDS_API_PROJECT}`, fetcher)
+    const { data, error, isLoading } = useSWR<ListAllProject | any, Error, string>(`${process.env.NEXT_PUBLIC_BDS_API_PROJECT}`, fetcher)
+
     const listData = data?.response?.data;
+
     const [visibleProduct, setVisibleProduct] = useState(8);
     const hanleLoadMore = () => {
         setVisibleProduct(prevCount => prevCount + 8)
     }
     const productToShow = listData?.slice(0, visibleProduct);
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     if (isLoading) return <Skeleton />
     if (error) return <div>error</div>
-    // useEffect(() => {
-    //     window.scrollTo(0, 0)
-    // }, [])
 
     return (
         <Card className='border-none shadow-none rounded-none px-1 '>
@@ -39,7 +41,7 @@ const RealEstate = () => {
                     return (
                         <div key={item?._id} className='h-max md:grid gap-2 max-md:p-2 md:flex-none my-1 shadow rounded-md relative'>
                             <p className='text-title text-base font-semibold md:hidden mb-4'>{item?.project_name}</p>
-                            <div className='min-h-[400px] h-max grid grid-cols-[40%,60%] md:grid-cols-none' >
+                            <div className='min-h-[340px] h-max grid grid-cols-[40%,60%] md:grid-cols-none' >
                                 <Image
                                     alt='Anh hihi'
                                     src={item?.project_image[0]?.image_url}
@@ -51,7 +53,7 @@ const RealEstate = () => {
                                     layout="responsive"
                                     quality={100}
                                 />
-                                : <Skeleton className="w-full min-h-[188px]" />
+
                                 <div className='px-4 pt-2 text-title max-md:absolute  top-10 left-36'>
                                     <div className='hidden md:block'>
                                         <Link href={`du-an/chi-tiet-du-an/${item._id}`}><p className='text-title  text-base font-semibold '>{item?.project_name}</p></Link>
