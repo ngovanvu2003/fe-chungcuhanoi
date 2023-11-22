@@ -15,10 +15,9 @@ const Homeslides = () => {
     fetcher
   );
   const ListAllProject = data?.response?.data;
-  
-  console.log("hihi",ListAllProject);
+
   return (
-    <div className="w-[100%]  md:h-[400px] lg:h-[500px]">
+    <div className="w-full  md:h-[400px] lg:h-[550px]">
       <Swiper
         className="relative group"
         spaceBetween={50}
@@ -41,7 +40,7 @@ const Homeslides = () => {
                 <img
                   src={items?.project_image[0].image_url}
                   alt=""
-                  className="w-[100%] h-full md:h-[500px] lg:h-[500px]"
+                  className="w-[100%] h-full md:h-[500px] lg:h-[550px]"
                 />
               </div>
 
@@ -50,13 +49,13 @@ const Homeslides = () => {
                   <label htmlFor="">{items?.status}</label>
                 </div>
 
-                
-                  <h1 className="font-medium text-sm my-1 md:text-2xl  lg:text-2xl lg:my-3 text-white">{items?.project_name}</h1>
-              
+
+                <h1 className="font-medium text-sm my-1 md:text-2xl  lg:text-2xl lg:my-3 text-white">{items?.project_name}</h1>
+
 
                 <div className="text-[rgba(255,255,255,0.8)] text-xs md:text-lg lg:text-lg">
                   <h2>
-                  {items?.project_district} - {items?.project_location}
+                    {items?.project_district} - {items?.project_location}
                   </h2>
                 </div>
               </div>

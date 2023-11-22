@@ -21,8 +21,8 @@ const Project = React.memo(() => {
   return (
     <div>
       <Homeslides />
-      <div className="container max-w-7xl mx-auto m-8">
-        <div className="container max-w-7xl mx-auto m-20">
+      <div className="mx-2 max-w-7xl  lg:m-8">
+        <div className=" max-w-7xl mx-auto lg:m-20">
           <div className="border p-3 mb-2 w-full hidden lg:block">
             <form
               className=" grid grid-cols-[30%,12%,12%,12%,12%,12%] w-100 gap-4 items-center mx-auto  justify-between">
