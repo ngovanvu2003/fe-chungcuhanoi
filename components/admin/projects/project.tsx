@@ -1,26 +1,40 @@
+import { Skeleton } from "@/components/ui/skeleton";
+import Image from "next/image";
 import Link from "next/link";
 
 const Proj = (dataProject: any) => {
-  console.log("dataProject", dataProject);
   const listInfoProject = dataProject?.dataProject;
+  console.log(listInfoProject);
+
   return (
     <div className="grid grid-cols-[30%,70%] gap-1 md:flex-row border shadow-lg p-2 mt-4 md:mt-8">
       <div className="w-full h-auto md:mr-4 rounded-md">
-        <img
+        {<Image
           src={listInfoProject?.project_image[0]?.image_url}
           alt=""
-          className="w-full h-auto md:h-44 md:w-60"
-        />
-        <div className="flex  gap-1 mt-1 md:w-40 h-28">
-          <img
+          className="w-full h-auto md:h-44 md:w-60 object-cover"
+          width={500}
+          height={500}
+          loading='lazy'
+          quality={100}
+        />}
+        <div className="flex gap-1 mt-1 md:w-40 h-28">
+          <Image
             src={listInfoProject?.project_image[1]?.image_url}
             alt=""
-            className="w-[105px] h-full"
+            className="w-[105px] h-full object-cover bg-center"
+            width={500}
+            height={500}
+            loading='lazy'
           />
-          <img
+          <Image
             src={listInfoProject?.project_image[2]?.image_url}
             alt=""
-            className="w-[105px]"
+            className="w-[105px] object-cover"
+            width={500}
+            height={500}
+            loading='lazy'
+            quality={100}
           />
         </div>
       </div>

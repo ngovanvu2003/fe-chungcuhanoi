@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Card } from '../ui/card';
+import Image from 'next/image';
 
 const RealEstateNews = () => {
     const settings = {
@@ -52,7 +53,15 @@ const RealEstateNews = () => {
             <h3 className='font-semibold text-2xl mb-8'>Tin tức bất động sản</h3>
             <Slider {...settings}  >
                 <Card className='border-none'>
-                    <img src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png" className='rounded' alt="" />
+                    <Image
+                        src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png"
+                        className='rounded w-full'
+                        alt=""
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                        quality={100}
+                    />
                     <div className='flex items-center gap-2 my-3'>
                         <h2 className="scroll-m-20 border-b pb-2 text-5xl font-semibold tracking-tight transition-colors first:mt-0 text-gray-700">
                             01
@@ -64,7 +73,15 @@ const RealEstateNews = () => {
 
                 </Card>
                 <div>
-                    <img src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png" className='rounded' alt="" />
+                    <Image
+                        src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png"
+                        className='rounded w-full'
+                        alt=""
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                        quality={100}
+                    />
                     <div className='flex items-center gap-2 my-3'>
                         <h2 className="  border-b pb-2 text-5xl font-semibold  text-gray-700">
                             02
@@ -76,7 +93,15 @@ const RealEstateNews = () => {
 
                 </div>
                 <div>
-                    <img src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png" className='rounded' alt="" />
+                    <Image
+                        src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png"
+                        className='rounded w-full'
+                        alt=""
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                        quality={100}
+                    />
                     <div className='flex items-center gap-2 my-3'>
                         <h2 className="scroll-m-20 border-b pb-2 text-5xl font-semibold tracking-tight transition-colors first:mt-0 text-gray-700">
                             03
@@ -88,7 +113,15 @@ const RealEstateNews = () => {
 
                 </div>
                 <div>
-                    <img src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png" className='rounded' alt="" />
+                    <Image
+                        src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png"
+                        className='rounded w-full'
+                        alt=""
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                        quality={100}
+                    />
                     <div className='flex items-center gap-2 my-3'>
                         <h2 className="scroll-m-20 border-b pb-2 text-5xl font-semibold tracking-tight transition-colors first:mt-0 text-gray-700">
                             04
@@ -100,7 +133,15 @@ const RealEstateNews = () => {
 
                 </div>
                 <div>
-                    <img src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png" className='rounded' alt="" />
+                    <Image
+                        src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png"
+                        className='rounded w-full'
+                        alt=""
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                        quality={100}
+                    />
                     <div className='flex items-center gap-2 my-3'>
                         <h2 className="scroll-m-20 border-b pb-2 text-5xl font-semibold tracking-tight transition-colors first:mt-0 text-gray-700">
                             05
@@ -112,7 +153,15 @@ const RealEstateNews = () => {
 
                 </div>
                 <div>
-                    <img src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png" className='rounded' alt="" />
+                    <Image
+                        src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/10/thi-truong-bat-dong-san-mien-tay-1.png"
+                        className='rounded w-full'
+                        alt=""
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                        quality={100}
+                    />
                     <div className='flex items-center gap-2 my-3'>
                         <h2 className="scroll-m-20 border-b pb-2 text-5xl font-semibold tracking-tight transition-colors first:mt-0 text-gray-700">
                             06

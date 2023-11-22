@@ -2,6 +2,7 @@
 import React from 'react'
 import { MdOutlineArrowRightAlt } from 'react-icons/md'
 import { Card } from '../ui/card'
+import Image from 'next/image'
 
 const OutstandingRealEstate = () => {
 
@@ -17,8 +18,16 @@ const OutstandingRealEstate = () => {
                 </a>
             </div>
             <Card className='grid grid-cols-1  mx-1 md:grid-cols-2 xl:grid-cols-4 gap-5  overflow-x-auto border-none rounded-none shadow-none' >
-                <div className='  shadow rounded-md'>
-                    <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
+                <div className='w-full shadow rounded-md'>
+                    <Image
+                        src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg"
+                        alt=""
+                        width={500}
+                        height={500}
+                        className='w-full'
+                        loading='lazy'
+                        quality={100}
+                    />
                     <div className='p-3 '>
                         <span
                             className='font-semibold truncate rounded  text-green-600 text-xs bg-green-100 px-1 py-1'
@@ -34,8 +43,16 @@ const OutstandingRealEstate = () => {
                         <span>Trung Hòa - Cầu Giấy</span>
                     </div>
                 </div>
-                <div className='  shadow rounded-md'>
-                    <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
+                <div className='w-full shadow rounded-md'>
+                    <Image
+                        src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg"
+                        alt=""
+                        width={500}
+                        height={500}
+                        className='w-full'
+                        loading='lazy'
+                        quality={100}
+                    />
                     <div className='p-3 '>
                         <span
                             className='font-semibold truncate rounded  text-green-600 text-xs bg-green-100 px-1 py-1'
@@ -50,8 +67,16 @@ const OutstandingRealEstate = () => {
                         <span>Trung Hòa - Cầu Giấy</span>
                     </div>
                 </div>
-                <div className='  shadow rounded-md'>
-                    <img src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg" alt="" />
+                <div className='w-full shadow rounded-md'>
+                    <Image
+                        src="https://file4.batdongsan.com.vn/crop/393x222/2023/10/09/20231009093238-c173_wm.jpg"
+                        alt=""
+                        width={500}
+                        height={500}
+                        className='w-full'
+                        loading='lazy'
+                        quality={100}
+                    />
                     <div className='p-3 '>
                         <span className='font-semibold truncate rounded  text-green-600 text-xs bg-green-100 px-1 py-1' >Đang mở bán</span>
                         <div>

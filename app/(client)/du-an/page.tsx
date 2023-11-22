@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 "use client"
 import { BsArrowRight } from "react-icons/bs";
 import SearchPrj from "../../../components/admin/projects/searchprj";
@@ -5,16 +6,16 @@ import Proj from "../../../components/admin/projects/project";
 import useSWR from "swr";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
+import Image from "next/image";
 const Project = React.memo(() => {
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
   const { data, error, isLoading } = useSWR<any, Error, string>(
     `${process.env.NEXT_PUBLIC_BDS_API}/projects`,
     fetcher
   );
-  const ListAllProject = data?.response?.data;
+  const listAllProject = data?.response?.data;
 
   if (error) return <div>error</div>
-  if (isLoading) return <Skeleton />
   return (
     <div className="container max-w-7xl mx-auto m-20">
       <SearchPrj />
@@ -47,11 +48,27 @@ const Project = React.memo(() => {
               </select>
             </div>
           </div>
-          {ListAllProject?.map((item: any) => {
-            return <Proj key={item?._id} dataProject={item} />
-          })}
+          {listAllProject
+            ? listAllProject?.map((item: any) => {
+              return < Proj key={item?._id
+              } dataProject={item} />
+            })
+            :
+            <div className="w-full grid grid-cols-[30%,70%] gap-1 mt-8 p-2 border">
+              <div className="w-full h-[290px] grid grid-cols-2 grid-rows-[65%,auto] gap-1">
+                <Skeleton className="w-full h-full bg-gray-300 col-span-2" />
+                <Skeleton className="w-full h-full bg-gray-300" />
+                <Skeleton className="w-full h-full bg-gray-300" />
+              </div>
+              <div className="flex flex-col justify-between h-full overflow-hidden">
+                <Skeleton className="w-[200px] h-[30px] bg-gray-300" />
+                <Skeleton className="w-full h-[60px] bg-gray-300" />
+                <Skeleton className="w-[100px] h-[30px] bg-gray-300" />
+                <Skeleton className="w-full h-[50px] bg-gray-300" />
+                <Skeleton className="w-full h-[50px] bg-gray-300" />
+              </div>
+            </div>}
         </div>
-
         <div className="hidden md:block">
           <div className="flex justify-between gap-8">
             <h2>Đánh giá dự án</h2>
@@ -60,10 +77,14 @@ const Project = React.memo(() => {
             </a>
           </div>
           <div>
-            <img
+            <Image
               src="https://file4.batdongsan.com.vn/crop/240x180/2023/11/08/20231108083903-2324_wm.jpg"
               alt=""
               className="w-full mt-2"
+              width={500}
+              height={500}
+              loading="lazy"
+              quality={100}
             />
           </div>
           <div className="mt-6">
@@ -75,10 +96,14 @@ const Project = React.memo(() => {
             </div>
             <div>
               <div className="flex gap-4">
-                <img
+                <Image
                   src="https://file4.batdongsan.com.vn/crop/240x180/2023/11/08/20231108083903-2324_wm.jpg"
                   alt=""
                   className="w-1/3 mt-2"
+                  width={500}
+                  height={500}
+                  loading="lazy"
+                  quality={100}
                 />
                 <div className="grid items-end">
                   <div className="font-bold">

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Image from 'next/image';
 
 
 const Introduce = () => {
@@ -50,7 +51,14 @@ const Introduce = () => {
         <Slider className='border-none grid md:grid-cols-2 xl:grid-cols-4 gap-10 text-center my-10' {...settings}>
             <div>
                 <Link href={''}>
-                    <img className='mx-auto' src="https://staticfile.batdongsan.com.vn/images/box-link-footer/ForSale.svg" alt="" />
+                    <Image
+                        className='mx-auto w-[50%]'
+                        src="https://staticfile.batdongsan.com.vn/images/box-link-footer/ForSale.svg" alt=""
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                        quality={100}
+                    />
                 </Link>
                 <h5 className='font-semibold mx-auto text-lg my-3'>Bất động sản bán</h5>
                 <p className='font-sans text-sm'>Bạn có thể tìm thấy ngôi nhà mơ ước hoặc cơ hội đầu tư hấp dẫn thông qua lượng tin rao lớn, uy tín về các loại hình <Link href={''} className='text-red-500'>bất động sản bán </Link>bất động sản bán
@@ -62,7 +70,14 @@ const Introduce = () => {
             </div>
             <div>
                 <Link href={''}>
-                    <img className='mx-auto' src="https://staticfile.batdongsan.com.vn/images/box-link-footer/ForRent.svg" alt="" />
+                    <Image
+                        className='mx-auto w-[50%]'
+                        src="https://staticfile.batdongsan.com.vn/images/box-link-footer/ForRent.svg" alt=""
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                        quality={100}
+                    />
                 </Link>
                 <h5 className='font-semibold mx-auto text-lg my-3'>Bất động sản cho thuê    </h5>
                 <p className='font-sans text-sm'>Cập nhật thường xuyên và đầy đủ các loại hình
@@ -76,7 +91,14 @@ const Introduce = () => {
             </div>
             <div>
                 <Link href={''}>
-                    <img className='mx-auto' src="https://staticfile.batdongsan.com.vn/images/box-link-footer/Projects.svg" alt="" />
+                    <Image
+                        className='mx-auto w-[50%]'
+                        src="https://staticfile.batdongsan.com.vn/images/box-link-footer/Projects.svg" alt=""
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                        quality={100}
+                    />
                 </Link>
                 <h5 className='font-semibold mx-auto text-lg my-3'>Đánh giá dự án</h5>
                 <p className='font-sans text-sm'>Các
@@ -85,7 +107,14 @@ const Introduce = () => {
             </div>
             <div>
                 <Link href={''}>
-                    <img className='mx-auto' src="https://staticfile.batdongsan.com.vn/images/box-link-footer/Wiki.svg" alt="" />
+                    <Image
+                        className='mx-auto w-[50%]'
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                        quality={100} src="https://staticfile.batdongsan.com.vn/images/box-link-footer/Wiki.svg" alt="" />
+
+
                 </Link>
                 <h5 className='font-semibold mx-auto text-lg my-3'>Wiki BĐS</h5>
                 <p className='font-sans text-sm'>Ngoài cập nhật những biến động thị trường, chúng tôi còn cung cấp kiến ​​thức, kinh nghiệm về mua bán, cho thuê, đầu tư, vay mua nhà,
