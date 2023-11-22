@@ -5,6 +5,8 @@ import Proj from "../../../components/admin/projects/project";
 import useSWR from "swr";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
+import Homeslides from "@/components/admin/projects/slided";
+
 const Project = React.memo(() => {
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
   const { data, error, isLoading } = useSWR<any, Error, string>(
@@ -12,11 +14,15 @@ const Project = React.memo(() => {
     fetcher
   );
   const ListAllProject = data?.response?.data;
-
+  
+  
+  
   if (error) return <div>error</div>
   if (isLoading) return <Skeleton />
   return (
-    <div className="container max-w-7xl mx-auto m-20">
+    <div>
+      <Homeslides/>
+    <div className="container max-w-7xl mx-auto m-8">
       <SearchPrj />
       <div className="grid md:grid-cols-[60%,40%] gap-6 ">
         <div>
@@ -92,6 +98,7 @@ const Project = React.memo(() => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 });
