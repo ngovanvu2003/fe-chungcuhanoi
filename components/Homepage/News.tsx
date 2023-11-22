@@ -46,13 +46,12 @@ const News = () => {
                                 <div className="grid lg:grid-cols-[60%,40%] mt-5 lg:gap-4  max-lg:border-b" >
                                     <div className="max-lg:grid max-lg:grid-cols-2 gap-2 justify-between">
                                         <Image
-                                            className="rounded mb-5 "
+                                            className="rounded mb-5 w-full"
                                             src="https://loremflickr.com/640/481/city"
                                             alt=""
-                                            width={100}
-                                            height={100}
+                                            width={500}
+                                            height={500}
                                             loading="lazy"
-                                            layout="responsive"
                                             quality={100}
                                         />
                                         <div>
@@ -86,13 +85,12 @@ const News = () => {
                                 <div className="grid lg:grid-cols-[60%,40%] mt-5 lg:gap-4  max-lg:border-b" >
                                     <div className="max-lg:grid max-lg:grid-cols-2 gap-2 justify-between">
                                         <Image
-                                            className="rounded mb-5 "
+                                            className="rounded mb-5 w-full"
                                             src="https://loremflickr.com/640/485/city"
                                             alt=""
-                                            width={100}
-                                            height={100}
+                                            width={500}
+                                            height={500}
                                             loading="lazy"
-                                            layout="responsive"
                                             quality={100}
                                         />
                                         <div>
@@ -126,13 +124,12 @@ const News = () => {
                                 <div className="grid lg:grid-cols-[60%,40%] mt-5 lg:gap-4  max-lg:border-b" >
                                     <div className="max-lg:grid max-lg:grid-cols-2 gap-2 justify-between">
                                         <Image
-                                            className="rounded mb-5 "
+                                            className="rounded mb-5 w-full"
                                             src="https://loremflickr.com/640/484/city"
                                             alt=""
-                                            width={100}
-                                            height={100}
+                                            width={500}
+                                            height={500}
                                             loading="lazy"
-                                            layout="responsive"
                                             quality={100}
                                         />
                                         <div>
@@ -166,13 +163,12 @@ const News = () => {
                                 <div className="grid lg:grid-cols-[60%,40%] mt-5 lg:gap-4  max-lg:border-b" >
                                     <div className="max-lg:grid max-lg:grid-cols-2 gap-2 justify-between">
                                         <Image
-                                            className="rounded mb-5 "
+                                            className="rounded mb-5 w-full"
                                             src="https://loremflickr.com/640/483/city"
                                             alt=""
-                                            width={100}
-                                            height={100}
+                                            width={500}
+                                            height={500}
                                             loading="lazy"
-                                            layout="responsive"
                                             quality={100}
                                         />
                                         <div>

@@ -4,13 +4,22 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import Link from 'next/link'
+import Image from 'next/image'
 const RealEstateByLocation = () => {
     return (
         <Card className='my-5 mt-14 border-none shadow-none  rounded-none'>
             <CardTitle className='font-semibold text-2xl mb-7'>Bất động sản theo địa điểm</CardTitle>
             <div className='grid grid-cols-1 md:grid-cols-2 px-1 gap-5 items-center'>
                 <Link href='' className='relative  outline-none'>
-                    <img src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg" alt="" className='rounded' />
+                    <Image
+                        src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg"
+                        alt=""
+                        width={500}
+                        height={500}
+                        className='rounded w-full'
+                        loading='lazy'
+                        quality={100}
+                    />
                     <div className='absolute top-0 mt-5 mx-5  text-white group'>
                         <div className=' hover:underline'>
                             <h4 className="scroll-m-20 text-xl  text-white font-semibold tracking-tight">
@@ -25,7 +34,15 @@ const RealEstateByLocation = () => {
                 </Link>
                 <div className='grid grid-cols-2 gap-4'>
                     <Link href='' className='relative  outline-none'>
-                        <img src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg" alt="" className='rounded' />
+                        <Image
+                            src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg"
+                            alt=""
+                            width={500}
+                            height={500}
+                            className='rounded w-full'
+                            loading='lazy'
+                            quality={100}
+                        />
                         <div className='absolute top-0 mt-5 mx-5  text-white group'>
                             <div className=' hover:underline'>
                                 <h4 className="scroll-m-20 text-xl  text-white font-semibold tracking-tight">
@@ -39,7 +56,15 @@ const RealEstateByLocation = () => {
                         </div>
                     </Link>
                     <Link href='' className='relative  outline-none'>
-                        <img src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg" alt="" className='rounded' />
+                        <Image
+                            src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg"
+                            alt=""
+                            width={500}
+                            height={500}
+                            className='rounded w-full'
+                            loading='lazy'
+                            quality={100}
+                        />
                         <div className='absolute top-0 mt-5 mx-5  text-white group'>
                             <div className=' hover:underline'>
                                 <h4 className="scroll-m-20 text-xl  text-white font-semibold tracking-tight">
@@ -53,7 +78,15 @@ const RealEstateByLocation = () => {
                         </div>
                     </Link>
                     <Link href='' className='relative  outline-none'>
-                        <img src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg" alt="" className='rounded' />
+                        <Image
+                            src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg"
+                            alt=""
+                            width={500}
+                            height={500}
+                            className='rounded w-full'
+                            loading='lazy'
+                            quality={100}
+                        />
                         <div className='absolute top-0 mt-5 mx-5  text-white group'>
                             <div className=' hover:underline'>
                                 <h4 className="scroll-m-20 text-xl  text-white font-semibold tracking-tight">
@@ -67,7 +100,15 @@ const RealEstateByLocation = () => {
                         </div>
                     </Link>
                     <Link href='' className='relative  outline-none'>
-                        <img src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg" alt="" className='rounded' />
+                        <Image
+                            src="https://moc.gov.vn/Images/TinTuc/Old/67/71/677172.jpg"
+                            alt=""
+                            width={500}
+                            height={500}
+                            className='rounded w-full'
+                            loading='lazy'
+                            quality={100}
+                        />
                         <div className='absolute top-0 mt-5 mx-5  text-white group'>
                             <div className=' hover:underline'>
                                 <h4 className="scroll-m-20 text-xl  text-white font-semibold tracking-tight">

@@ -37,13 +37,13 @@ const RealEstate = () => {
             <div className='md:grid md:grid-cols-3 xl:grid-cols-4 gap-7 md:max-w-screen-2xl mx-auto'>
                 {productToShow?.map((item: IProject) => {
                     return (
-                        <div key={item?._id} className=' md:grid gap-2 max-md:p-2 md:flex-none my-1  shadow rounded-md relative'>
-                            <p className='text-title   text-base font-semibold md:hidden mb-4'>{item?.project_name}</p>
-                            <div className='grid grid-cols-[40%,60%] md:grid-cols-none' >
+                        <div key={item?._id} className='h-max md:grid gap-2 max-md:p-2 md:flex-none my-1 shadow rounded-md relative'>
+                            <p className='text-title text-base font-semibold md:hidden mb-4'>{item?.project_name}</p>
+                            <div className='min-h-[400px] h-max grid grid-cols-[40%,60%] md:grid-cols-none' >
                                 <Image
                                     alt='Anh hihi'
                                     src={item?.project_image[0]?.image_url}
-                                    className='md:w-full rounded md:rounded-t-md'
+                                    className='md:w-full max-h-[188px] rounded md:rounded-t-md'
                                     width={200}
                                     height={200}
                                     objectFit='contain'
@@ -51,6 +51,7 @@ const RealEstate = () => {
                                     layout="responsive"
                                     quality={100}
                                 />
+                                : <Skeleton className="w-full min-h-[188px]" />
                                 <div className='px-4 pt-2 text-title max-md:absolute  top-10 left-36'>
                                     <div className='hidden md:block'>
                                         <Link href={`du-an/chi-tiet-du-an/${item._id}`}><p className='text-title  text-base font-semibold '>{item?.project_name}</p></Link>
@@ -72,7 +73,7 @@ const RealEstate = () => {
                     )
                 })}
             </div>
-            {visibleProduct < (listData as any).length && (
+            {visibleProduct < (listData as any)?.length && (
                 <button className='mx-auto flex items-center gap-2 border px-5 py-1 mt-4 md:my-10 md:px-10 rounded-lg border-gray-500 border-solid md:py-3' onClick={hanleLoadMore}>
                     <span>
                         Mở rộng
