@@ -36,29 +36,29 @@ const RealEstate = () => {
                 <h3 className='font-semibold text-2xl'>Bất động sản dành cho bạn</h3>
                 <a href="" className='hover:text-gray-500 text-sm hidden md:block'>Tin nhà đất bán mới nhất </a>
             </div>
-            <div className='md:grid md:grid-cols-3 xl:grid-cols-4 gap-7 md:max-w-screen-2xl mx-auto'>
+            <div className='md:grid md:grid-cols-3 xl:grid-cols-4 gap-7 md:max-w-screen-2xl mx-auto '>
                 {productToShow?.map((item: IProject) => {
                     return (
-                        <div key={item?._id} className='h-max md:grid gap-2 max-md:p-2 md:flex-none my-1 shadow rounded-md relative'>
+                        <div key={item?._id} className='h-max md:grid gap-2 max-md:p-2 md:flex-none my-1 border  shadow rounded-md '>
                             <p className='text-title text-base font-semibold md:hidden mb-4'>{item?.project_name}</p>
-                            <div className='min-h-[340px] h-max grid grid-cols-[40%,60%] md:grid-cols-none' >
+                            <div className=' lg:h-max grid grid-cols-[40%,60%] items-center md:grid-cols-none' >
                                 <Image
                                     alt='Anh hihi'
                                     src={item?.project_image[0]?.image_url}
-                                    className='md:w-full max-h-[188px] rounded md:rounded-t-md'
-                                    width={200}
-                                    height={200}
+                                    className='md:w-full   rounded md:rounded-t-md'
+                                    width={500}
+                                    height={500}
                                     objectFit='contain'
                                     loading="lazy"
                                     layout="responsive"
                                     quality={100}
                                 />
 
-                                <div className='px-4 pt-2 text-title max-md:absolute  top-10 left-36'>
+                                <div className='px-4 pt-2 text-title  ư'>
                                     <div className='hidden md:block'>
-                                        <Link href={`du-an/chi-tiet-du-an/${item._id}`}><p className='text-title  text-base font-semibold '>{item?.project_name}</p></Link>
+                                        <Link href={`du-an/chi-tiet-du-an/${item._id}`}><p className='text-title  text-sm font-semibold '>{item?.project_name}</p></Link>
                                     </div>
-                                    <p className=' text-red-500 font-semibold text-base md:text-lg my-2'>{VND.format(item?.project_price)
+                                    <p className=' text-red-500 font-semibold text-sm  md:text-lg my-2'>{VND.format(item?.project_price)
                                     } - {item?.project_acreage} m2</p>
                                     <p className='flex items-center gap-1 font-sans text-sm'>
                                         <i><CiLocationOn /></i>

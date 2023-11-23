@@ -5,7 +5,6 @@ import Remises from "@/components/admin/ProjectDetail/Remises";
 import Details from "@/components/admin/ProjectDetail/Details";
 import Location from "@/components/admin/ProjectDetail/Location";
 import { BsShare } from "react-icons/bs";
-
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { getProjectById } from "@/app/api/project";
@@ -27,7 +26,6 @@ const ProjectDetail = React.memo(() => {
           setProject(response.project);
         }
       } catch (error) {
-        // Handle errors if needed
         console.error("Error fetching project:", error);
       }
     };
