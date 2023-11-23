@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 "use client";
 import { BsArrowRight } from "react-icons/bs";
 import Proj from "../../../components/admin/projects/project";
@@ -14,9 +15,6 @@ const Project = React.memo(() => {
     fetcher
   );
   const ListAllProject = data?.response?.data;
-  if (error) return <div>error</div>;
-  if (isLoading) return <Skeleton />;
-
   return (
     <div>
       <Homeslides />
