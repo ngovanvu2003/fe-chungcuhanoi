@@ -18,22 +18,24 @@ const AddProject = () => {
 
   const fetchDistricts = async () => {
     try {
-      const response = await axios.get('https://provinces.open-api.vn/api/?depth=2');
+      const response = await axios.get(
+        "https://provinces.open-api.vn/api/?depth=2"
+      );
       setDistricts(response?.data[0].districts);
-
     } catch (error) {
-      console.error('Error fetching districts:', error);
+      console.error("Error fetching districts:", error);
     }
   };
 
   const fetchWards = async (districtCode: any) => {
     try {
-      const response = await axios.get(`https://provinces.open-api.vn/api/d/${districtCode}?depth=2`);
+      const response = await axios.get(
+        `https://provinces.open-api.vn/api/d/${districtCode}?depth=2`
+      );
       console.log("response", response);
       setWards(response.data.wards);
-
     } catch (error) {
-      console.error('Error fetching wards:', error);
+      console.error("Error fetching wards:", error);
     }
   };
 
@@ -41,7 +43,7 @@ const AddProject = () => {
     const selectedDistrictCode = event.target.value;
     setSelectedDistrict(selectedDistrictCode);
     fetchWards(selectedDistrictCode);
-    setResult('');
+    setResult("");
   };
 
   const handleWardChange = (event: any) => {
@@ -245,7 +247,8 @@ const AddProject = () => {
                 <select
                   value={selectedWard}
                   onChange={handleWardChange}
-                  className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                  className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+                >
                   {wards?.map((item: any) => (
                     <option key={item?.code} value={item?.code}>
                       {item?.name}
@@ -280,7 +283,12 @@ const AddProject = () => {
                     name=""
                   ></input>
                   <div className="grid justify-start">
-                    <FormUpload />
+                    <input
+                      type="file"
+                      className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
+                      name=""
+                      id=""
+                    />
                   </div>
                 </div>
                 <div className="overview w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 mt-2">
@@ -293,7 +301,12 @@ const AddProject = () => {
                     name=""
                   ></input>
                   <div className="grid justify-start">
-                    <FormUpload />
+                    <input
+                      type="file"
+                      className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
+                      name=""
+                      id=""
+                    />
                   </div>
 
                   <input
@@ -321,7 +334,12 @@ const AddProject = () => {
                   ></input>
                   <div>
                     <div className="grid justify-start">
-                      <FormUpload />
+                      <input
+                        type="file"
+                        className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
+                        name=""
+                        id=""
+                      />
                     </div>
                     <input
                       type="text"
@@ -344,7 +362,12 @@ const AddProject = () => {
                     name=""
                   ></input>
                   <div className="grid justify-start">
-                    <FormUpload />
+                    <input
+                      type="file"
+                      className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
+                      name=""
+                      id=""
+                    />
                   </div>
                   <input
                     type="text"

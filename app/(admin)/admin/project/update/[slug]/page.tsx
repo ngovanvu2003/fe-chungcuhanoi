@@ -24,7 +24,7 @@ const page = () => {
   const categoryData = cate?.response?.data;
   const [selectedFiles, setSelectedFiles] = useState<any>([]);
   const [images, setImages] = useState<any>([]);
-
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -295,7 +295,12 @@ const page = () => {
                     name=""
                   ></input>
                   <div className="grid justify-start">
-                    <FormUpload />
+                    <input
+                      type="file"
+                      className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
+                      name=""
+                      id=""
+                    />
                   </div>
                 </div>
                 <div className="overview w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 mt-2">
@@ -308,7 +313,12 @@ const page = () => {
                     name=""
                   ></input>
                   <div className="grid justify-start">
-                    <FormUpload />
+                    <input
+                      type="file"
+                      className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
+                      name=""
+                      id=""
+                    />
                   </div>
 
                   <input
@@ -336,7 +346,12 @@ const page = () => {
                   ></input>
                   <div>
                     <div className="grid justify-start">
-                      <FormUpload />
+                      <input
+                        type="file"
+                        className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
+                        name=""
+                        id=""
+                      />
                     </div>
                     <input
                       type="text"
@@ -359,7 +374,12 @@ const page = () => {
                     name=""
                   ></input>
                   <div className="grid justify-start">
-                    <FormUpload />
+                    <input
+                      type="file"
+                      className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
+                      name=""
+                      id=""
+                    />
                   </div>
                   <input
                     type="text"
