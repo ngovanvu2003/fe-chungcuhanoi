@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.8.4",
+    "@tanstack/react-query-devtools": "^5.8.3",
+    "@tanstack/react-query-next-experimental": "^5.8.4",
+    "@tanstack/react-table": "^8.10.7",
     "@hookform/resolvers": "^3.3.2",
     "@mui/material": "^5.14.13",
     "@radix-ui/react-avatar": "^1.0.4",
@@ -23,9 +27,8 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.5",
     "@react-icons/all-files": "^4.1.0",
-    "@react-jvectormap/core": "^1.0.4",
+    "@react-jvectormap/core": "^1.0.4", 
     "@react-jvectormap/unitedstates": "^1.0.1",
-    "@tanstack/react-table": "^8.10.7",
     "apexcharts": "^3.43.2-0",
     "axios": "^1.6.2",
     "class-variance-authority": "^0.7.0",
