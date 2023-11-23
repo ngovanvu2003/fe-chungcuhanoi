@@ -1,8 +1,5 @@
 "use client"
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import Swal from 'sweetalert2';
 import { Button } from "@/components/ui/button"
 import {
     Form,
@@ -18,52 +15,22 @@ import { useForm } from "react-hook-form"
 import { addCategory } from "@/app/api/category"
 import React, { useState } from "react"
 import { useRouter } from "next/navigation";
-import { ICategorys } from "@/interfaces/auths";
+import { useCategoriesMutation } from "@/app/Hooks/useCategoriesMutation"
 
-
-const formSchema = z.object({
-    category_name: z.string().min(2, {
-        message: "Tối thiểu 2 ký tự",
-    }),
-    category_description: z.string()
-})
 
 
 const AddCategories = React.memo(() => {
     const router = useRouter();
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            category_name: "",
-            category_description: ""
+
+    const { form, onSubmit } = useCategoriesMutation({
+        action: "CREATE",
+        onSuccess: () => {
+            console.log("Thêm thành công");
+            form.reset();
+            router.push("/admin/category");
         },
     })
 
-    const onSubmit = async (categoryData: ICategorys) => {
-        setIsSubmitting(true);
-        try {
-            await addCategory(categoryData);
-            Swal.fire({
-                title: '',
-                text: 'Thêm thành công !',
-                icon: 'success',
-                timer: 1500
-            })
-            router.push('/admin/category');
-
-        } catch (error) {
-            Swal.fire({
-                title: '',
-                text: 'Danh mục đã tồn tại vui lòng nhập lại !',
-                icon: 'error',
-                confirmButtonText: 'Nhập lại'
-            })
-            return;
-        } finally {
-            setIsSubmitting(false);
-        }
-    }
 
     return (
         <div className="flex justify-center">

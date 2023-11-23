@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import {
   Table,
   TableBody,
@@ -11,13 +11,19 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import Link from 'next/link';
-import { useFetchData } from '@/app/api/category';
+
 import { useCategoryQuery } from '@/app/Hooks/useCategoriesQuery';
+import { useCategoriesMutation } from '@/app/Hooks/useCategoriesMutation';
 
 const ListCategories = React.memo(() => {
   const { data, isLoading, error } = useCategoryQuery();
-  console.log("danh muc", data);
-
+  const listCate = data?.data?.response?.data;
+  const { onSubmit } = useCategoriesMutation({
+    action: "DELETE",
+    onSuccess: () => {
+      console.log("Xóa thành công");
+    },
+  });
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -43,14 +49,14 @@ const ListCategories = React.memo(() => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {categorys?.map((invoice: any, index: number) => (
+          {listCate?.map((invoice: any, index: number) => (
             <TableRow key={invoice._id}>
               <TableCell className="font-medium">{index + 1}</TableCell>
               <TableCell>{invoice.category_name}</TableCell>
               <TableCell>{invoice.category_description}</TableCell>
               <TableCell className="text-right">
                 <Button className='mr-2' variant="outline"><Link href={`/admin/category/update/${invoice?._id}`}>Cập nhật</Link></Button>
-                {/* <Button className='' variant="outline" onClick={() => HandleRemove(invoice._id)}>Xóa</Button> */}
+                <Button className='' variant="outline" onClick={() => onSubmit(invoice)}>Xóa</Button>
               </TableCell>
             </TableRow>
           ))}

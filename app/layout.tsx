@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Provider from "../utils/provider";
+import Providers from "@/utils/Provider";
 
 
 export const metadata: Metadata = {
@@ -16,9 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body >
-        <Provider>
+        <Providers>
           {children}
-        </Provider >
+        </Providers >
       </body>
     </html>
   );

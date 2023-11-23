@@ -7,12 +7,12 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { IProject } from "@/interfaces/project";
-import { useFetchData } from "@/app/api/category";
 import FormUpload from "@/components/admin/Upload/FormUpload";
 import ListFiles from "@/components/admin/Upload/ListImage";
 import Image from "next/image";
 import { TiDelete } from "react-icons/ti";
 import { DeleteImage, upLoadFiles } from "@/app/api/upload";
+import { useCategoryQuery } from "@/app/Hooks/useCategoriesQuery";
 
 const page = () => {
   const router = useRouter();
@@ -20,8 +20,8 @@ const page = () => {
   const [dataProject, setDataProjects] = useState<any>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phuong, setPhuong] = useState([]);
-  const { data: cate } = useFetchData();
-  const categoryData = cate?.response?.data;
+  const { data: categories } = useCategoryQuery();
+  const listCate = categories?.data?.response?.data;
   const [selectedFiles, setSelectedFiles] = useState<any>([]);
   const [images, setImages] = useState<any>([]);
   const [loading, setLoading] = useState(false);
@@ -195,7 +195,7 @@ const page = () => {
                   className="w-full h-full min-h-[30px] px-2 border border-slate-300 rounded-md"
                 >
                   <option value="">chọn</option>
-                  {categoryData?.map((cat: any) => {
+                  {listCate?.map((cat: any) => {
                     return (
                       <option key={cat._id} value={cat._id}>
                         {cat.category_name}

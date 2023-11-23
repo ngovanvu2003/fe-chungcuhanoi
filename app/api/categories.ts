@@ -4,7 +4,7 @@ export const getAllCategories = () => {
   return connect_Api.get(`/category`);
 };
 //get byId
-export const getOneCategories = (id: string) => {
+export const getOneCategories = (id: string | string) => {
   return connect_Api.get(`/category/${id}`);
 };
 
@@ -14,7 +14,10 @@ export const AddCategories = (data: any) => {
 };
 //update
 export const UpdateCategories = (data: any) => {
-  return connect_Api.get(`/category/${data?._id}`, data);
+  return connect_Api.patch(`/category/${data?._id}`, {
+    category_description: data.category_description,
+    category_name: data.category_name,
+  });
 };
 
 //xóa

@@ -9,6 +9,7 @@ import FormUpload from "@/components/admin/Upload/FormUpload";
 import ListFiles from "@/components/admin/Upload/ListImage";
 import { DeleteImage, upLoadFiles } from "@/app/api/upload";
 import axios from "axios";
+import { useCategoryQuery } from "@/app/Hooks/useCategoriesQuery";
 const AddProject = () => {
   const [districts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
@@ -81,9 +82,9 @@ const AddProject = () => {
     }, uploadDelay);
   };
   // ----------------------------------------------------------------
+  const { data: categories } = useCategoryQuery();
+  const listCate = categories?.data?.response?.data;
 
-  const { data: cate, isLoading, isError } = useFetchData();
-  const categoryData = cate?.response?.data;
   const router = useRouter();
   const {
     register,
@@ -178,7 +179,7 @@ const AddProject = () => {
                   className="w-full h-full min-h-[30px] px-2 border border-slate-300 rounded-md"
                 >
                   <option value="">chọn</option>
-                  {categoryData?.map((cat: any) => {
+                  {listCate?.map((cat: any) => {
                     return (
                       <option key={cat._id} value={cat._id}>
                         {cat.category_name}
