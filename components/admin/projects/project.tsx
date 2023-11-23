@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 const Proj = (dataProject: any) => {
-  console.log("dataProject", dataProject);
   const listInfoProject = dataProject?.dataProject;
   return (
     <div className="grid grid-cols-[30%,70%] gap-1 md:flex-row border shadow-lg p-2 mt-4 md:mt-8">

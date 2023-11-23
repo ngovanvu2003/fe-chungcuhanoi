@@ -31,14 +31,12 @@ const AddProject = () => {
 
     try {
       const response = await axios.get(`https://provinces.open-api.vn/api/d/${districtCode}?depth=2`);
-      console.log("response", response);
       setWards(response.data.wards);
 
     } catch (error) {
       console.error('Error fetching wards:', error);
     }
   };
-  console.log(wards);
 
   const handleDistrictChange = (event: any) => {
     const selectedDistrictCode = event.target.value;
