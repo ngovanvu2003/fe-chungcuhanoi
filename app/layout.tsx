@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Provider from "../utils/provider";
+
 
 export const metadata: Metadata = {
   title: "Bất động sản",
@@ -13,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body >{children}</body>
+      <body >
+        <Provider>
+          {children}
+        </Provider >
+      </body>
     </html>
   );
 }

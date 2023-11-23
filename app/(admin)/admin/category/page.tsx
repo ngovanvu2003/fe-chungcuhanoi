@@ -11,60 +11,20 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import Link from 'next/link';
-import { removeCategories, useFetchData } from '@/app/api/category';
+import { useFetchData } from '@/app/api/category';
+import { useCategoryQuery } from '@/app/Hooks/useCategoriesQuery';
 
 const ListCategories = React.memo(() => {
-  const { data: cate, isLoading, isError } = useFetchData();
-  const [categorys, setcategorys] = useState([])
-
-  useEffect(() => {
-    setcategorys(cate?.response.data)
-  }, [cate?.response.data])
+  const { data, isLoading, error } = useCategoryQuery();
+  console.log("danh muc", data);
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  if (isError) {
+  if (error) {
     return <div>Error loading data</div>;
   }
-  const HandleRemove = async (id: string) => {
 
-    try {
-
-      Swal.fire({
-        title: 'Bạn có chắc muốn xóa ?',
-        showCancelButton: true,
-        confirmButtonText: 'ok',
-
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          await removeCategories(id)
-            .then(({ message }) => {
-              const updatedCategories = categorys.filter((item: any) => item._id !== id);
-              setcategorys(updatedCategories);
-              Swal.fire({
-                position: 'top',
-                icon: 'success',
-                title: `${message}`,
-                showConfirmButton: false,
-                timer: 1500
-              });
-            })
-            .catch((error) => {
-              Swal.fire({
-                position: 'top',
-                icon: 'error',
-                title: `${error.message}`,
-                showConfirmButton: false,
-                timer: 1500
-              });
-            });
-        }
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }
   return (
     <div>
       <div className='flex justify-between items-center my-5'>
@@ -90,7 +50,7 @@ const ListCategories = React.memo(() => {
               <TableCell>{invoice.category_description}</TableCell>
               <TableCell className="text-right">
                 <Button className='mr-2' variant="outline"><Link href={`/admin/category/update/${invoice?._id}`}>Cập nhật</Link></Button>
-                <Button className='' variant="outline" onClick={() => HandleRemove(invoice._id)}>Xóa</Button>
+                {/* <Button className='' variant="outline" onClick={() => HandleRemove(invoice._id)}>Xóa</Button> */}
               </TableCell>
             </TableRow>
           ))}
