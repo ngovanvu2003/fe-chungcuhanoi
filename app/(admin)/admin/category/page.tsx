@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import Link from 'next/link';
-
-import { useCategoryQuery } from '@/app/Hooks/useCategoriesQuery';
-import { useCategoriesMutation } from '@/app/Hooks/useCategoriesMutation';
+import { useCategoryQuery } from '@/app/Hooks/categories/useCategoriesQuery';
+import { useCategoriesMutation } from '@/app/Hooks/categories/useCategoriesMutation';
+import Swal from 'sweetalert2';
 
 const ListCategories = React.memo(() => {
   const { data, isLoading, error } = useCategoryQuery();
@@ -21,9 +21,17 @@ const ListCategories = React.memo(() => {
   const { onSubmit } = useCategoriesMutation({
     action: "DELETE",
     onSuccess: () => {
-      console.log("Xóa thành công");
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "Xóa thành công!",
+        showConfirmButton: false,
+        timer: 1500
+      });
     },
+
   });
+
   if (isLoading) {
     return <div>Loading...</div>;
   }

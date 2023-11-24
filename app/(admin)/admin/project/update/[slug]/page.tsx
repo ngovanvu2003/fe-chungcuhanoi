@@ -12,7 +12,7 @@ import ListFiles from "@/components/admin/Upload/ListImage";
 import Image from "next/image";
 import { TiDelete } from "react-icons/ti";
 import { DeleteImage, upLoadFiles } from "@/app/api/upload";
-import { useCategoryQuery } from "@/app/Hooks/useCategoriesQuery";
+import { useCategoryQuery } from "@/app/Hooks/categories/useCategoriesQuery";
 
 const page = () => {
   const router = useRouter();

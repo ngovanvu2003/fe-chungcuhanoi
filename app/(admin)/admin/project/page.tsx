@@ -10,69 +10,34 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import useSWR from "swr";
-import Swal from "sweetalert2";
-import { VND, removeProject } from "@/app/api/project";
+import { VND } from "@/app/api/project";
 import Image from "next/image";
 import { AiOutlineDelete } from "react-icons/ai";
 import { VscRequestChanges } from "react-icons/vsc";
 import { MdGroupAdd } from "react-icons/md";
 import { DeleteImage } from "@/app/api/upload";
+import { useProjectQuery } from "@/app/Hooks/projects/useProductQuery";
+import { useProjectMutation } from "@/app/Hooks/projects/useProductMutation";
+import Swal from "sweetalert2";
 export default function TableDemo() {
-  const fetcher = (args: string) => fetch(args).then((res) => res.json());
-  const { data, error, isLoading } = useSWR<any, Error, string>(
-    `${process.env.NEXT_PUBLIC_BDS_API}/projects`,
-    fetcher
-  );
-  const [projects, setprojects] = useState([]);
+  const { data, isLoading, error } = useProjectQuery();
+  const ListAllProject = data?.data?.response?.data;
+  const { onSubmit } = useProjectMutation({
+    action: "DELETE",
+    onSuccess: () => {
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "Xóa thành công!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    },
 
-  const ListAllProject = data?.response?.data;
-
-  useEffect(() => {
-    setprojects(ListAllProject);
-  }, [ListAllProject]);
-
+  });
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>error</div>;
-  const HandleRemove = async (id: string | number, arrayImages: any) => {
-    try {
-      Swal.fire({
-        title: "Bạn có muốn xóa không?",
-        showCancelButton: true,
-        confirmButtonText: "Xóa",
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          await removeProject(id)
-            .then(({ message }) => {
-              arrayImages.map((item: any) => {
-                DeleteImage(item.public_id);
-              });
-              const updatedProjects = projects.filter(
-                (item: any) => item._id !== id
-              );
-              // Update the state with the new data after removing the project
-              setprojects(updatedProjects);
-              Swal.fire({
-                position: "top",
-                icon: "success",
-                title: `${message}`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            })
-            .catch((error) => {
-              Swal.fire({
-                position: "top",
-                icon: "error",
-                title: `${error.message}`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            });
-        }
-      });
-    } catch (error) { }
-  };
+
 
   return (
     <div className=" overflow-x-auto">
@@ -144,9 +109,7 @@ export default function TableDemo() {
                 <Button
                   className=""
                   variant="outline"
-                  onClick={() =>
-                    HandleRemove(invoice?._id, invoice?.project_image)
-                  }
+                  onClick={() => onSubmit(invoice)}
                 >
                   <AiOutlineDelete />
                 </Button>

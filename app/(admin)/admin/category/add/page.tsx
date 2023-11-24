@@ -4,18 +4,16 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useForm } from "react-hook-form"
-import { addCategory } from "@/app/api/category"
 import React, { useState } from "react"
 import { useRouter } from "next/navigation";
-import { useCategoriesMutation } from "@/app/Hooks/useCategoriesMutation"
+import { useCategoriesMutation } from "@/app/Hooks/categories/useCategoriesMutation"
+import Swal from "sweetalert2"
 
 
 
@@ -25,12 +23,17 @@ const AddCategories = React.memo(() => {
     const { form, onSubmit } = useCategoriesMutation({
         action: "CREATE",
         onSuccess: () => {
-            console.log("Thêm thành công");
+            Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "Thêm thành công",
+                showConfirmButton: false,
+                timer: 1500
+            });
             form.reset();
             router.push("/admin/category");
         },
     })
-
 
     return (
         <div className="flex justify-center">

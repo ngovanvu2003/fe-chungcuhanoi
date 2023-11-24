@@ -4,61 +4,12 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import { useFetchData } from "@/app/api/category";
 import FormUpload from "@/components/admin/Upload/FormUpload";
 import ListFiles from "@/components/admin/Upload/ListImage";
 import { DeleteImage, upLoadFiles } from "@/app/api/upload";
 import axios from "axios";
-import { useCategoryQuery } from "@/app/Hooks/useCategoriesQuery";
+import { useCategoryQuery } from "@/app/Hooks/categories/useCategoriesQuery";
 const AddProject = () => {
-  const [districts, setDistricts] = useState([]);
-  const [wards, setWards] = useState([]);
-  const [selectedDistrict, setSelectedDistrict] = useState('');
-  const [selectedWard, setSelectedWard] = useState('');
-  const [result, setResult] = useState('');
-
-  const fetchDistricts = async () => {
-    try {
-      const response = await axios.get(
-        "https://provinces.open-api.vn/api/?depth=2"
-      );
-      setDistricts(response?.data[0].districts);
-    } catch (error) {
-      console.error("Error fetching districts:", error);
-    }
-  };
-
-  const fetchWards = async (districtCode: any) => {
-    try {
-      const response = await axios.get(
-        `https://provinces.open-api.vn/api/d/${districtCode}?depth=2`
-      );
-      console.log("response", response);
-      setWards(response.data.wards);
-    } catch (error) {
-      console.error("Error fetching wards:", error);
-    }
-  };
-
-  const handleDistrictChange = (event: any) => {
-    const selectedDistrictCode = event.target.value;
-    setSelectedDistrict(selectedDistrictCode);
-    fetchWards(selectedDistrictCode);
-    setResult("");
-  };
-
-  const handleWardChange = (event: any) => {
-    const selectedWardCode = event.target.value;
-    setSelectedWard(selectedWardCode);
-    printResult();
-  };
-
-  const printResult = () => {
-    if (selectedDistrict && selectedWard) {
-      const resultString = `${selectedDistrict} | ${selectedWard}`;
-      setResult(resultString);
-    }
-  };
 
   const [loading, setLoading] = useState(false);
 
@@ -95,59 +46,9 @@ const AddProject = () => {
   } = useForm<any>();
 
   const onHanldSubmit = async (value: any) => {
-    try {
-      if (Array.isArray(selectedFiles) && selectedFiles?.length === 0) {
-        Swal.fire({
-          title: "Opps!",
-          text: `Bạn chưa chọn ảnh`,
-          icon: "error",
-          confirmButtonText: "Vui lòng thêm lại dữ liệu",
-        });
-      } else {
-        const responseImages: any = await upLoadFiles(selectedFiles);
-        if (responseImages) {
-          const formReq = {
-            ...value,
-            project_image: responseImages,
-            userId: "653b76e9ea42a6a6490f955c",
-          };
-          const response = await createProject(formReq);
-          if (response?.success == true) {
-            Swal.fire({
-              position: "top",
-              icon: "success",
-              title: `${response?.message}`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            setSelectedFiles([]);
-            router.push("/admin/project");
-            return;
-          } else {
-            Swal.fire({
-              title: "Opps!",
-              text: `${response?.message}`,
-              icon: "error",
-              confirmButtonText: "Vui lòng thêm lại dữ liệu",
-            });
-            responseImages.map((item: any) => {
-              DeleteImage(item.public_id);
-            });
-          }
-        }
-      }
-    } catch (error: any) {
-      Swal.fire({
-        title: "Opps!",
-        text: `${error?.message}`,
-        icon: "error",
-      });
-    }
+
   };
-  useEffect(() => {
-    // Fetch districts when the component mounts
-    fetchDistricts();
-  }, []);
+
   return (
     <div className="overflow-x-auto text-black">
       <form onSubmit={handleSubmit(onHanldSubmit)}>
@@ -226,19 +127,19 @@ const AddProject = () => {
                   Quận/Huyện
                 </label>
                 <select
-                  value={selectedDistrict}
-                  {...register("project_district")}
-                  onChange={handleDistrictChange}
+                  // value={selectedDistrict}
+                  // {...register("project_district")}
+                  // onChange={handleDistrictChange}
                   className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                 >
                   <option value="">chọn</option>
-                  {districts?.map((item: any) => {
+                  {/* {districts?.map((item: any) => {
                     return (
                       <option key={item?.code} value={item.id}>
                         {item.name}
                       </option>
                     );
-                  })}
+                  })} */}
                 </select>
               </div>
               <div className="grid grid-rows-[max-content_auto]">
@@ -246,15 +147,15 @@ const AddProject = () => {
                   Phường
                 </label>
                 <select
-                  value={selectedWard}
-                  onChange={handleWardChange}
+                  // value={selectedWard}
+                  // onChange={handleWardChange}
                   className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                 >
-                  {wards?.map((item: any) => (
+                  {/* {wards?.map((item: any) => (
                     <option key={item?.code} value={item?.code}>
                       {item?.name}
                     </option>
-                  ))}
+                  ))} */}
                 </select>
               </div>
               <div className="col-span-2">

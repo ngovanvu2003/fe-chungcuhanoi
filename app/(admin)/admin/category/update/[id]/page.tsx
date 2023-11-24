@@ -18,8 +18,8 @@ import { useParams, useRouter } from "next/navigation"
 import { getCategoryById, updateCategory } from "@/app/api/category"
 import { ICategorys } from "@/interfaces/auths"
 import Swal from 'sweetalert2';
-import { useCategoryQuery } from "@/app/Hooks/useCategoriesQuery"
-import { useCategoriesMutation } from "@/app/Hooks/useCategoriesMutation"
+import { useCategoryQuery } from "@/app/Hooks/categories/useCategoriesQuery"
+import { useCategoriesMutation } from "@/app/Hooks/categories/useCategoriesMutation"
 
 // const formSchema = z.object({
 //     category_name: z.string().min(2, {

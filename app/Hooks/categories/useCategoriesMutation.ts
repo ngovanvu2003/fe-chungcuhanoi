@@ -4,7 +4,9 @@ import {
   AddCategories,
   DeleteCategories,
   UpdateCategories,
-} from "../api/categories";
+} from "../../api/categories";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schemaAddCate } from "@/schemas/categories";
 
 type FormControlType = {
   category_name: string;
@@ -24,6 +26,7 @@ export const useCategoriesMutation = ({
   const queryClient = useQueryClient();
 
   const form = useForm<FormControlType>({
+    resolver: yupResolver(schemaAddCate),
     defaultValues,
   });
   const { mutate, ...rest } = useMutation({
