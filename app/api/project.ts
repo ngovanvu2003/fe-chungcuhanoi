@@ -10,6 +10,17 @@ export const fetchUser = (id: string) => {
   return useSWR(url, fetcher);
 };
 
+export const searchProduct = async ({_project_district}: any) => {
+  const response = await fetch(`${apiUrl}?_project_district=${_project_district}`);
+  console.log(response)
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  } else {
+    throw new Error("Không thể lấy thông tin danh mục.");
+  }
+};
+
 export const createProject = async (data: any) => {
   const url = `${apiUrl}`;
   const token = useGetToken();

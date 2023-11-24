@@ -4,17 +4,105 @@ import { BsArrowRight } from "react-icons/bs";
 import Proj from "../../../components/admin/projects/project";
 import useSWR from "swr";
 import { Skeleton } from "@/components/ui/skeleton";
+<<<<<<< HEAD
 import React from "react";
 import Homeslides from "@/components/admin/projects/slided";
 import Image from "next/image";
+=======
+import React, { useState } from "react";
+import axios from "axios";
+>>>>>>> origin/feature/search-project-page
 
 const Project = React.memo(() => {
+  const [districts, setDistricts] = useState([]);
+  const [wards, setWards] = useState([]);
+  const [districtsName, setdistrictsName] = useState('');
+  const [category_name, setcategory_name] = useState('');
+  const [status_name, setstatus_name] = useState('');
+  const [wardsName, setwardsName] = useState('');
+  const [selectedDistrict, setSelectedDistrict] = useState('');
+  const [selectedWard, setSelectedWard] = useState('');
+
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
+<<<<<<< HEAD
   const { data, error, isLoading } = useSWR<any, Error, string>(
     `${process.env.NEXT_PUBLIC_BDS_API}/projects`,
     fetcher
   );
   const ListAllProject = data?.response?.data;
+=======
+  const apiUrl = `http://localhost:8080/api/projects?_project_district=${districtsName === "Chọn quận/huyện" || '' ? '' : districtsName}&_project_wards=${wardsName === "Chọn xã/phường" || '' ? '' : wardsName}&_categoryId=${category_name === "Chọn" || '' ? '' : category_name}&_status=${status_name === "Chọn" || '' ? '' : status_name}`;
+
+  const { data, error, isLoading } = useSWR<any, Error, string>(apiUrl, fetcher);
+
+  const ListAllProject = data?.response?.data;
+  // Fetch districts of Hanoi
+  React.useLayoutEffect(() => {
+    fetchDistricts();
+    fetchCategories();
+  }, []);
+
+  // Function to fetch districts of Hanoi
+  const fetchDistricts = async () => {
+    try {
+      const response = await axios.get('https://provinces.open-api.vn/api/p/01?depth=2');
+      setDistricts(response.data.districts);
+    } catch (error) {
+      console.error('Error fetching districts:', error);
+    }
+  };
+
+  // Function to fetch wards based on selected district
+  const fetchWards = async (districtCode: any) => {
+    try {
+      const response = await axios.get(`https://provinces.open-api.vn/api/d/${districtCode}?depth=2`);
+      setWards(response.data.wards);
+    } catch (error) {
+      console.error('Error fetching wards:', error);
+    }
+  };
+
+  // Event handlers for dropdown changes
+  const handleDistrictChange = (event: any) => {
+    const districtCode = event.target.value;
+    const districtName = event.target.options[event.target.selectedIndex].text; // Lấy name của quận/huyện được chọn
+    setdistrictsName(districtName);
+    setSelectedDistrict(districtCode);
+    setSelectedWard('');
+    setWards([]);
+    fetchWards(districtCode);
+  };
+
+  const handleWardChange = (event: any) => {
+    const wardCode = event.target.value;
+    const wardName = event.target.options[event.target.selectedIndex].text;
+    setSelectedWard(wardCode);
+    setwardsName(wardName);
+  };
+
+  const handleChangeCategory = (event: any) => {
+    const categoryCode = event.target.value;
+    setcategory_name(categoryCode);
+  };
+  const handleChangeStatus = (event: any) => {
+    const statusCode = event.target.value;
+    setstatus_name(statusCode);
+  };
+
+  const [categories, setCategory] = useState([]);
+  // Function to fetch districts of Hanoi
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_BDS_API_CATEGORY}`);
+      setCategory(response && response.data.response.data);
+    } catch (error) {
+      console.error('Error fetching districts:', error);
+    }
+  };
+
+  if (error) return <div>error</div>;
+  if (isLoading) return <Skeleton />;
+>>>>>>> origin/feature/search-project-page
   return (
     <div>
       <Homeslides />
@@ -29,37 +117,44 @@ const Project = React.memo(() => {
             />
           </div>
           <div>
-            <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
-              <option value="" className="text-amber-800">
-                Quận/Huyện
-              </option>
-              <option value="">Nam Từ Liêm</option>
-              <option value="">Bắc Từ Liêm</option>
-              <option value="">Hoài Đức</option>
-              <option value="">Cầu Giấy</option>
-              <option value="">Hà Đông</option>
+            <select id="district-select" value={selectedDistrict} onChange={handleDistrictChange}>
+              <option value="">Chọn quận/huyện</option>
+              {districts?.map((item: any) => {
+                return (
+                  <option key={item.code} value={item.code}>
+                    {item.name}
+                  </option>
+                )
+              })}
             </select>
           </div>
           <div>
-            <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
-              <option value="" className="text-amber-800">
-                Phường
-              </option>
-              <option value="">Phương Canh</option>
-              <option value="">Phúc Diễn</option>
+            <select id="ward-select" value={selectedWard} onChange={handleWardChange}>
+              <option value="">Chọn xã/phường</option>
+              {wards?.map((item: any) => (
+                <option key={item.code} value={item.code}>
+                  {item.name}
+                </option>
+              ))}
             </select>
           </div>
           <div>
-            <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
-              <option value="" className="text-amber-800">
-                Loại hình
-              </option>
-              <option value="">Chung cư</option>
-              <option value="">Cao ốc</option>
+            <select
+              onChange={handleChangeCategory}
+              className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+              <option value="">Chọn</option>
+              {categories?.map((item: any) => {
+                return (
+                  <option key={item._id} value={item._id}>
+                    {item.category_name}
+                  </option>
+                )
+              })}
             </select>
           </div>
           <div>
-            <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+            <select 
+            className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
               <option value="" className="text-amber-800">
                 Mức giá
               </option>
@@ -70,13 +165,15 @@ const Project = React.memo(() => {
             </select>
           </div>
           <div>
-            <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+            <select 
+                onChange={handleChangeStatus}
+            className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
               <option value="" className="text-amber-800">
-                Trạng thái
+              Chọn
               </option>
-              <option value="">Đã bàn giao</option>
-              <option value="">Đã mở bán</option>
-              <option value="">Đang mở bán</option>
+              <option value="0">Đã bàn giao</option>
+              <option value="1">Đã mở bán</option>
+              <option value="2">Đang mở bán</option>
             </select>
           </div>
         </form>
