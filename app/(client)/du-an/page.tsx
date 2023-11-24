@@ -18,72 +18,71 @@ const Project = React.memo(() => {
   return (
     <div>
       <Homeslides />
-      <div className="mx-2 max-w-7xl  lg:m-8">
-        <div className=" max-w-7xl mx-auto lg:m-20">
-          <div className="border p-3 mb-2 w-full hidden lg:block">
-            <form
-              className=" grid grid-cols-[30%,12%,12%,12%,12%,12%] w-100 gap-4 items-center mx-auto  justify-between">
-              <div className="">
-                <input
-                  type="text"
-                  placeholder="Tìm kiếm dự án..."
-                  className="bg-gray-100 border w-full rounded-md text-center "
-                  id=""
-                />
-              </div>
-              <div>
-                <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
-                  <option value="" className="text-amber-800">
-                    Quận/Huyện
-                  </option>
-                  <option value="">Nam Từ Liêm</option>
-                  <option value="">Bắc Từ Liêm</option>
-                  <option value="">Hoài Đức</option>
-                  <option value="">Cầu Giấy</option>
-                  <option value="">Hà Đông</option>
-                </select>
-              </div>
-              <div>
-                <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
-                  <option value="" className="text-amber-800">
-                    Phường
-                  </option>
-                  <option value="">Phương Canh</option>
-                  <option value="">Phúc Diễn</option>
-                </select>
-              </div>
-              <div>
-                <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
-                  <option value="" className="text-amber-800">
-                    Loại hình
-                  </option>
-                  <option value="">Chung cư</option>
-                  <option value="">Cao ốc</option>
-                </select>
-              </div>
-              <div>
-                <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
-                  <option value="" className="text-amber-800">
-                    Mức giá
-                  </option>
-                  <option value="">Dưới 5tr/m2</option>
-                  <option value="">Trên 5tr/m2</option>
-                  <option value="">Dưới 10tr/m2</option>
-                  <option value="">Trên 10tr/m2</option>
-                </select>
-              </div>
-              <div>
-                <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
-                  <option value="" className="text-amber-800">
-                    Trạng thái
-                  </option>
-                  <option value="">Đã bàn giao</option>
-                  <option value="">Đã mở bán</option>
-                  <option value="">Đang mở bán</option>
-                </select>
-              </div>
-            </form>
+      <div className="border p-3 mb-2 max-w-7xl mx-auto hidden lg:block mt-4 ">
+        <form className=" grid grid-cols-[30%,12%,12%,12%,12%,12%] w-100 gap-4 items-center mx-auto  justify-between">
+          <div className="">
+            <input
+              type="text"
+              placeholder="Tìm kiếm dự án..."
+              className="bg-gray-100 border w-full rounded-md text-center "
+              id=""
+            />
           </div>
+          <div>
+            <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+              <option value="" className="text-amber-800">
+                Quận/Huyện
+              </option>
+              <option value="">Nam Từ Liêm</option>
+              <option value="">Bắc Từ Liêm</option>
+              <option value="">Hoài Đức</option>
+              <option value="">Cầu Giấy</option>
+              <option value="">Hà Đông</option>
+            </select>
+          </div>
+          <div>
+            <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+              <option value="" className="text-amber-800">
+                Phường
+              </option>
+              <option value="">Phương Canh</option>
+              <option value="">Phúc Diễn</option>
+            </select>
+          </div>
+          <div>
+            <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+              <option value="" className="text-amber-800">
+                Loại hình
+              </option>
+              <option value="">Chung cư</option>
+              <option value="">Cao ốc</option>
+            </select>
+          </div>
+          <div>
+            <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+              <option value="" className="text-amber-800">
+                Mức giá
+              </option>
+              <option value="">Dưới 5tr/m2</option>
+              <option value="">Trên 5tr/m2</option>
+              <option value="">Dưới 10tr/m2</option>
+              <option value="">Trên 10tr/m2</option>
+            </select>
+          </div>
+          <div>
+            <select className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+              <option value="" className="text-amber-800">
+                Trạng thái
+              </option>
+              <option value="">Đã bàn giao</option>
+              <option value="">Đã mở bán</option>
+              <option value="">Đang mở bán</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div className="mx-2 max-w-7xl  lg:m-8 lg:grid lg:grid-cols-[75%,30%]">
+        <div className=" max-w-7xl mx-auto lg:m-20">
           <div>
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">
               Dự án toàn quốc
@@ -102,26 +101,26 @@ const Project = React.memo(() => {
               </select>
             </div>
           </div>
-          {ListAllProject
-            ? ListAllProject?.map((item: any) => {
-              return < Proj key={item?._id
-              } dataProject={item} />
+          {ListAllProject ? (
+            ListAllProject?.map((item: any) => {
+              return <Proj key={item?._id} dataProject={item} />;
             })
-            : (
-              <div className="w-full grid grid-cols-[30%,70%] gap-1 mt-8 p-2 border">
-                <div className="w-full h-[290px] grid grid-cols-2 grid-rows-[65%,auto] gap-1">
-                  <Skeleton className="w-full h-full bg-gray-300 col-span-2" />
-                  <Skeleton className="w-full h-full bg-gray-300" />
-                  <Skeleton className="w-full h-full bg-gray-300" />
-                </div>
-                <div className="flex flex-col justify-between h-full overflow-hidden">
-                  <Skeleton className="w-[200px] h-[30px] bg-gray-300" />
-                  <Skeleton className="w-full h-[60px] bg-gray-300" />
-                  <Skeleton className="w-[100px] h-[30px] bg-gray-300" />
-                  <Skeleton className="w-full h-[50px] bg-gray-300" />
-                  <Skeleton className="w-full h-[50px] bg-gray-300" />
-                </div>
-              </div>)}
+          ) : (
+            <div className="w-full grid grid-cols-[30%,70%] gap-1 mt-8 p-2 border">
+              <div className="w-full h-[290px] grid grid-cols-2 grid-rows-[65%,auto] gap-1">
+                <Skeleton className="w-full h-full bg-gray-300 col-span-2" />
+                <Skeleton className="w-full h-full bg-gray-300" />
+                <Skeleton className="w-full h-full bg-gray-300" />
+              </div>
+              <div className="flex flex-col justify-between h-full overflow-hidden">
+                <Skeleton className="w-[200px] h-[30px] bg-gray-300" />
+                <Skeleton className="w-full h-[60px] bg-gray-300" />
+                <Skeleton className="w-[100px] h-[30px] bg-gray-300" />
+                <Skeleton className="w-full h-[50px] bg-gray-300" />
+                <Skeleton className="w-full h-[50px] bg-gray-300" />
+              </div>
+            </div>
+          )}
         </div>
         <div className="hidden md:block">
           <div className="flex justify-between gap-8">
@@ -176,8 +175,8 @@ const Project = React.memo(() => {
                     />
                     <div className="grid items-end">
                       <div className="font-bold">
-                        Loạt Thách Thức Khiến Nhà Ở Xã Hội Khó Cán Mốc 1 Triệu Căn
-                        Năm 2030
+                        Loạt Thách Thức Khiến Nhà Ở Xã Hội Khó Cán Mốc 1 Triệu
+                        Căn Năm 2030
                       </div>
                       <span className="text-gray-400">Hôm nay</span>
                     </div>
@@ -188,8 +187,7 @@ const Project = React.memo(() => {
           </div>
         </div>
       </div>
-    </div >
-
-  )
+    </div>
+  );
 });
 export default Project;
