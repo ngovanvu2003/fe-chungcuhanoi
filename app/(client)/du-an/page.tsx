@@ -4,14 +4,10 @@ import { BsArrowRight } from "react-icons/bs";
 import Proj from "../../../components/admin/projects/project";
 import useSWR from "swr";
 import { Skeleton } from "@/components/ui/skeleton";
-<<<<<<< HEAD
-import React from "react";
 import Homeslides from "@/components/admin/projects/slided";
 import Image from "next/image";
-=======
 import React, { useState } from "react";
 import axios from "axios";
->>>>>>> origin/feature/search-project-page
 
 const Project = React.memo(() => {
   const [districts, setDistricts] = useState([]);
@@ -24,13 +20,6 @@ const Project = React.memo(() => {
   const [selectedWard, setSelectedWard] = useState('');
 
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
-<<<<<<< HEAD
-  const { data, error, isLoading } = useSWR<any, Error, string>(
-    `${process.env.NEXT_PUBLIC_BDS_API}/projects`,
-    fetcher
-  );
-  const ListAllProject = data?.response?.data;
-=======
   const apiUrl = `http://localhost:8080/api/projects?_project_district=${districtsName === "Chọn quận/huyện" || '' ? '' : districtsName}&_project_wards=${wardsName === "Chọn xã/phường" || '' ? '' : wardsName}&_categoryId=${category_name === "Chọn" || '' ? '' : category_name}&_status=${status_name === "Chọn" || '' ? '' : status_name}`;
 
   const { data, error, isLoading } = useSWR<any, Error, string>(apiUrl, fetcher);
@@ -102,7 +91,6 @@ const Project = React.memo(() => {
 
   if (error) return <div>error</div>;
   if (isLoading) return <Skeleton />;
->>>>>>> origin/feature/search-project-page
   return (
     <div>
       <Homeslides />
@@ -153,8 +141,8 @@ const Project = React.memo(() => {
             </select>
           </div>
           <div>
-            <select 
-            className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+            <select
+              className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
               <option value="" className="text-amber-800">
                 Mức giá
               </option>
@@ -165,11 +153,11 @@ const Project = React.memo(() => {
             </select>
           </div>
           <div>
-            <select 
-                onChange={handleChangeStatus}
-            className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+            <select
+              onChange={handleChangeStatus}
+              className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
               <option value="" className="text-amber-800">
-              Chọn
+                Chọn
               </option>
               <option value="0">Đã bàn giao</option>
               <option value="1">Đã mở bán</option>
@@ -186,7 +174,7 @@ const Project = React.memo(() => {
             </h1>
           </div>
           <div className="mt-4 md:mt-6 flex flex-col md:flex-row justify-between">
-            <div className="mb-2 md:mb-0">Hiện đang có 5.470 dự án</div>
+            <div className="mb-2 md:mb-0">Hiện đang có {ListAllProject?.length} dự án</div>
             <div className="border border-solid rounded-md w-full md:w-auto">
               <select className="px-2 md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm hidden md:block">
                 <option value="" className="text-amber-800">

@@ -16,6 +16,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const ProjectDetail = React.memo(() => {
   const [project, setProject] = useState<IProject>();
+
   const { id } = useParams<any>();
   useEffect(() => {
     const fetchProject = async () => {

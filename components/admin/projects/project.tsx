@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
-const Proj = (dataProject: any) => {
+const Proj = React.memo((dataProject: any) => {
   const listInfoProject = dataProject?.dataProject;
+  const listDesc = listInfoProject?.description_group?.overview?.overview_description
   return (
     <div className="grid grid-cols-1 md:grid-cols-[30%,70%] gap-1 md:flex-row border shadow-lg lg:p-2 mt-4 md:mt-8">
       <div className="w-full h-auto md:mr-4 rounded-md">
@@ -39,7 +41,7 @@ const Proj = (dataProject: any) => {
       </div>
       <div className="flex flex-col  justify-center px-2 md:ml-5 ">
         <div className="bg-green-100 text-green-700  rounded-md w-32 p-1 font-bold text-sm text-center">
-          Đang mở bán
+          {listInfoProject?.status}
         </div>
         <Link
           href={`/du-an/chi-tiet-du-an/${listInfoProject?._id}`}
@@ -58,11 +60,11 @@ const Proj = (dataProject: any) => {
         </div>
         <div className="mt-2 md:mt-4">
           <p className="text-detail text-gray-500">
-            {listInfoProject?.project_content}
+            {listDesc}
           </p>
         </div>
       </div>
     </div>
   );
-};
+});
 export default Proj;
