@@ -18,9 +18,6 @@ const HomePage = React.memo(() => {
             <div className='absolute z-10 bottom-10 left-0 top-[-130px] right-0 sm:top-[-140px] md:top-[-140px] lg:top-0 xl:top-1'>
                 <Search />
             </div>
-
-
-
             <div className='md:mx-10'>
 
                 <RealEstate />

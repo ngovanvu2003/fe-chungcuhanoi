@@ -114,65 +114,66 @@ const AddProject = React.memo(() => {
       } else {
         const responseImages: any = await upLoadFiles(selectedFiles);
         const overViewImage: any = await upLoadFiles(value?.overview_image);
-        const loCationImage: any = await upLoadFiles(value?.location_image);
-        const outilitiesImage: any = await upLoadFiles(value?.utilities);
-        const floor_design_Image: any = await upLoadFiles(value?.floor_design_image);
+        // const loCationImage: any = await upLoadFiles(value?.location_image);
+        // const outilitiesImage: any = await upLoadFiles(value?.utilities);
+        // const floor_design_Image: any = await upLoadFiles(value?.floor_design_image);
 
-        onSubmit(
-          {
-            project_name: value.project_name,
-            map_link: value.map_link,
-            project_location: value.project_location,
-            project_district: value.project_district,
-            project_wards: value.project_wards,
-            project_price: value.project_price,
-            project_acreage: value.project_acreage,
-            project_room: value.project_room,
-            project_view: value.project_view,
-            categoryId: value.categoryId,
-            userId: "653b76e9ea42a6a6490f955c",
-            project_image: responseImages,
-            description_group: {
-              overview: {
-                overview_description: value.overview_description,
-                overview_image: overViewImage,
-              }, // tổng quan
-              location: {
-                // Vị trí
-                location_description: value.location_description,
-                location_image: loCationImage,
-                location_image_description: value.location_image_description,
-              },
-              utilities: {
-                utilities_title: value.utilities_title,
-                utilities_description: value.utilities_description,
-                image: [
-                  {
-                    utilities_image: outilitiesImage,
-                    utilities_image_description: value.utilities_image_description,
-                  },
-                ],
-              },
-              floor_design: [
-                // thiết kế mặt bằng
-                {
-                  floor_design_title: value.floor_design_title,
-                  floor_design_image: floor_design_Image,
-                  floor_design_image_description: value.floor_design_image_description,
-                  floor_design_description_detail: value.floor_design_description_detail,
-                },
-              ],
-              utilities_additional: [
-                {
-                  // tiện ích bổ sung
-                  utilities_additional_title: value.utilities_additional_title,
-                },
-              ],
-            },
-            status: value.status
-          }
-        )
+        // onSubmit(
+        //   {
+        //     project_name: value.project_name,
+        //     map_link: value.map_link,
+        //     project_location: value.project_location,
+        //     project_district: value.project_district,
+        //     project_wards: value.project_wards,
+        //     project_price: value.project_price,
+        //     project_acreage: value.project_acreage,
+        //     project_room: value.project_room,
+        //     project_view: value.project_view,
+        //     categoryId: value.categoryId,
+        //     userId: "653b76e9ea42a6a6490f955c",
+        //     project_image: responseImages,
+        //     description_group: {
+        //       overview: {
+        //         overview_description: value.overview_description,
+        //         overview_image: overViewImage,
+        //       }, // tổng quan
+        //       location: {
+        //         // Vị trí
+        //         location_description: value.location_description,
+        //         location_image: loCationImage,
+        //         location_image_description: value.location_image_description,
+        //       },
+        //       utilities: {
+        //         utilities_title: value.utilities_title,
+        //         utilities_description: value.utilities_description,
+        //         image: [
+        //           {
+        //             utilities_image: outilitiesImage,
+        //             utilities_image_description: value.utilities_image_description,
+        //           },
+        //         ],
+        //       },
+        //       floor_design: [
+        //         // thiết kế mặt bằng
+        //         {
+        //           floor_design_title: value.floor_design_title,
+        //           floor_design_image: floor_design_Image,
+        //           floor_design_image_description: value.floor_design_image_description,
+        //           floor_design_description_detail: value.floor_design_description_detail,
+        //         },
+        //       ],
+        //       utilities_additional: [
+        //         {
+        //           // tiện ích bổ sung
+        //           utilities_additional_title: value.utilities_additional_title,
+        //         },
+        //       ],
+        //     },
+        //     status: value.status
+        //   }
+        // )
       }
+      router.push("/admin/project")
     } catch (error) {
 
     }

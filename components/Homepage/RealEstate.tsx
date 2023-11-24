@@ -1,31 +1,26 @@
 "use client"
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Card } from '../ui/card';
-import useSWR from 'swr';
 import Image from 'next/image';
 import { Skeleton } from '../ui/skeleton';
-import { IProject, ListAllProject } from '@/interfaces/project';
+import { IProject } from '@/interfaces/project';
 import { AiOutlineFieldTime } from 'react-icons/ai';
 import { VND } from '@/app/api/project';
+import { useProjectQuery } from '@/app/Hooks/projects/useProductQuery';
 
 
 const RealEstate = () => {
-    const fetcher = (args: string) => fetch(args).then(res => res.json());
-    const { data, error, isLoading } = useSWR<ListAllProject | any, Error, string>(`${process.env.NEXT_PUBLIC_BDS_API_PROJECT}`, fetcher)
-
-    const listData = data?.response?.data;
+    const { data, isLoading, error } = useProjectQuery();
+    const ListAllProject = data?.data?.response?.data;
 
     const [visibleProduct, setVisibleProduct] = useState(8);
     const hanleLoadMore = () => {
         setVisibleProduct(prevCount => prevCount + 8)
     }
-    const productToShow = listData?.slice(0, visibleProduct);
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+    const productToShow = ListAllProject?.slice(0, visibleProduct);
 
     if (isLoading) return <Skeleton />
     if (error) return <div>error</div>
@@ -75,7 +70,7 @@ const RealEstate = () => {
                     )
                 })}
             </div>
-            {visibleProduct < (listData as any)?.length && (
+            {visibleProduct < (ListAllProject as any)?.length && (
                 <button className='mx-auto flex items-center gap-2 border px-5 py-1 mt-4 md:my-10 md:px-10 rounded-lg border-gray-500 border-solid md:py-3' onClick={hanleLoadMore}>
                     <span>
                         Mở rộng
