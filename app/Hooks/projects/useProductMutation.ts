@@ -1,8 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schemaAddCate } from "@/schemas/categories";
 import { AddProject, DeleteProject, UpdateProject } from "@/app/api/projects";
 
 type FormControlType = {
@@ -41,39 +38,39 @@ export const useProjectMutation = ({
     categoryId: "",
     description_group: {
       overview: {
-        description: "",
-        image: "",
+        overview_description: "",
+        overview_image: "",
       },
       location: {
         // Vị trí
-        description: "",
-        image: [],
-        image_description: "",
+        location_description: "",
+        location_image: [],
+        location_image_description: "",
       },
       utilities: {
         // tiện ích
-        title: "",
-        description: "",
+        utilities_title: "",
+        utilities_description: "",
         image: [
           {
-            image: "",
-            image_description: "",
+            utilities_image: "",
+            utilities_image_description: "",
           },
         ],
       },
       floor_design: [
         // thiết kế mặt bằng
         {
-          title: "",
-          image: "",
-          image_description: "",
-          description_detail: "",
+          floor_design_title: "",
+          floor_design_image: "",
+          floor_design_image_description: "",
+          floor_design_description_detail: "",
         },
       ],
       utilities_additional: [
         {
           // tiện ích bổ sung
-          title: "",
+          utilities_additional_title: "",
         },
       ],
     },

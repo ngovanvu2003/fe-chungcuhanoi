@@ -1,6 +1,5 @@
 "use client";
-import { createProject } from "@/app/api/project";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
@@ -9,13 +8,57 @@ import ListFiles from "@/components/admin/Upload/ListImage";
 import { DeleteImage, upLoadFiles } from "@/app/api/upload";
 import axios from "axios";
 import { useCategoryQuery } from "@/app/Hooks/categories/useCategoriesQuery";
-const AddProject = () => {
+import { useCategoriesMutation } from "@/app/Hooks/categories/useCategoriesMutation";
+import { useProjectMutation } from "@/app/Hooks/projects/useProductMutation";
+const AddProject = React.memo(() => {
+  const [districts, setDistricts] = useState([]);
+  const [wards, setWards] = useState([]);
+  const [districtsName, setdistrictsName] = useState('');
+  const [wardsName, setwardsName] = useState('');
+  const [selectedDistrict, setSelectedDistrict] = useState('');
+  const [selectedWard, setSelectedWard] = useState('');
 
+
+  const fetchDistricts = async () => {
+    try {
+      const response = await axios.get('https://provinces.open-api.vn/api/p/01?depth=2');
+      setDistricts(response.data.districts);
+    } catch (error) {
+      console.error('Error fetching districts:', error);
+    }
+  };
+
+  // Function to fetch wards based on selected district
+  const fetchWards = async (districtCode: any) => {
+    try {
+      const response = await axios.get(`https://provinces.open-api.vn/api/d/${districtCode}?depth=2`);
+      setWards(response.data.wards);
+    } catch (error) {
+      console.error('Error fetching wards:', error);
+    }
+  };
+
+  // Event handlers for dropdown changes
+  const handleDistrictChange = (event: any) => {
+    const districtCode = event.target.value;
+    const districtName = event.target.options[event.target.selectedIndex].text; // Lấy name của quận/huyện được chọn
+    setdistrictsName(districtName);
+    setSelectedDistrict(districtCode);
+    setSelectedWard('');
+    setWards([]);
+    fetchWards(districtCode);
+  };
+
+  const handleWardChange = (event: any) => {
+    const wardCode = event.target.value;
+    const wardName = event.target.options[event.target.selectedIndex].text;
+    setSelectedWard(wardCode);
+    setwardsName(wardName);
+  };
   const [loading, setLoading] = useState(false);
 
   // useState upload image
   const [selectedFiles, setSelectedFiles] = useState<any>([]);
-  console.log("[]", selectedFiles);
 
   //----------------------------------------------------------------
   //  Thêm ảnh vào mảng
@@ -44,11 +87,99 @@ const AddProject = () => {
     setValue,
     formState: { errors },
   } = useForm<any>();
+  const { form, onSubmit } = useProjectMutation({
+    action: "CREATE",
+    onSuccess: () => {
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "Thêm thành công",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      form.reset();
+    },
+  })
 
   const onHanldSubmit = async (value: any) => {
+    try {
+      if (Array.isArray(selectedFiles) && selectedFiles?.length === 0) {
+        Swal.fire({
+          title: "Opps!",
+          text: `Bạn chưa chọn ảnh`,
+          icon: "error",
+          confirmButtonText: "Vui lòng thêm lại dữ liệu",
+        });
 
+      } else {
+        const responseImages: any = await upLoadFiles(selectedFiles);
+        const overViewImage: any = await upLoadFiles(value?.overview_image);
+        const loCationImage: any = await upLoadFiles(value?.location_image);
+        const outilitiesImage: any = await upLoadFiles(value?.utilities);
+        const floor_design_Image: any = await upLoadFiles(value?.floor_design_image);
+
+        onSubmit(
+          {
+            project_name: value.project_name,
+            map_link: value.map_link,
+            project_location: value.project_location,
+            project_district: value.project_district,
+            project_wards: value.project_wards,
+            project_price: value.project_price,
+            project_acreage: value.project_acreage,
+            project_room: value.project_room,
+            project_view: value.project_view,
+            categoryId: value.categoryId,
+            userId: "653b76e9ea42a6a6490f955c",
+            project_image: responseImages,
+            description_group: {
+              overview: {
+                overview_description: value.overview_description,
+                overview_image: overViewImage,
+              }, // tổng quan
+              location: {
+                // Vị trí
+                location_description: value.location_description,
+                location_image: loCationImage,
+                location_image_description: value.location_image_description,
+              },
+              utilities: {
+                utilities_title: value.utilities_title,
+                utilities_description: value.utilities_description,
+                image: [
+                  {
+                    utilities_image: outilitiesImage,
+                    utilities_image_description: value.utilities_image_description,
+                  },
+                ],
+              },
+              floor_design: [
+                // thiết kế mặt bằng
+                {
+                  floor_design_title: value.floor_design_title,
+                  floor_design_image: floor_design_Image,
+                  floor_design_image_description: value.floor_design_image_description,
+                  floor_design_description_detail: value.floor_design_description_detail,
+                },
+              ],
+              utilities_additional: [
+                {
+                  // tiện ích bổ sung
+                  utilities_additional_title: value.utilities_additional_title,
+                },
+              ],
+            },
+            status: value.status
+          }
+        )
+      }
+    } catch (error) {
+
+    }
   };
-
+  React.useLayoutEffect(() => {
+    fetchDistricts()
+  }, []);
   return (
     <div className="overflow-x-auto text-black">
       <form onSubmit={handleSubmit(onHanldSubmit)}>
@@ -127,19 +258,20 @@ const AddProject = () => {
                   Quận/Huyện
                 </label>
                 <select
-                  // value={selectedDistrict}
-                  // {...register("project_district")}
-                  // onChange={handleDistrictChange}
+                  {...register("project_district")}
+                  value={selectedDistrict}
+                  onChange={handleDistrictChange}
                   className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+                  id="district-select"
                 >
-                  <option value="">chọn</option>
-                  {/* {districts?.map((item: any) => {
+                  <option value="">Chọn quận/huyện</option>
+                  {districts?.map((item: any) => {
                     return (
-                      <option key={item?.code} value={item.id}>
+                      <option key={item?.code} value={item.code}>
                         {item.name}
                       </option>
                     );
-                  })} */}
+                  })}
                 </select>
               </div>
               <div className="grid grid-rows-[max-content_auto]">
@@ -147,15 +279,18 @@ const AddProject = () => {
                   Phường
                 </label>
                 <select
-                  // value={selectedWard}
-                  // onChange={handleWardChange}
+                  {...register('project_wards')}
+                  value={selectedWard}
+                  onChange={handleWardChange}
+                  id="ward-select"
                   className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                 >
-                  {/* {wards?.map((item: any) => (
+                  <option value="">Chọn xã/phường</option>
+                  {wards.map((item: any) => (
                     <option key={item?.code} value={item?.code}>
                       {item?.name}
                     </option>
-                  ))} */}
+                  ))}
                 </select>
               </div>
               <div className="col-span-2">
@@ -181,15 +316,13 @@ const AddProject = () => {
                     className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 "
                     placeholder="Mô tả"
                     type="text"
-                    id=""
-                    name=""
+                    {...register("overview_description")}
                   ></input>
                   <div className="grid justify-start">
                     <input
                       type="file"
                       className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
-                      name=""
-                      id=""
+                      {...register("overview_image")}
                     />
                   </div>
                 </div>
@@ -199,59 +332,58 @@ const AddProject = () => {
                     className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 mb-2"
                     type="text"
                     placeholder="Mô tả"
-                    id=""
-                    name=""
+                    {...register("location_description")}
                   ></input>
                   <div className="grid justify-start">
                     <input
                       type="file"
                       className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
-                      name=""
-                      id=""
+                      {...register("location_image")}
                     />
                   </div>
-
                   <input
                     type="text"
                     className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 my-2"
-                    id="overviewImage"
-                    name="overviewImage"
+                    {...register("location_image_description")}
+
                   ></input>
                 </div>
+                {/* tien ich */}
                 <div className="overview w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 grid gap-1 mt-2">
                   <label htmlFor="overviewDescription">Tiện ích:</label>
                   <input
                     className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 "
                     placeholder="Tiêu đề"
                     type="text"
-                    id=""
-                    name=""
+                    {...register("utilities_title")}
                   ></input>
                   <input
                     className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 mt-1 mb-1"
                     placeholder="Mô tả"
                     type="text"
-                    id=""
-                    name=""
+                    {...register("utilities_description")}
+
                   ></input>
                   <div>
                     <div className="grid justify-start">
                       <input
                         type="file"
                         className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
-                        name=""
-                        id=""
+                        {...register("utilities_image")}
+
                       />
                     </div>
                     <input
                       type="text"
                       className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 my-2"
                       placeholder="Mô tả hình ảnh"
-                      id="overviewImage"
-                      name="overviewImage"
+                      {...register("utilities_image_description")}
+
                     ></input>
                   </div>
                 </div>
+
+                {/* mat bang */}
                 <div className="overview w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 grid gap-2 mt-2">
                   <label htmlFor="overviewDescription">
                     Thiết kế mặt bằng:
@@ -260,32 +392,30 @@ const AddProject = () => {
                     className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700"
                     type="text"
                     placeholder="Tiêu đề"
-                    id=""
-                    name=""
+                    {...register("floor_design_title")}
                   ></input>
                   <div className="grid justify-start">
                     <input
                       type="file"
                       className="border border-gray-300 rounded-md py-2 px-4 hover:border-gray-400 focus:outline-none focus:border-blue-500"
-                      name=""
-                      id=""
+                      {...register("floor_design_image")}
                     />
                   </div>
                   <input
                     type="text"
                     placeholder="Mô tả hình ảnh"
                     className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700"
-                    id="overviewImage"
-                    name="overviewImage"
+                    {...register("floor_design_image_description")}
+
                   ></input>
                   <input
                     type="text"
                     placeholder="Mô tả chi tiết"
                     className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700"
-                    id="overviewImage"
-                    name="overviewImage"
+                    {...register("floor_design_description_detail")}
                   ></input>
                 </div>
+                {/* tien ich bo xung */}
 
                 <div className="overview w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700 mt-2">
                   <label htmlFor="overviewDescription">
@@ -296,8 +426,7 @@ const AddProject = () => {
                     className="w-full px-4 rounded-lg outline-none border-slate-300 border py-3 pe-10 text-gray-700"
                     placeholder="Tiêu đề"
                     type="text"
-                    id=""
-                    name=""
+                    {...register("utilities_additional_title")}
                   ></input>
                 </div>
               </div>
@@ -372,6 +501,6 @@ const AddProject = () => {
       </form>
     </div>
   );
-};
+});
 
 export default AddProject;
