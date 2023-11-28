@@ -1,6 +1,7 @@
 import { FormSignup } from "@/schemas/auths";
 import { FormLogin } from "@/schemas/auths";
 import useSWR from "swr";
+import connect_Api from "./instances";
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
@@ -43,4 +44,19 @@ export const getUser = async (token: any) => {
   } else {
     throw new Error("Không thể lấy thông tin danh mục.");
   }
+};
+
+export const inFoUser = () => {
+  const uri = "/user/profile";
+  const user = JSON.parse(localStorage.getItem("myacctoken") as string);
+  const token = user?.token;
+  return connect_Api.get(uri, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+export const SignIN = (data: any) => {
+  return connect_Api.post(`/signin`, data);
 };

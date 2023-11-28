@@ -12,28 +12,18 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useForm } from "react-hook-form"
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { getCategoryById, updateCategory } from "@/app/api/category"
-import { ICategorys } from "@/interfaces/auths"
 import Swal from 'sweetalert2';
 import { useCategoryQuery } from "@/app/Hooks/categories/useCategoriesQuery"
 import { useCategoriesMutation } from "@/app/Hooks/categories/useCategoriesMutation"
-
-// const formSchema = z.object({
-//     category_name: z.string().min(2, {
-//         message: "category_name must be at least 2 characters.",
-//     }),
-//     category_description: z.string()
-// })
 
 
 const UpdateCategories = React.memo(() => {
     const router = useRouter();
     const { id } = useParams()
 
-    const { data, isLoading, isError } = useCategoryQuery(id)
+    const { data, isLoading, isError } = useCategoryQuery(id as any)
     const listCate = data?.data?.category
 
     const { form, onSubmit } = useCategoriesMutation({
@@ -44,7 +34,7 @@ const UpdateCategories = React.memo(() => {
             router.push("/admin/category");
         },
     });
-    const hihi = (values: any) => {
+    const onHandleSubmit = (values: any) => {
         try {
             onSubmit({ _id: id, ...values });
 
@@ -68,7 +58,7 @@ const UpdateCategories = React.memo(() => {
             </h2>
             <div className="flex justify-center">
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(hihi)} className="space-y-8 lg:w-[60%] md:w-[70%] w-[100%] ">
+                    <form onSubmit={form.handleSubmit(onHandleSubmit)} className="space-y-8 lg:w-[60%] md:w-[70%] w-[100%] ">
                         <FormField
                             control={form.control}
                             name="category_name"

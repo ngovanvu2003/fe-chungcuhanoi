@@ -1,6 +1,5 @@
 import useSWR, { mutate } from "swr";
 import axios from "axios";
-import useGetToken from "./getToken";
 
 const apiUrl = `${process.env.NEXT_PUBLIC_BDS_API_PROJECT}`;
 
@@ -10,9 +9,11 @@ export const fetchUser = (id: string) => {
   return useSWR(url, fetcher);
 };
 
-export const searchProduct = async ({_project_district}: any) => {
-  const response = await fetch(`${apiUrl}?_project_district=${_project_district}`);
-  console.log(response)
+export const searchProduct = async ({ _project_district }: any) => {
+  const response = await fetch(
+    `${apiUrl}?_project_district=${_project_district}`
+  );
+  console.log(response);
   if (response.ok) {
     const data = await response.json();
     return data;
