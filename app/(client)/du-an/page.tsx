@@ -3,7 +3,6 @@
 import { BsArrowRight } from "react-icons/bs";
 import Proj from "../../../components/admin/projects/project";
 import useSWR from "swr";
-import { Skeleton } from "@/components/ui/skeleton";
 import Homeslides from "@/components/admin/projects/slided";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -18,13 +17,15 @@ const Project = React.memo(() => {
   const [wardsName, setwardsName] = useState('');
   const [selectedDistrict, setSelectedDistrict] = useState('');
   const [selectedWard, setSelectedWard] = useState('');
+  const [keyword, setKeyword] = useState('');
 
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
-  const apiUrl = `http://localhost:8080/api/projects?_project_district=${districtsName === "Chọn quận/huyện" || '' ? '' : districtsName}&_project_wards=${wardsName === "Chọn xã/phường" || '' ? '' : wardsName}&_categoryId=${category_name === "Chọn" || '' ? '' : category_name}&_status=${status_name === "Chọn" || '' ? '' : status_name}`;
+  const apiUrl = `http://localhost:8080/api/projects?_search=${keyword}&_project_district=${districtsName === "Chọn quận/huyện" || districtsName === '' ? '' : districtsName}&_project_wards=${wardsName === "Chọn xã/phường" || wardsName === '' ? '' : wardsName}&_categoryId=${category_name === "Chọn" || category_name === '' ? '' : category_name}&_status=${status_name === "Chọn" || status_name === '' ? '' : status_name}`;
 
   const { data, error, isLoading } = useSWR<any, Error, string>(apiUrl, fetcher);
 
   const ListAllProject = data?.response?.data;
+
   // Fetch districts of Hanoi
   React.useLayoutEffect(() => {
     fetchDistricts();
@@ -89,23 +90,27 @@ const Project = React.memo(() => {
     }
   };
 
-  if (error) return <div>error</div>;
-  if (isLoading) return <Skeleton />;
+  const onHandleSearch = (e: any) => {
+    setKeyword(e.target.value);
+  }
+
+  // if (error) return <div>error</div>;
+  // if (isLoading) return <Skeleton />;
   return (
     <div>
       <Homeslides />
       <div className="border p-3 mb-2 max-w-7xl mx-auto hidden lg:block mt-4 ">
-        <form className=" grid grid-cols-[30%,12%,12%,12%,12%,12%] w-100 gap-4 items-center mx-auto  justify-between">
+        <form className=" grid grid-cols-[30%,12%,12%,12%,12%,12%] w-full items-center mx-auto  justify-between">
           <div className="">
             <input
               type="text"
               placeholder="Tìm kiếm dự án..."
-              className="bg-gray-100 border w-full rounded-md text-center "
-              id=""
+              onChange={onHandleSearch}
+              className="bg-gray-100 outline-none py-2 border w-full rounded-md px-2 "
             />
           </div>
           <div>
-            <select id="district-select" value={selectedDistrict} onChange={handleDistrictChange}>
+            <select id="district-select" className="bg-gray-100 outline-none py-2 border w-full rounded-md " value={selectedDistrict} onChange={handleDistrictChange}>
               <option value="">Chọn quận/huyện</option>
               {districts?.map((item: any) => {
                 return (
@@ -117,7 +122,9 @@ const Project = React.memo(() => {
             </select>
           </div>
           <div>
-            <select id="ward-select" value={selectedWard} onChange={handleWardChange}>
+            <select id="ward-select"
+              className="bg-gray-100 outline-none py-2 border w-full rounded-md "
+              value={selectedWard} onChange={handleWardChange}>
               <option value="">Chọn xã/phường</option>
               {wards?.map((item: any) => (
                 <option key={item.code} value={item.code}>
@@ -129,7 +136,7 @@ const Project = React.memo(() => {
           <div>
             <select
               onChange={handleChangeCategory}
-              className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+              className="bg-gray-100 outline-none py-2 border w-full rounded-md ">
               <option value="">Chọn</option>
               {categories?.map((item: any) => {
                 return (
@@ -142,7 +149,7 @@ const Project = React.memo(() => {
           </div>
           <div>
             <select
-              className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+              className="bg-gray-100 outline-none py-2 border w-full rounded-md ">
               <option value="" className="text-amber-800">
                 Mức giá
               </option>
@@ -155,7 +162,7 @@ const Project = React.memo(() => {
           <div>
             <select
               onChange={handleChangeStatus}
-              className=" md:px-4 py-1 md:py-2 rounded-lg border-gray-300 text-gray-700 text-sm ">
+              className="bg-gray-100 outline-none py-2 border w-full rounded-md ">
               <option value="" className="text-amber-800">
                 Chọn
               </option>
@@ -186,13 +193,13 @@ const Project = React.memo(() => {
               </select>
             </div>
           </div>
-          {ListAllProject ? (
+          {ListAllProject && ListAllProject.length ? (
             ListAllProject?.map((item: any) => {
               return <Proj key={item?._id} dataProject={item} />;
             })
           ) : (
-            <div className="w-full grid grid-cols-[30%,70%] gap-1 mt-8 p-2 border">
-              <div className="w-full h-[290px] grid grid-cols-2 grid-rows-[65%,auto] gap-1">
+            <div className="w-full  gap-1 mt-8 p-2 border">
+              {/* <div className="w-full h-[290px] grid grid-cols-2 grid-rows-[65%,auto] gap-1">
                 <Skeleton className="w-full h-full bg-gray-300 col-span-2" />
                 <Skeleton className="w-full h-full bg-gray-300" />
                 <Skeleton className="w-full h-full bg-gray-300" />
@@ -203,7 +210,8 @@ const Project = React.memo(() => {
                 <Skeleton className="w-[100px] h-[30px] bg-gray-300" />
                 <Skeleton className="w-full h-[50px] bg-gray-300" />
                 <Skeleton className="w-full h-[50px] bg-gray-300" />
-              </div>
+              </div> */}
+              Không có sản phẩm nào
             </div>
           )}
         </div>
