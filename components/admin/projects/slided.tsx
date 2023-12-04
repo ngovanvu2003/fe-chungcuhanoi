@@ -52,7 +52,7 @@ const Homeslides = () => {
                 </div>
                 <div className="absolute top-32  md:top-80 lg:top-80 left-4 md:left-12 lg:left-28 flex flex-col">
                   <div className="border rounded-md w-[100px] px-1 md:w-[150px] md:py-1 md:px-2 lg:w-[150px] bg-[#E7FFF4] lg:py-1 lg:px-2  text-[#07A35D] font-serif">
-                    <label htmlFor="">{items?.status}</label>
+                    <label htmlFor="">{items?.status === 1 ? "Đang mở bán" : "Đã bàn giao"}</label>
                   </div>
                   <h1 className="font-medium text-sm my-1 md:text-2xl  lg:text-2xl lg:my-3 text-white">{items?.project_name}</h1>
                   <div className="text-[rgba(255,255,255,0.8)] text-xs md:text-lg lg:text-lg">

@@ -5,34 +5,20 @@ import Remises from "@/components/admin/ProjectDetail/Remises";
 import Details from "@/components/admin/ProjectDetail/Details";
 import Location from "@/components/admin/ProjectDetail/Location";
 import { BsShare } from "react-icons/bs";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "next/navigation";
-import { getProjectById } from "@/app/api/project";
 import LocationOnTheMap from "@/components/admin/ProjectDetail/LocationOnTheMap";
 import { IProject } from "@/interfaces/project";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useProjectQuery } from "@/app/Hooks/projects/useProductQuery";
 
 
 const ProjectDetail = React.memo(() => {
-  const [project, setProject] = useState<IProject>();
-
   const { id } = useParams<any>();
-  useEffect(() => {
-    const fetchProject = async () => {
-      try {
-        const response = await getProjectById(id);
-
-        if (response && response.project) {
-          setProject(response.project);
-        }
-      } catch (error) {
-        console.error("Error fetching project:", error);
-      }
-    };
-    fetchProject();
-  }, [id]);
-
+  const { data } = useProjectQuery(id);
+  console.log(data);
+  const project = data?.data?.project;
   return (
     <div className="mx-2 max-w-5xl lg:mx-auto mt-20 text-sm">
       <div>
@@ -49,7 +35,7 @@ const ProjectDetail = React.memo(() => {
             Nhơn Trạch
           </a>
           <span className="text-[#999]"> / </span>
-          <a href="">Khu đô thị mới khu dân cư Phú Thịnh 1</a>
+          <a href="">{project?.project_name}</a>
         </div>
         <div className="flex justify-between mb-4">
           {project?.project_name
@@ -91,7 +77,7 @@ const ProjectDetail = React.memo(() => {
               : <Skeleton className="w-full h-[280px] max-h-[280px] bg-gray-300 rounded-e-none" />}
             {
               project && <div className="absolute top-0 left-0 bg-slate-50 py-1 px-2 border rounded-md m-2 text-[#999] font-serif">
-                <label htmlFor="">Đang cập nhật</label>
+                <label htmlFor="">{project?.status}</label>
               </div>
             }
           </div>
@@ -191,7 +177,7 @@ const ProjectDetail = React.memo(() => {
                 <label>
                   <h4>Diện tích</h4>
                 </label>
-                <span>20 ha</span>
+                <span>{project?.project_acreage}</span>
               </div>
               : <Skeleton className="w-[100px] h-[20px] bg-gray-300" />}
           </div>
@@ -199,7 +185,7 @@ const ProjectDetail = React.memo(() => {
           <div className="text-sm mb-[16px]">
             {project
               ? <p>
-                <strong className="font-medium">
+                <strong className="font-medium text-2xl">
                   {project?.project_name}{" "}
                 </strong>
                 {project?.project_content}
@@ -223,14 +209,15 @@ const ProjectDetail = React.memo(() => {
               : <Skeleton className="w-full h-[350px] bg-gray-300" />}
             <figcaption className="mt-3 mb-5">
               <i>
-                Phối cảnh tổng thể dự án Khu dân cư Phú Thịnh 1 tại Nhơn Trạch,
-                Đồng Nai
+                {/* {
+                  project?.description_group
+                } */}
               </i>
             </figcaption>
           </figure>
           <h3 className="font-medium text-lg">Vị trí</h3>
 
-          <Location />
+          <Location data={project} />
 
           <Details />
 

@@ -462,9 +462,9 @@ const AddProject = React.memo(() => {
                   defaultValue={1}
                   className="border py-2 w-full px-2"
                 >
-                  <option value="1">Sắp mở bán</option>
-                  <option value="2">Đang mở bán</option>
-                  <option value="3">Đã bàn giao</option>
+                  <option value="Sắp mở bán">Sắp mở bán</option>
+                  <option value="Đang mở bán">Đang mở bán</option>
+                  <option value="Đã bàn giao">Đã bàn giao</option>
                 </select>
               </div>
               {/* Form uploading */}

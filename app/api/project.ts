@@ -13,37 +13,11 @@ export const searchProduct = async ({ _project_district }: any) => {
   const response = await fetch(
     `${apiUrl}?_project_district=${_project_district}`
   );
-  console.log(response);
   if (response.ok) {
     const data = await response.json();
     return data;
   } else {
     throw new Error("Không thể lấy thông tin danh mục.");
-  }
-};
-
-export const createProject = async (data: any) => {
-  const url = `${apiUrl}`;
-  const token = useGetToken();
-  const res = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify(data),
-
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  return await res.json();
-};
-export const getProjectById = async (projectId: any) => {
-  const response = await fetch(`${apiUrl}/${projectId}`);
-
-  if (response.ok) {
-    const data = await response.json();
-    return data;
-  } else {
-    throw new Error("Không thể lấy thông tin dự án.");
   }
 };
 
@@ -61,14 +35,6 @@ export const updateProject = async (projectId: any, projectData: any) => {
   } else {
     throw new Error("Cập nhật dự án thất bại.");
   }
-};
-
-export const removeProject = async (id: string | number) => {
-  const url = `${apiUrl}/${id}`;
-  const res = await fetch(url, {
-    method: "DELETE",
-  });
-  return await res.json();
 };
 
 export const VND = new Intl.NumberFormat("vi-VN", {

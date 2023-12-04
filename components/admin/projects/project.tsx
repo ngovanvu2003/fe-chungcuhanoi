@@ -41,7 +41,7 @@ const Proj = React.memo((dataProject: any) => {
       </div>
       <div className="flex flex-col  justify-center px-2 md:ml-5 ">
         <div className="bg-green-100 text-green-700  rounded-md w-32 p-1 font-bold text-sm text-center">
-          {listInfoProject?.status}
+          {listInfoProject?.status === 1 ? "Đã mở bán" : "Đang mở bán"}
         </div>
         <Link
           href={`/du-an/chi-tiet-du-an/${listInfoProject?._id}`}

@@ -15,7 +15,6 @@ import Link from 'next/link';
 import Image from 'next/image'
 import { AiOutlineHome } from "react-icons/ai"
 import { FaHotel } from "react-icons/fa6";
-import { BsNewspaper } from "react-icons/bs";
 
 import { usePathname } from 'next/navigation';
 
@@ -27,11 +26,12 @@ function Header() {
         <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <div className="flex items-center">
-
-              <img
-                src="https://staticfile.batdongsan.com.vn/images/logo/standard/red/logo.svg"
-                className="h-10 mr-"
-                alt="Flowbite Logo" />
+              <Link href={"/"}>
+                <img
+                  src="https://staticfile.batdongsan.com.vn/images/logo/standard/red/logo.svg"
+                  className="h-10 mr-"
+                  alt="Flowbite Logo" />
+              </Link>
               <div
                 className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
                 id="navbar-sticky"
@@ -54,14 +54,7 @@ function Header() {
                       Dự án
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/tinruc"
-                      className={`link ${pathname === '/' ? 'active' : ''} block py-2 text-gray-900 pl-3 pr-4  rounded md:bg-transparent transition-all `}
-                    >
-                      Tin tức
-                    </Link>
-                  </li>
+
                 </ul>
               </div>
             </div>
@@ -107,59 +100,14 @@ function Header() {
                                   <summary
                                     className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                                   >
-                                    <span className="text-sm font-medium  flex  items-center gap-2 ">
-                                      <FaHotel />
-                                      Dự án
-                                    </span>
-
-                                    <span
-                                      className="shrink-0 transition duration-300 group-open:-rotate-180"
-                                    >
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-5 w-5"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                      >
-                                        <path
-                                          fillRule="evenodd"
-                                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                          clipRule="evenodd"
-                                        />
-                                      </svg>
-                                    </span>
+                                    <Link href={"/du-an"}>
+                                      <span className="text-sm font-medium  flex  items-center gap-2 ">
+                                        <FaHotel />
+                                        Dự án
+                                      </span>
+                                    </Link>
                                   </summary>
-
-                                  <ul className="mt-2 space-y-1 px-4">
-                                    <li>
-                                      <Link
-                                        href=""
-                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                                      >
-                                        Banned Users
-                                      </Link>
-                                    </li>
-
-                                    <li>
-                                      <Link
-                                        href=""
-                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                                      >
-                                        Calendar
-                                      </Link>
-                                    </li>
-                                  </ul>
                                 </details>
-                              </li>
-
-                              <li>
-                                <Link
-                                  href=""
-                                  className={`link ${pathname === '/' ? 'active' : ''}    flex  items-center gap-2  rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700`}
-                                >
-                                  <BsNewspaper />
-                                  Tin tức
-                                </Link>
                               </li>
                             </ul>
                           </div>

@@ -1,4 +1,7 @@
-const Location = () => {
+const Location = ({ data }: any) => {
+  const listLocation = data?.description_group?.location;
+  console.log(listLocation);
+
   return (
     <div className="flex  flex-col justify-between mt-5 text-sm">
       <ul className="">
@@ -24,59 +27,21 @@ const Location = () => {
 
             <ul className=" mt-2 mx-auto space-y-1 marker:text-sky-400">
               <p>
-                Dự án khu dân cư Phú Thịnh 1 nằm tại xã Phú Thạnh, huyện
-                Nhơn Trạch, tỉnh Đồng Nai. Dự án sở hữu vị trí đắc địa khi
-                nằm giữa đại đô thị Đông Sài Gòn với quy mô gần 1000ha,
-                với các mặt tiếp giáp như sau:
+                {listLocation?.location_description}
               </p>
-
-              <ul
-                role="list"
-                className="marker:text-black list-disc pl-5 space-y-3 text-black"
-              >
-                <li>
-                  Phía Bắc giáp công viên 4 mùa rộng 4,5ha, trục đường N4
-                  và KĐT Swan Park giai đoạn
-                </li>
-                <li>
-                  Phía Nam tgiáp Trục tài chính, TTTM trung tâm,đường 25B
-                  và tuyến Metro nhẹ Thủ Thiêm – Long Thành
-                </li>
-                <li>
-                  Phía Đông giáp với Trục chính D7 rộng 60m và công viên
-                  hồ thiên nga 29ha
-                </li>
-                <li>
-                  Phía Tây giáp với trục đường D6 rộng 40m và khu nhà phố
-                  liền kề
-                </li>
-              </ul>
 
               <figure className="text-center text-[#999] ">
                 <img
-                  src="https://file4.batdongsan.com.vn/2023/10/24/20231024170136-ae7c_wm.jpg"
+                  src={`${listLocation?.location_image[0]?.image_url}`}
                   alt=""
                 />
                 <figcaption className="mt-3 mb-3">
                   <i>
-                    Khu dân cư Phú Thịnh 1 là một phần của dự án KĐT Đông
-                    Sài Gòn 942ha
+                    {listLocation?.location_image_description}
                   </i>
                 </figcaption>
               </figure>
 
-              <figure className="text-center text-[#999] ">
-                <img
-                  src="https://file4.batdongsan.com.vn/2023/10/24/20231024170136-ae7c_wm.jpg"
-                  alt=""
-                />
-                <figcaption className="mt-3 mb-5">
-                  <i>
-                    Vị trí dự án khu dân cư Phú Thịnh 1 trong tổng thể KĐT
-                    Đông Sài Gòn
-                  </i>
-                </figcaption>
-              </figure>
 
               <p className="font-medium">
                 Giao thông đường bộ từ khu đô thị Đông Sài Gòn:

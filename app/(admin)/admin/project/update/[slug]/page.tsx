@@ -24,7 +24,6 @@ import { Label } from "@radix-ui/react-label";
 const page = () => {
   const router = useRouter();
   const { slug } = useParams();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const { data: categories } = useCategoryQuery();
   const listCate = categories?.data?.response?.data;
   // const [selectedFiles, setSelectedFiles] = useState<any>([]);

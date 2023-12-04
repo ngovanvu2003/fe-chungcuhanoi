@@ -23,9 +23,9 @@ const signup = () => {
       if (results.success == false) {
         Swal.fire({
           title: 'Opps!',
-          text: 'Email hoặc Số điện thoại tồn tại rồi anh ơi!',
+          text: 'Email hoặc Số điện thoại tồn tại!',
           icon: 'error',
-          confirmButtonText: 'Mình quay lại nha anh'
+          confirmButtonText: 'Quay lại'
         })
         return;
       } else {

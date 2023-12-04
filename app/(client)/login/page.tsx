@@ -30,9 +30,9 @@ const Login = () => {
             if (reponse.error === true) {
                 Swal.fire({
                     title: 'Opps!',
-                    text: 'Sai tài khoản hoặc mật khẩu rồi anh ơi!',
+                    text: 'Thông tin tài khoản hoặc mật khẩu không chính xác!',
                     icon: 'error',
-                    confirmButtonText: 'Mình quay lại nha anh'
+                    confirmButtonText: 'Quay lại'
                 })
                 return;
             } else {

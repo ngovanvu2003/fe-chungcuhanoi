@@ -35,16 +35,6 @@ export const Signin = async (data: FormLogin) => {
 };
 
 // Hàm get one
-export const getUser = async (token: any) => {
-  const response = await fetch(`${apiUrl}/user/token/${token}`);
-
-  if (response.ok) {
-    const data = await response.json();
-    return data;
-  } else {
-    throw new Error("Không thể lấy thông tin danh mục.");
-  }
-};
 
 export const inFoUser = () => {
   const uri = "/user/profile";
@@ -56,7 +46,4 @@ export const inFoUser = () => {
       Authorization: `Bearer ${token}`,
     },
   });
-};
-export const SignIN = (data: any) => {
-  return connect_Api.post(`/signin`, data);
 };

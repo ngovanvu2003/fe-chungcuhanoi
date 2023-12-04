@@ -3,7 +3,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import {  useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { BsFillImageFill } from "react-icons/bs";
 
 import { useForm } from "react-hook-form";
@@ -16,19 +16,18 @@ const page = () => {
     const [userData, setUserData] = useState(null);
     const datauser = data?.user
 
-    
+
     useEffect(() => {
         if (!isLoading && !isError && data) {
             setValue("name", datauser.name);
             setValue("email", datauser.email);
             setValue("phone", datauser.phone);
-            
             setUserData(datauser);
         }
     }, [isLoading, isError, datauser, setValue]);
 
 
-    const onhandlesubmit= async(user:any) => {
+    const onhandlesubmit = async (user: any) => {
 
         try {
             await updateuser(user)
@@ -46,8 +45,8 @@ const page = () => {
                 text: 'Cập nhật thất bại!',
                 icon: 'error',
             })
-        } 
-       
+        }
+
     }
 
     return (
@@ -62,7 +61,7 @@ const page = () => {
                                     Tên người dùng
                                 </label>
                                 <input
-                                {...register("name")}
+                                    {...register("name")}
                                     type="text"
                                     className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                                     placeholder="User Name"
@@ -73,7 +72,7 @@ const page = () => {
                                     Email
                                 </label>
                                 <input
-                                {...register('email')}
+                                    {...register('email')}
                                     type="text"
                                     className="block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                                     placeholder="Email"
@@ -84,7 +83,7 @@ const page = () => {
                                     Password
                                 </label>
                                 <input
-                                 {...register('password')}
+                                    {...register('password')}
                                     type="text"
                                     className=" block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                                     placeholder="******"
@@ -95,15 +94,15 @@ const page = () => {
                                     Phone
                                 </label>
                                 <input
-                                 {...register('phone')}
-                                
+                                    {...register('phone')}
+
                                     type="text"
                                     className=" block rounded-md border w-full min-h-[30px] py-2 px-2 outline-none border-slate-300 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                                     placeholder="SĐT"
                                 />
                             </div>
-                            
-                          
+
+
                             <div className="col-span-2">
                                 <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
                                     Avatar
@@ -124,7 +123,7 @@ const page = () => {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="col-span-2 mt-6 flex items-center justify-end gap-x-5">
                                 <button
                                     type="submit"

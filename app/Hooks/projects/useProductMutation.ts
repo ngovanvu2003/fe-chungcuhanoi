@@ -15,6 +15,8 @@ type FormControlType = {
   project_view: number;
   categoryId: string;
   status: number;
+  userId: string;
+  description_group: object;
 };
 
 type useProductMutationProps = {
@@ -75,6 +77,7 @@ export const useProjectMutation = ({
       ],
     },
     status: "",
+    userId: "",
   },
   onSuccess,
 }: useProductMutationProps) => {
